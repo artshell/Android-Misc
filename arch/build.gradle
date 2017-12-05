@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
+apply from: 'arch_dependences.gradle'
+
 android {
-    compileSdkVersion 26
-
-
+    compileSdkVersion deps.versions.compileVersion
 
     defaultConfig {
         applicationId "com.artshell.arch"
-        minSdkVersion 15
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion deps.versions.minVersion
+        targetSdkVersion deps.versions.targetVersion
+        versionCode deps.versions.arch_module_version
+        versionName deps.versions.arch_module_name
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -27,10 +27,62 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation deps.support.annotations
+    implementation deps.support.support_v4
+    implementation deps.support.appcompat_v7
+    implementation deps.support.recyclerview_v7
+    implementation deps.support.support_v13
+    implementation deps.support.design
+    implementation deps.support.constraint_layout
+
+    implementation deps.arch.lifecycle.runtime
+    annotationProcessor deps.arch.lifecycle.compiler
+    implementation deps.arch.lifecycle.common_java8
+
+    implementation deps.arch.liveData_ViewModel.extensions
+    testImplementation deps.arch.liveData_ViewModel.core_testing
+    implementation deps.arch.liveData_ViewModel.reactivestreams
+
+    implementation deps.arch.room.runtime
+    annotationProcessor deps.arch.room.compiler
+    testImplementation deps.arch.room.testing
+    implementation deps.arch.room.rxjava2
+
+    implementation deps.arch.paging
+
+    implementation deps.rx.java
+    implementation deps.rx.android
+    implementation deps.rx.lifecycle
+    implementation deps.rx.lifecycle_android
+
+    implementation deps.auto.dispose
+    implementation deps.auto.android
+    implementation deps.auto.android_arch
+
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.adapter_rxjava2
+    implementation deps.retrofit.converter_gson
+    implementation deps.retrofit.converter_scalars
+    implementation deps.retrofit.converter_moshi
+
+    implementation deps.okHttp.okhttp
+    implementation deps.okHttp.okio
+
+    implementation deps.store.cache3
+    implementation deps.store.store3
+    implementation deps.store.middleware3
+    implementation deps.store.filesystem3
+
+    implementation deps.dagger2.dagger
+    annotationProcessor deps.dagger2.annotation_dagger_compiler
+    implementation deps.dagger2.dagger_android
+    implementation deps.dagger2.dagger_android_support
+    annotationProcessor deps.dagger2.annotation_dagger_android_compiler
+
+    implementation deps.misc.gson
+
 }

@@ -1,0 +1,153 @@
+def versions = [
+        compileVersion: 26,
+        buildVersion: '27.0.0',
+        minVersion: 15,
+        targetVersion: 26,
+        arch_module_version: 100,
+        arch_module_name: '1.0.0',
+        compatVersion: JavaVersion.VERSION_1_8,
+        support: '26.1.0'
+]
+
+def test = [
+        junit: 'junit:junit:4.12',
+        runner: 'com.android.support.test:runner:1.0.1',
+        espresso: 'com.android.support.test.espresso:espresso-core:3.0.1',
+]
+
+def detection = [
+        leakcanary: 'com.squareup.leakcanary:leakcanary-android:1.5.4',
+        leakcanary_no_op: 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4',
+        // refer to [https://github.com/uber/AutoDispose]
+        errorProne: [
+                // http://errorprone.info/
+                // http://errorprone.info/docs/installation
+        ],
+        nullAway: [
+                // for java project refer to [https://github.com/uber/NullAway]
+                // only for android project
+                nullAway: 'com.uber.nullaway:nullaway:0.1.4'
+        ],
+        javax_extras: [
+                // https://github.com/uber-common/javax-extras
+                javax_extras: 'com.uber.javaxextras:javax-extras:0.1.0'
+        ]
+
+        // errorProne, nullAway, java_extras usage refer to [AutoDispose](https://github.com/uber/AutoDispose)
+]
+
+def support = [
+        support_v4: "com.android.support:support-v4:${versions.support}",
+        appcompat_v7: "com.android.support:appcompat-v7:${versions.support}",
+        recyclerview_v7: "com.android.support:recyclerview-v7:${versions.support}",
+        design: "com.android.support:design:${versions.support}",
+        support_v13: "com.android.support:support-v13:${versions.support}",
+        annotations: "com.android.support:support-annotations:${versions.support}",
+        constraint_layout: 'com.android.support.constraint:constraint-layout:1.0.2',
+        multidex: 'com.android.support:multidex:1.0.2'
+]
+
+def arch = [
+        lifecycle: [
+                // not necessary if you are using lifecycle:extensions or lifecycle:common-java8
+                runtime: 'android.arch.lifecycle:runtime:1.0.3',
+                // not needed if you are using the DefaultLifecycleObserver from common-java8
+                compiler: 'android.arch.lifecycle:compiler:1.0.0',
+                // For Lifecycles Java8 Lanaguage support
+                common_java8: 'android.arch.lifecycle:common-java8:1.0.0'
+        ],
+
+        liveData_ViewModel: [
+                extensions: 'android.arch.lifecycle:extensions:1.0.0',
+                // For controlling LiveData background threads in your tests,
+                core_testing: 'android.arch.core:core-testing:1.0.0',
+                // To use LiveData with ReactiveStreams API
+                reactivestreams: 'android.arch.lifecycle:reactivestreams:1.0.0'
+        ],
+
+        room: [
+                runtime: 'android.arch.persistence.room:runtime:1.0.0',
+                compiler: 'android.arch.persistence.room:compiler:1.0.0',
+                // For testing Room migrations
+                testing: 'android.arch.persistence.room:testing:1.0.0',
+                // For Room RxJava support
+                rxjava2: 'android.arch.persistence.room:rxjava2:1.0.0'
+        ],
+
+        paging: 'android.arch.paging:runtime:1.0.0-alpha3'
+]
+
+def rx = [
+        java: 'io.reactivex.rxjava2:rxjava:2.1.7',
+        android: 'io.reactivex.rxjava2:rxandroid:2.0.1',
+        lifecycle: 'com.trello.rxlifecycle2:rxlifecycle:2.2.0',
+        lifecycle_android: 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.0',
+        permissions: 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar',
+        binding: 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+]
+
+def auto = [
+        dispose: 'com.uber.autodispose:autodispose:0.5.0',
+        android: 'com.uber.autodispose:autodispose-android:0.5.0',
+        android_arch: 'com.uber.autodispose:autodispose-android-archcomponents:0.5.0'
+]
+
+def retrofit = [
+        retrofit: 'com.squareup.retrofit2:retrofit:2.3.0',
+        adapter_rxjava2: 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+        converter_gson: 'com.squareup.retrofit2:converter-gson:2.3.0',
+        converter_scalars: 'com.squareup.retrofit2:converter-scalars:2.3.0',
+        converter_moshi: 'com.squareup.retrofit2:converter-moshi:2.3.0'
+]
+
+def okHttp = [
+        okhttp: 'com.squareup.okhttp3:okhttp:3.9.0',
+        okio: 'com.squareup.okio:okio:1.13.0'
+]
+
+def store = [
+        cache3: 'com.nytimes.android:cache3:3.0.0-beta',
+        store3: 'com.nytimes.android:store3:3.0.0-beta',
+        middleware3: 'com.nytimes.android:middleware3:3.0.0-beta',
+        filesystem3: 'com.nytimes.android:filesystem3:CurrentVersion',
+]
+
+def glide = [
+        glide_v4: 'com.github.bumptech.glide:glide:4.2.0',
+        annotationProcessor: 'com.github.bumptech.glide:compiler:4.2.0',
+        okhttp3_integration: 'com.github.bumptech.glide:okhttp3-integration:4.2.0'
+]
+
+def dagger = [
+        dagger: 'com.google.dagger:dagger:2.12',
+        annotation_dagger_compiler: 'com.google.dagger:dagger-compiler:2.12',
+        // If you're using classes in dagger.android you'll also want to include
+        dagger_android: 'com.google.dagger:dagger-android:2.12',
+        dagger_android_support: 'com.google.dagger:dagger-android-support:2.12',
+        annotation_dagger_android_compiler: 'com.google.dagger:dagger-android-processor:2.12',
+]
+
+def misc = [
+        multitype: 'me.drakeet.multitype:multitype:3.4.0',
+        gson: 'com.google.code.gson:gson:2.8.2',
+        spinkit: 'com.github.ybq:Android-SpinKit:1.1.0',
+        stream: 'com.annimon:stream:1.1.9',
+        compressor: 'id.zelory:compressor:2.1.0',
+        reactivenetwork: 'com.github.pwittchen:reactivenetwork-rx2:0.12.1',
+]
+
+ext.deps = [
+        "versions": versions,
+        "test": test,
+        "detection": detection,
+        "support": support,
+        "arch": arch,
+        "rx": rx,
+        "auto": auto,
+        "retrofit": retrofit,
+        "okHttp": okHttp,
+        "store": store,
+        "glide": glide,
+        "dagger2": dagger,
+        "misc": misc,
+]
