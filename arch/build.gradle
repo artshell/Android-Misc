@@ -16,6 +16,11 @@ android {
 
     }
 
+    compileOptions {
+        sourceCompatibility deps.versions.compatVersion
+        targetCompatibility deps.versions.compatVersion
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,6 +36,9 @@ dependencies {
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso
 
+    debugImplementation deps.detection.leakcanary
+    releaseImplementation deps.detection.leakcanary_no_op
+
     implementation deps.support.annotations
     implementation deps.support.support_v4
     implementation deps.support.appcompat_v7
@@ -39,18 +47,19 @@ dependencies {
     implementation deps.support.design
     implementation deps.support.constraint_layout
 
-    implementation deps.arch.lifecycle.runtime
+    implementation deps.arch.lifecycle.extensions
+    implementation deps.arch.lifecycle.viewmodel
+    implementation deps.arch.lifecycle.livedata
     annotationProcessor deps.arch.lifecycle.compiler
     implementation deps.arch.lifecycle.common_java8
 
-    implementation deps.arch.liveData_ViewModel.extensions
-    testImplementation deps.arch.liveData_ViewModel.core_testing
-    implementation deps.arch.liveData_ViewModel.reactivestreams
+//    testImplementation deps.arch.lifecycle.core_testing
+    implementation deps.arch.lifecycle.reactivestreams
 
     implementation deps.arch.room.runtime
     annotationProcessor deps.arch.room.compiler
-    testImplementation deps.arch.room.testing
     implementation deps.arch.room.rxjava2
+//    testImplementation deps.arch.room.testing
 
     implementation deps.arch.paging
 
@@ -58,6 +67,7 @@ dependencies {
     implementation deps.rx.android
     implementation deps.rx.lifecycle
     implementation deps.rx.lifecycle_android
+    implementation deps.rx.rxlifecycle_components
 
     implementation deps.auto.dispose
     implementation deps.auto.android
@@ -77,6 +87,10 @@ dependencies {
     implementation deps.store.middleware3
     implementation deps.store.filesystem3
 
+    implementation deps.glide.glide_v4
+    annotationProcessor deps.glide.annotationProcessor
+    implementation deps.glide.okhttp3_integration
+
     implementation deps.dagger2.dagger
     annotationProcessor deps.dagger2.annotation_dagger_compiler
     implementation deps.dagger2.dagger_android
@@ -84,5 +98,7 @@ dependencies {
     annotationProcessor deps.dagger2.annotation_dagger_android_compiler
 
     implementation deps.misc.gson
+    implementation deps.misc.stream
+//    implementation deps.misc.streamEx
 
 }

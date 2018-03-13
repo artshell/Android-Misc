@@ -3,8 +3,8 @@ def versions = [
         buildVersion: '27.0.3',
         minVersion: 15,
         targetVersion: 27,
-        arch_module_version: 100,
-        arch_module_name: '1.0.0',
+        databinding_module_version: 100,
+        databinding_module_name: '1.0.0',
         compatVersion: JavaVersion.VERSION_1_8,
         support: '27.1.0'
 ]
@@ -47,45 +47,6 @@ def support = [
         multidex: 'com.android.support:multidex:1.0.2'
 ]
 
-def arch = [
-        lifecycle: [
-                // ViewModel and LiveData
-                extensions: 'android.arch.lifecycle:extensions:1.1.0',
-                // alternatively, just ViewModel
-                viewmodel: 'android.arch.lifecycle:viewmodel:1.1.0',
-                // alternatively, just LiveData
-                livedata: 'android.arch.lifecycle:livedata:1.1.0',
-                compiler: 'android.arch.lifecycle:compiler:1.1.0',
-
-                // Java8 support for Lifecycles
-                common_java8: "android.arch.lifecycle:common-java8:1.1.0",
-
-                // Test helpers for LiveData
-                core_testing: 'android.arch.core:core-testing:1.1.0',
-
-                // ReactiveStreams support for LiveData
-                reactivestreams: 'android.arch.lifecycle:reactivestreams:1.1.0',
-
-                // Support library depends on this lightweight import
-                // Lifecycles only (no ViewModel or LiveData)
-                lightweight_runtime: 'android.arch.lifecycle:runtime:1.1.0',
-                lightweight_compiler: 'android.arch.lifecycle:compiler:1.1.0'
-        ],
-
-        room: [
-                runtime: 'android.arch.persistence.room:runtime:1.1.0-alpha3',
-                compiler: 'android.arch.persistence.room:compiler:1.1.0-alpha3',
-
-                // RxJava support for Room
-                rxjava2: 'android.arch.persistence.room:rxjava2:1.1.0-alpha3',
-
-                // Test helpers for Room
-                testing: 'android.arch.persistence.room:testing:1.1.0',
-        ],
-
-        paging: 'android.arch.paging:runtime:1.0.0-alpha6'
-]
-
 def rx = [
         java: 'io.reactivex.rxjava2:rxjava:2.1.10',
         android: 'io.reactivex.rxjava2:rxandroid:2.0.2',
@@ -94,12 +55,6 @@ def rx = [
         rxlifecycle_components: 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1',
         permissions: 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar',
         binding: 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
-]
-
-def auto = [
-        dispose: 'com.uber.autodispose:autodispose:0.6.1',
-        android: 'com.uber.autodispose:autodispose-android:0.6.1',
-        android_arch: 'com.uber.autodispose:autodispose-android-archcomponents:0.6.1'
 ]
 
 def retrofit = [
@@ -153,9 +108,7 @@ ext.deps = [
         "test": test,
         "detection": detection,
         "support": support,
-        "arch": arch,
         "rx": rx,
-        "auto": auto,
         "retrofit": retrofit,
         "okHttp": okHttp,
         "store": store,

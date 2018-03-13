@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
-apply from: 'mvp_dependences.gradle'
+apply from: 'databinding_dependences.gradle'
 
 android {
     compileSdkVersion deps.versions.compileVersion
 
     defaultConfig {
-        applicationId "com.artshell.mvp"
+        applicationId "com.artshell.databinding"
         minSdkVersion deps.versions.minVersion
         targetSdkVersion deps.versions.targetVersion
-        versionCode deps.versions.mvp_module_version
-        versionName deps.versions.mvp_module_name
+        versionCode deps.versions.databinding_module_version
+        versionName deps.versions.databinding_module_name
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -75,5 +75,4 @@ dependencies {
     implementation deps.misc.gson
     implementation deps.misc.stream
 //    implementation deps.misc.streamEx
-
 }
