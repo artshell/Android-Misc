@@ -30,6 +30,12 @@ android {
 
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'com.google.code.findbugs:jsr305:2.0.1', 'com.google.code.findbugs:jsr305:3.0.1'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation deps.test.junit
@@ -68,6 +74,10 @@ dependencies {
     implementation deps.rx.lifecycle
     implementation deps.rx.lifecycle_android
     implementation deps.rx.rxlifecycle_components
+    implementation (deps.rx.requestor, {
+        exclude group: 'xpp3'
+        exclude module: 'stax-api'
+    })
 
     implementation deps.auto.dispose
     implementation deps.auto.android

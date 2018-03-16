@@ -17,6 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!-- 偏好 -->
+        <activity android:name=".ui.activity.HostProfile">
+        </activity>
     </application>
 
 </manifest>

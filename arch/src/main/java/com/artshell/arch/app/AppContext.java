@@ -9,9 +9,15 @@ import com.squareup.leakcanary.LeakCanary;
  */
 
 public class AppContext extends Application {
+    private static final Object lock = new Object();
+    private static AppContext appContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        synchronized (lock) {
+            appContext = this;
+        }
 
         // 内存泄漏检测
         if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -20,5 +26,9 @@ public class AppContext extends Application {
             return;
         }
         LeakCanary.install(this);
+    }
+
+    public static AppContext getAppContext() {
+        return appContext;
     }
 }
