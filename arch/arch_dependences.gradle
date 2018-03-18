@@ -147,7 +147,8 @@ def misc = [
         stream: 'com.annimon:stream:1.1.9',
         streamEx: 'one.util:streamex:0.6.6',
         compressor: 'id.zelory:compressor:2.1.0',
-        reactivenetwork: 'com.github.pwittchen:reactivenetwork-rx2:0.12.3'
+        reactivenetwork: 'com.github.pwittchen:reactivenetwork-rx2:0.12.3',
+        prefser: 'com.github.pwittchen:prefser-rx2:2.2.1'
 ]
 
 ext.deps = [
