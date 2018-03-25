@@ -87,7 +87,7 @@ def arch = [
 ]
 
 def rx = [
-        java: 'io.reactivex.rxjava2:rxjava:2.1.10',
+        java: 'io.reactivex.rxjava2:rxjava:2.1.11',
         android: 'io.reactivex.rxjava2:rxandroid:2.0.2',
         lifecycle: 'com.trello.rxlifecycle2:rxlifecycle:2.2.1',
         lifecycle_android: 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1',
@@ -130,6 +130,14 @@ def glide = [
         okhttp3_integration: 'com.github.bumptech.glide:okhttp3-integration:4.6.1'
 ]
 
+def fresco = [
+        fresco: 'com.facebook.fresco:fresco:1.8.1'
+]
+
+def picasso = [
+        picasso: 'com.squareup.picasso:picasso:2.71828'
+]
+
 def dagger = [
         dagger: 'com.google.dagger:dagger:2.15',
         annotation_dagger_compiler: 'com.google.dagger:dagger-compiler:2.15',
@@ -148,7 +156,8 @@ def misc = [
         streamEx: 'one.util:streamex:0.6.6',
         compressor: 'id.zelory:compressor:2.1.0',
         reactivenetwork: 'com.github.pwittchen:reactivenetwork-rx2:0.12.3',
-        prefser: 'com.github.pwittchen:prefser-rx2:2.2.1'
+        prefser: 'com.github.pwittchen:prefser-rx2:2.2.1',
+        sqlbrite: 'com.squareup.sqlbrite3:sqlbrite:3.2.0'
 ]
 
 ext.deps = [
@@ -163,6 +172,8 @@ ext.deps = [
         "okHttp": okHttp,
         "store": store,
         "glide": glide,
+        "fresco": fresco,
+        "picasso": picasso,
         "dagger2": dagger,
         "misc": misc,
 ]

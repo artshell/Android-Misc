@@ -49,7 +49,6 @@ dependencies {
     implementation deps.support.support_v4
     implementation deps.support.appcompat_v7
     implementation deps.support.recyclerview_v7
-    implementation deps.support.support_v13
     implementation deps.support.design
     implementation deps.support.constraint_layout
 
@@ -101,6 +100,10 @@ dependencies {
     annotationProcessor deps.glide.annotationProcessor
     implementation deps.glide.okhttp3_integration
 
+    implementation deps.fresco.fresco
+
+    implementation deps.picasso.picasso
+
     implementation deps.dagger2.dagger
     annotationProcessor deps.dagger2.annotation_dagger_compiler
     implementation deps.dagger2.dagger_android
@@ -110,5 +113,6 @@ dependencies {
     implementation deps.misc.gson
     implementation deps.misc.stream
     implementation deps.misc.prefser
+    implementation deps.misc.sqlbrite
 
 }
