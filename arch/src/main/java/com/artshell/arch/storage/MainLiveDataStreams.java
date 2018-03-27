@@ -101,12 +101,7 @@ public class MainLiveDataStreams {
                 if (Holder.isMainThread()) {
                     mainData.postValue(item);
                 } else {
-                    Holder.getInstance().post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mainData.postValue(item);
-                        }
-                    });
+                    Holder.getInstance().post(() -> mainData.postValue(item));
                 }
             }
         }

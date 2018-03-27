@@ -1,5 +1,10 @@
-package com.artshell.arch.storage;
+package com.artshell.arch.storage.cache;
 
+import com.artshell.arch.storage.server.HttpManager;
+import com.artshell.arch.storage.Key;
+import com.artshell.arch.storage.Mixture;
+import com.artshell.arch.storage.Mixture2;
+import com.artshell.arch.storage.prefer.PreferManager;
 import com.nytimes.android.external.store3.base.Fetcher;
 import com.nytimes.android.external.store3.base.Persister;
 import com.nytimes.android.external.store3.base.impl.Store;

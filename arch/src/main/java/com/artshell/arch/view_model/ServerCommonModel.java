@@ -3,7 +3,7 @@ package com.artshell.arch.view_model;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.artshell.arch.storage.HttpManager;
+import com.artshell.arch.storage.server.HttpManager;
 import com.artshell.arch.storage.MainLiveDataStreams;
 import com.artshell.arch.storage.Result;
 import com.artshell.arch.utils.RxSchedulers;

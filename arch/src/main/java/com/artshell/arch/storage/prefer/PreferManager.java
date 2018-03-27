@@ -1,9 +1,10 @@
-package com.artshell.arch.storage;
+package com.artshell.arch.storage.prefer;
 
 import android.content.Context;
 
 import com.artshell.arch.app.AppContext;
 import com.artshell.arch.common.AppConstants;
+import com.artshell.arch.storage.server.ApiConstants;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
 
 /**

@@ -1,4 +1,4 @@
-package com.artshell.arch.storage;
+package com.artshell.arch.storage.server;
 
 import com.artshell.requestor.Protocol;
 import com.artshell.requestor.RxRequestor;

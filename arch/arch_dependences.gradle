@@ -118,10 +118,10 @@ def okHttp = [
 ]
 
 def store = [
-        cache3: 'com.nytimes.android:cache3:3.0.0',
-        store3: 'com.nytimes.android:store3:3.0.0',
-        middleware3: 'com.nytimes.android:middleware3:3.0.0',
-        filesystem3: 'com.nytimes.android:filesystem3:3.0.0'
+        cache3: 'com.nytimes.android:cache3:3.0.1',
+        store3: 'com.nytimes.android:store3:3.0.1',
+        middleware3: 'com.nytimes.android:middleware3:3.0.1',
+        filesystem3: 'com.nytimes.android:filesystem3:3.0.1'
 ]
 
 def glide = [

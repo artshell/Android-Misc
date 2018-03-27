@@ -51,6 +51,7 @@ dependencies {
     implementation deps.support.recyclerview_v7
     implementation deps.support.design
     implementation deps.support.constraint_layout
+    implementation deps.support.multidex
 
     implementation deps.arch.lifecycle.extensions
     implementation deps.arch.lifecycle.viewmodel

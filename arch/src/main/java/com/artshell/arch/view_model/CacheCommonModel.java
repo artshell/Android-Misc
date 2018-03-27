@@ -3,7 +3,7 @@ package com.artshell.arch.view_model;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.artshell.arch.storage.CacheManager;
+import com.artshell.arch.storage.cache.CacheManager;
 import com.artshell.arch.storage.MainLiveDataStreams;
 import com.artshell.arch.storage.Mixture;
 import com.artshell.arch.storage.Mixture2;
