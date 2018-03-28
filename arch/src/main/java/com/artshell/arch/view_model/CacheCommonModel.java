@@ -1,15 +1,15 @@
 package com.artshell.arch.view_model;
 
+import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
 
-import com.artshell.arch.storage.cache.CacheManager;
 import com.artshell.arch.storage.MainLiveDataStreams;
 import com.artshell.arch.storage.Mixture;
 import com.artshell.arch.storage.Mixture2;
 import com.artshell.arch.storage.Result;
+import com.artshell.arch.storage.cache.CacheManager;
 import com.artshell.arch.utils.RxSchedulers;
-import com.google.gson.Gson;
 
 import java.util.Map;
 
@@ -19,15 +19,18 @@ import java.util.Map;
  * Created by artshell on 2018/3/16.
  */
 
-public class CacheCommonModel extends ViewModel {
-    private static Gson gson = new Gson();
+public class CacheCommonModel extends BaseContextViewModel {
+
+    public CacheCommonModel(@NonNull Application application) {
+        super(application);
+    }
 
     // Get请求
     public <T> LiveData<Result<T>> get(String cacheKey, Class<T> target, String url) {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.store()
                         .get(new Mixture(cacheKey, url))
-                        .map(raw -> gson.fromJson(raw, target))
+                        .map(raw -> LOCAL.get().fromJson(raw, target))
                         .toFlowable()
                         .compose(RxSchedulers.ioToMain())
         );
@@ -38,7 +41,7 @@ public class CacheCommonModel extends ViewModel {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.storeWithParameter()
                         .get(new Mixture2(cacheKey, url, pairs))
-                        .map(raw -> gson.fromJson(raw, target))
+                        .map(raw -> LOCAL.get().fromJson(raw, target))
                         .toFlowable()
                         .compose(RxSchedulers.ioToMain())
         );
@@ -49,7 +52,7 @@ public class CacheCommonModel extends ViewModel {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.storeWithField()
                         .get(new Mixture2(cacheKey, url, pairs))
-                        .map(raw -> gson.fromJson(raw, target))
+                        .map(raw -> LOCAL.get().fromJson(raw, target))
                         .toFlowable()
                         .compose(RxSchedulers.ioToMain())
         );

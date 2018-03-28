@@ -9,4 +9,5 @@ public interface Status {
     String ERROR = "error";
     String LOADING = "loading";
     String COMPLETE = "complete";
+    String CANCEL = "cancel";
 }

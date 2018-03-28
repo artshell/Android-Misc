@@ -21,6 +21,18 @@ android {
         targetCompatibility deps.versions.compatVersion
     }
 
+    dexOptions {
+        preDexLibraries true
+        maxProcessCount 2
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        checkReleaseBuilds true
+        disable 'InvalidPackage'
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false

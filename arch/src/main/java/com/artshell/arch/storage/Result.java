@@ -33,4 +33,8 @@ public class Result<T> {
     public static <T> Result<T> complete() {
         return new Result<>(Status.COMPLETE, null, null);
     }
+
+    public static <T> Result<T> cancel() {
+        return new Result<>(Status.CANCEL, null, null);
+    }
 }

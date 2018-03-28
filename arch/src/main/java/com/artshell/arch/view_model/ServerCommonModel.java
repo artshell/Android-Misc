@@ -1,11 +1,13 @@
 package com.artshell.arch.view_model;
 
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
 
-import com.artshell.arch.storage.server.HttpManager;
 import com.artshell.arch.storage.MainLiveDataStreams;
 import com.artshell.arch.storage.Result;
+import com.artshell.arch.storage.server.HttpManager;
 import com.artshell.arch.utils.RxSchedulers;
 
 import java.util.Map;
@@ -16,7 +18,11 @@ import java.util.Map;
  * Created by artshell on 2018/3/16.
  */
 
-public class ServerCommonModel extends ViewModel {
+public class ServerCommonModel extends AndroidViewModel {
+
+    public ServerCommonModel(@NonNull Application application) {
+        super(application);
+    }
 
     // Get请求
     public <T> LiveData<Result<T>> fetch(Class<T> target, String url) {

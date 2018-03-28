@@ -70,6 +70,7 @@ public class MainLiveDataStreams {
                     post(Result.loading());
                     s.request(Long.MAX_VALUE);
                 } else {
+                    post(Result.cancel());
                     s.cancel();
                 }
             }
@@ -91,6 +92,7 @@ public class MainLiveDataStreams {
             }
 
             void cancelSubscription() {
+                post(Result.cancel());
                 Subscription s = UPDATER.get(this);
                 if (s != null) {
                     s.cancel();
