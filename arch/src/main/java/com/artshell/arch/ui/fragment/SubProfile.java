@@ -1,4 +1,4 @@
-package com.artshell.arch.ui.activity;
+package com.artshell.arch.ui.fragment;
 
 import com.artshell.arch.storage.Status;
 import com.artshell.arch.storage.entity.ProfileEntity;
@@ -6,11 +6,11 @@ import com.artshell.arch.view_model.CacheCommonModel;
 import com.artshell.arch.view_model.ServerCommonModel;
 
 /**
- * 用户偏好
- * Created by artshell on 2018/3/16.
+ * @author artshell on 28/03/2018
  */
+public class SubProfile extends DataBaseFragment {
+    private static final String TAG = "SubProfile";
 
-public class HostProfile extends DataBaseActivity {
     private ServerCommonModel serverModel;
     private CacheCommonModel cacheModel;
 
@@ -28,6 +28,7 @@ public class HostProfile extends DataBaseActivity {
     protected void loadData() {
         serverModel = createViewModel(ServerCommonModel.class);
         cacheModel = createViewModel(CacheCommonModel.class);
+
 
         // 参数
         mPairs.clear();
@@ -65,6 +66,5 @@ public class HostProfile extends DataBaseActivity {
                             break;
                     }
                 });
-
     }
 }
