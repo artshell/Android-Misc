@@ -8,14 +8,20 @@ import com.google.gson.Gson;
 
 public class BaseContextViewModel extends AndroidViewModel {
 
-    protected static final ThreadLocal<Gson> LOCAL = new ThreadLocal<Gson>() {
-        @Override
-        protected Gson initialValue() {
-            return new Gson();
-        }
-    };
-
     public BaseContextViewModel(@NonNull Application application) {
         super(application);
+    }
+
+    protected static ThreadLocal<Gson> singleton() {
+        return LocalHolder.LOCAL;
+    }
+
+    private static class LocalHolder {
+        private static final ThreadLocal<Gson> LOCAL = new ThreadLocal<Gson>() {
+            @Override
+            protected Gson initialValue() {
+                return new Gson();
+            }
+        };
     }
 }

@@ -4,8 +4,8 @@ import com.artshell.arch.R;
 import com.artshell.arch.view_model.CacheCommonModel;
 import com.artshell.arch.view_model.ServerCommonModel;
 
-public class MainActivity extends DataBaseActivity {
-    private static final String TAG = "MainActivity";
+public class HostMain extends DataBaseActivity {
+    private static final String TAG = "HostMain";
 
     private ServerCommonModel serverModel;
     private CacheCommonModel cacheModel;

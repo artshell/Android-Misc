@@ -30,7 +30,7 @@ public class CacheCommonModel extends BaseContextViewModel {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.store()
                         .get(new Mixture(cacheKey, url))
-                        .map(raw -> LOCAL.get().fromJson(raw, target))
+                        .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
                         .compose(RxSchedulers.ioToMain())
         );
@@ -41,7 +41,7 @@ public class CacheCommonModel extends BaseContextViewModel {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.storeWithParameter()
                         .get(new Mixture2(cacheKey, url, pairs))
-                        .map(raw -> LOCAL.get().fromJson(raw, target))
+                        .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
                         .compose(RxSchedulers.ioToMain())
         );
@@ -52,7 +52,7 @@ public class CacheCommonModel extends BaseContextViewModel {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.storeWithField()
                         .get(new Mixture2(cacheKey, url, pairs))
-                        .map(raw -> LOCAL.get().fromJson(raw, target))
+                        .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
                         .compose(RxSchedulers.ioToMain())
         );
