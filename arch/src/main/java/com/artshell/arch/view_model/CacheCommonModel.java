@@ -9,9 +9,10 @@ import com.artshell.arch.storage.Mixture;
 import com.artshell.arch.storage.Mixture2;
 import com.artshell.arch.storage.Result;
 import com.artshell.arch.storage.server.CacheManager;
-import com.artshell.arch.utils.RxSchedulers;
 
 import java.util.Map;
+
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 常用请求(单接口数据, 从缓存中获取, 没有则自动从服务器端获取)
@@ -32,8 +33,7 @@ public class CacheCommonModel extends BaseContextViewModel {
                         .get(new Mixture(cacheKey, url))
                         .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
-                        .compose(RxSchedulers.ioToMain())
-        );
+                        .subscribeOn(Schedulers.io()));
     }
 
     // Get请求带参数
@@ -43,8 +43,7 @@ public class CacheCommonModel extends BaseContextViewModel {
                         .get(new Mixture2(cacheKey, url, pairs))
                         .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
-                        .compose(RxSchedulers.ioToMain())
-        );
+                        .subscribeOn(Schedulers.io()));
     }
 
     // Post请求带字段
@@ -54,7 +53,6 @@ public class CacheCommonModel extends BaseContextViewModel {
                         .get(new Mixture2(cacheKey, url, pairs))
                         .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
-                        .compose(RxSchedulers.ioToMain())
-        );
+                        .subscribeOn(Schedulers.io()));
     }
 }

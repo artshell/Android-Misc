@@ -8,6 +8,7 @@ import android.support.v4.util.ArrayMap;
 import java.util.Map;
 
 /**
+ * 数据源来之Database/Cache/Server可以继承此类
  * @author artshell on 28/03/2018
  */
 public abstract class DataBaseFragment extends BaseFragment {

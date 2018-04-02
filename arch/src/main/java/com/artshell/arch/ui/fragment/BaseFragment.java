@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
+ * 数据来之Intent时可以直接继承此类
  * @author artshell on 28/03/2018
  */
 public abstract class BaseFragment extends Fragment {
@@ -21,7 +22,6 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        // ...
         setProperty();
         loadData();
     }

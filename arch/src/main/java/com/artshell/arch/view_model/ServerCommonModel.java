@@ -8,9 +8,10 @@ import android.support.annotation.NonNull;
 import com.artshell.arch.storage.MainLiveDataStreams;
 import com.artshell.arch.storage.Result;
 import com.artshell.arch.storage.server.HttpManager;
-import com.artshell.arch.utils.RxSchedulers;
 
 import java.util.Map;
+
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 常用请求(单接口数据,从服务器端获取)
@@ -29,7 +30,7 @@ public class ServerCommonModel extends AndroidViewModel {
         return MainLiveDataStreams.fromPublisher(
                 HttpManager.get(target, url)
                         .onTerminateDetach()
-                        .compose(RxSchedulers.ioToMain()));
+                        .subscribeOn(Schedulers.io()));
     }
 
     // Get请求带参数
@@ -37,7 +38,7 @@ public class ServerCommonModel extends AndroidViewModel {
         return MainLiveDataStreams.fromPublisher(
                 HttpManager.get(target, url, pairs)
                         .onTerminateDetach()
-                        .compose(RxSchedulers.ioToMain()));
+                        .subscribeOn(Schedulers.io()));
     }
 
     // Post请求带字段
@@ -45,6 +46,6 @@ public class ServerCommonModel extends AndroidViewModel {
         return MainLiveDataStreams.fromPublisher(
                 HttpManager.post(target, url, pairs)
                         .onTerminateDetach()
-                        .compose(RxSchedulers.ioToMain()));
+                        .subscribeOn(Schedulers.io()));
     }
 }
