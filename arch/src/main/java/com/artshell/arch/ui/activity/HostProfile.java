@@ -21,7 +21,7 @@ public class HostProfile extends DataBaseActivity {
 
     @Override
     protected void setProperty() {
-
+        // View相关属性
     }
 
     @Override
@@ -39,29 +39,41 @@ public class HostProfile extends DataBaseActivity {
                     if (result == null) return;
                     switch (result.status) {
                         case Status.LOADING:
+                            // 显示加载dialog
                             break;
                         case Status.SUCCESS:
+                            // 拿取结果数据
+                            ProfileEntity entity = result.data;
+                            // ...
                             break;
                         case Status.ERROR:
+                            // 关闭dialog
                             break;
                         case Status.COMPLETE:
+                            // 关闭dialog
                             break;
                     }
                 });
 
         // 从缓存中获取(不存在时自动从服务器端获取)
-        String key = "user/profile/artshell";
-        cacheModel.getWithParameter(key, ProfileEntity.class, "user/profile", mPairs)
+        String cacheKey = "user/profile/artshell";
+        cacheModel.getWithParameter(cacheKey, ProfileEntity.class, "user/profile", mPairs)
                 .observe(this, result -> {
                     if (result == null) return;
                     switch (result.status) {
                         case Status.LOADING:
+                            // 显示加载dialog
                             break;
                         case Status.SUCCESS:
+                            // 拿取结果数据
+                            ProfileEntity entity = result.data;
+                            // ...
                             break;
                         case Status.ERROR:
+                            // 关闭dialog
                             break;
                         case Status.COMPLETE:
+                            // 关闭dialog
                             break;
                     }
                 });

@@ -1,6 +1,5 @@
-package com.artshell.arch.storage.cache;
+package com.artshell.arch.storage.server;
 
-import com.artshell.arch.storage.server.HttpManager;
 import com.artshell.arch.storage.Key;
 import com.artshell.arch.storage.Mixture;
 import com.artshell.arch.storage.Mixture2;

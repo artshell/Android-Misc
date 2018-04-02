@@ -8,7 +8,7 @@ import com.artshell.arch.storage.MainLiveDataStreams;
 import com.artshell.arch.storage.Mixture;
 import com.artshell.arch.storage.Mixture2;
 import com.artshell.arch.storage.Result;
-import com.artshell.arch.storage.cache.CacheManager;
+import com.artshell.arch.storage.server.CacheManager;
 import com.artshell.arch.utils.RxSchedulers;
 
 import java.util.Map;

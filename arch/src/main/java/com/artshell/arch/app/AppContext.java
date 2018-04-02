@@ -14,13 +14,17 @@ import com.squareup.leakcanary.LeakCanary;
 
 public class AppContext extends Application {
     private static final Object lock = new Object();
-    private static AppContext appContext;
+    private volatile static AppContext appContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        synchronized (lock) {
-            appContext = this;
+        if (appContext == null) {
+            synchronized (lock) {
+                if (appContext == null) {
+                    appContext = this;
+                }
+            }
         }
 
         if (BuildConfig.DEBUG) {

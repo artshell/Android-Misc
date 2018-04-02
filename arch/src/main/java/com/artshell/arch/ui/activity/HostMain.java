@@ -4,6 +4,9 @@ import com.artshell.arch.R;
 import com.artshell.arch.view_model.CacheCommonModel;
 import com.artshell.arch.view_model.ServerCommonModel;
 
+/**
+ * 主界面
+ */
 public class HostMain extends DataBaseActivity {
     private static final String TAG = "HostMain";
 
@@ -17,7 +20,7 @@ public class HostMain extends DataBaseActivity {
 
     @Override
     protected void setProperty() {
-
+        // View相关属性
     }
 
     @Override

@@ -107,7 +107,7 @@ dependencies {
     implementation deps.store.cache3
     implementation deps.store.store3
     implementation deps.store.middleware3
-//    implementation deps.store.filesystem3
+    implementation deps.store.filesystem3
 
     implementation deps.glide.glide_v4
     annotationProcessor deps.glide.annotationProcessor
