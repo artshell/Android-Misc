@@ -1,4 +1,4 @@
-package com.artshell.arch.ui.activity;
+package com.artshell.arch.ui;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;

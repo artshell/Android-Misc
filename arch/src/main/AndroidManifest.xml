@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.HostMain">
+        <activity android:name=".ui.main.HostMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,7 +19,7 @@
         </activity>
 
         <!-- 偏好 -->
-        <activity android:name=".ui.activity.HostProfile">
+        <activity android:name=".ui.user.HostUserInfo">
         </activity>
     </application>
 

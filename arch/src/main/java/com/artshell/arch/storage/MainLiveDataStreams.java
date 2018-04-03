@@ -18,11 +18,11 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 public class MainLiveDataStreams {
 
     @NonNull
-    public static <T> LiveData<Result<T>> fromPublisher(@NonNull Publisher<T> publisher) {
+    public static <T> LiveData<Resource<T>> fromPublisher(@NonNull Publisher<T> publisher) {
         return new MainPublisherLiveData<>(publisher);
     }
 
-    private static class MainPublisherLiveData<T> extends LiveData<Result<T>> {
+    private static class MainPublisherLiveData<T> extends LiveData<Resource<T>> {
         private final Publisher<T> publisher;
 
         private volatile MainSubscriber subscriber;
@@ -67,39 +67,39 @@ public class MainLiveDataStreams {
             @Override
             public void onSubscribe(Subscription s) {
                 if (UPDATER.compareAndSet(this, null, s)) {
-                    post(Result.loading());
+                    post(Resource.loading());
                     s.request(Long.MAX_VALUE);
                 } else {
-                    post(Result.cancel());
+                    post(Resource.cancel());
                     s.cancel();
                 }
             }
 
             @Override
             public void onNext(T t) {
-                post(Result.success(t));
+                post(Resource.success(t));
             }
 
             @Override
             public void onError(Throwable thr) {
-                post(Result.error(thr));
+                post(Resource.error(thr));
             }
 
             @Override
             public void onComplete() {
-                post(Result.complete());
+                post(Resource.complete());
                 UPDATER.lazySet(this, null);
             }
 
             void cancelSubscription() {
-                post(Result.cancel());
+                post(Resource.cancel());
                 Subscription s = UPDATER.get(this);
                 if (s != null) {
                     s.cancel();
                 }
             }
 
-            void post(final Result<T> item) {
+            void post(final Resource<T> item) {
                 if (Holder.isMainThread()) {
                     mainData.postValue(item);
                 } else {

@@ -1,6 +1,7 @@
-package com.artshell.arch.ui.activity;
+package com.artshell.arch.ui.main;
 
 import com.artshell.arch.R;
+import com.artshell.arch.ui.DataBaseActivity;
 import com.artshell.arch.view_model.CacheCommonModel;
 import com.artshell.arch.view_model.ServerCommonModel;
 

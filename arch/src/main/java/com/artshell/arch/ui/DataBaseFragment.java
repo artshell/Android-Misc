@@ -1,4 +1,4 @@
-package com.artshell.arch.ui.fragment;
+package com.artshell.arch.ui;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;

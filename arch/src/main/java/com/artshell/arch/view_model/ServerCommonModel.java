@@ -6,7 +6,7 @@ import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
 import com.artshell.arch.storage.MainLiveDataStreams;
-import com.artshell.arch.storage.Result;
+import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.server.HttpManager;
 
 import java.util.Map;
@@ -26,7 +26,7 @@ public class ServerCommonModel extends AndroidViewModel {
     }
 
     // Get请求
-    public <T> LiveData<Result<T>> fetch(Class<T> target, String url) {
+    public <T> LiveData<Resource<T>> fetch(Class<T> target, String url) {
         return MainLiveDataStreams.fromPublisher(
                 HttpManager.get(target, url)
                         .onTerminateDetach()
@@ -34,7 +34,7 @@ public class ServerCommonModel extends AndroidViewModel {
     }
 
     // Get请求带参数
-    public <T> LiveData<Result<T>> fetchByParameter(Class<T> target, String url, Map<String, String> pairs) {
+    public <T> LiveData<Resource<T>> fetchByParameter(Class<T> target, String url, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
                 HttpManager.get(target, url, pairs)
                         .onTerminateDetach()
@@ -42,7 +42,7 @@ public class ServerCommonModel extends AndroidViewModel {
     }
 
     // Post请求带字段
-    public <T> LiveData<Result<T>> post(Class<T> target, String url, Map<String, String> pairs) {
+    public <T> LiveData<Resource<T>> post(Class<T> target, String url, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
                 HttpManager.post(target, url, pairs)
                         .onTerminateDetach()

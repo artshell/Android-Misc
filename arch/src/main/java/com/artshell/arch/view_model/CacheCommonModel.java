@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import com.artshell.arch.storage.MainLiveDataStreams;
 import com.artshell.arch.storage.Mixture;
 import com.artshell.arch.storage.Mixture2;
-import com.artshell.arch.storage.Result;
+import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.server.CacheManager;
 
 import java.util.Map;
@@ -27,7 +27,7 @@ public class CacheCommonModel extends BaseContextViewModel {
     }
 
     // Get请求
-    public <T> LiveData<Result<T>> get(String cacheKey, Class<T> target, String url) {
+    public <T> LiveData<Resource<T>> get(String cacheKey, Class<T> target, String url) {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.store()
                         .get(new Mixture(cacheKey, url))
@@ -37,7 +37,7 @@ public class CacheCommonModel extends BaseContextViewModel {
     }
 
     // Get请求带参数
-    public <T> LiveData<Result<T>> getWithParameter(String cacheKey, Class<T> target, String url, Map<String, String> pairs) {
+    public <T> LiveData<Resource<T>> getWithParameter(String cacheKey, Class<T> target, String url, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.storeWithParameter()
                         .get(new Mixture2(cacheKey, url, pairs))
@@ -47,7 +47,7 @@ public class CacheCommonModel extends BaseContextViewModel {
     }
 
     // Post请求带字段
-    public <T> LiveData<Result<T>> post(String cacheKey, Class<T> target, String url, Map<String, String> pairs) {
+    public <T> LiveData<Resource<T>> post(String cacheKey, Class<T> target, String url, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.storeWithField()
                         .get(new Mixture2(cacheKey, url, pairs))
