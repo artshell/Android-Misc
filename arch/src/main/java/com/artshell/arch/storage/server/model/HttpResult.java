@@ -3,7 +3,7 @@ package com.artshell.arch.storage.server.model;
 public class HttpResult<I> {
     private String code;
     private String msg;
-    private I mData;
+    private I data;
 
     public String getCode() {
         return code;
@@ -22,10 +22,10 @@ public class HttpResult<I> {
     }
 
     public I getData() {
-        return mData;
+        return data;
     }
 
     public void setData(I data) {
-        this.mData = data;
+        this.data = data;
     }
 }

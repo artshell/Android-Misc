@@ -1,8 +1,5 @@
 package com.artshell.arch.storage.server;
 
-import com.artshell.arch.storage.Key;
-import com.artshell.arch.storage.Mixture;
-import com.artshell.arch.storage.Mixture2;
 import com.artshell.arch.storage.prefer.PreferManager;
 import com.nytimes.android.external.store3.base.Fetcher;
 import com.nytimes.android.external.store3.base.Persister;
@@ -37,19 +34,19 @@ public class CacheManager {
 
     private static final class MixtureHolder {
         private static final Store<String, Mixture> MIXTURE = createStore(
-                mixture -> HttpManager.get(String.class, mixture.getUrl()).singleOrError()
+                mixture -> HttpManager.get(String.class, mixture.getPath()).singleOrError()
         );
     }
 
     private static final class MixtureParameterHolder {
         private static final Store<String, Mixture2> MIXTURE = createStore(
-                mixture -> HttpManager.get(String.class, mixture.getUrl(), mixture.getPairs()).singleOrError()
+                mixture -> HttpManager.get(String.class, mixture.getPath(), mixture.getPairs()).singleOrError()
         );
     }
 
     private static final class MixtureFieldHolder {
         private static final Store<String, Mixture2> MIXTURE = createStore(
-                mixture -> HttpManager.post(String.class, mixture.getUrl(), mixture.getPairs()).singleOrError()
+                mixture -> HttpManager.post(String.class, mixture.getPath(), mixture.getPairs()).singleOrError()
         );
     }
 

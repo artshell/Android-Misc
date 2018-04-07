@@ -1,6 +1,7 @@
 package com.artshell.arch.storage.server.model;
 
 /**
+ * 用户信息
  * Created by artshell on 2018/3/16.
  */
 

@@ -5,8 +5,8 @@ import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
 import com.artshell.arch.storage.MainLiveDataStreams;
-import com.artshell.arch.storage.Mixture;
-import com.artshell.arch.storage.Mixture2;
+import com.artshell.arch.storage.server.Mixture;
+import com.artshell.arch.storage.server.Mixture2;
 import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.server.CacheManager;
 
@@ -27,30 +27,30 @@ public class CacheCommonModel extends BaseContextViewModel {
     }
 
     // Get请求
-    public <T> LiveData<Resource<T>> get(String cacheKey, Class<T> target, String url) {
+    public <T> LiveData<Resource<T>> get(Class<T> target, String path) {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.store()
-                        .get(new Mixture(cacheKey, url))
+                        .get(new Mixture(path))
                         .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
                         .subscribeOn(Schedulers.io()));
     }
 
     // Get请求带参数
-    public <T> LiveData<Resource<T>> getWithParameter(String cacheKey, Class<T> target, String url, Map<String, String> pairs) {
+    public <T> LiveData<Resource<T>> getWithParameter(Class<T> target, String path, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.storeWithParameter()
-                        .get(new Mixture2(cacheKey, url, pairs))
+                        .get(new Mixture2(path, pairs))
                         .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
                         .subscribeOn(Schedulers.io()));
     }
 
     // Post请求带字段
-    public <T> LiveData<Resource<T>> post(String cacheKey, Class<T> target, String url, Map<String, String> pairs) {
+    public <T> LiveData<Resource<T>> post(Class<T> target, String path, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
                 CacheManager.storeWithField()
-                        .get(new Mixture2(cacheKey, url, pairs))
+                        .get(new Mixture2(path, pairs))
                         .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
                         .subscribeOn(Schedulers.io()));

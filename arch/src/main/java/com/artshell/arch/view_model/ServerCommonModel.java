@@ -26,25 +26,25 @@ public class ServerCommonModel extends AndroidViewModel {
     }
 
     // Get请求
-    public <T> LiveData<Resource<T>> fetch(Class<T> target, String url) {
+    public <T> LiveData<Resource<T>> fetch(Class<T> target, String path) {
         return MainLiveDataStreams.fromPublisher(
-                HttpManager.get(target, url)
+                HttpManager.get(target, path)
                         .onTerminateDetach()
                         .subscribeOn(Schedulers.io()));
     }
 
     // Get请求带参数
-    public <T> LiveData<Resource<T>> fetchByParameter(Class<T> target, String url, Map<String, String> pairs) {
+    public <T> LiveData<Resource<T>> fetchByParameter(Class<T> target, String path, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
-                HttpManager.get(target, url, pairs)
+                HttpManager.get(target, path, pairs)
                         .onTerminateDetach()
                         .subscribeOn(Schedulers.io()));
     }
 
     // Post请求带字段
-    public <T> LiveData<Resource<T>> post(Class<T> target, String url, Map<String, String> pairs) {
+    public <T> LiveData<Resource<T>> post(Class<T> target, String path, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
-                HttpManager.post(target, url, pairs)
+                HttpManager.post(target, path, pairs)
                         .onTerminateDetach()
                         .subscribeOn(Schedulers.io()));
     }

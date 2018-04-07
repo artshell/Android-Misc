@@ -5,7 +5,7 @@ import java.util.List;
 public class HttpArrayResult<I> {
     private String code;
     private String msg;
-    private List<I> mData;
+    private List<I> data;
 
     public String getCode() {
         return code;
@@ -24,10 +24,10 @@ public class HttpArrayResult<I> {
     }
 
     public List<I> getData() {
-        return mData;
+        return data;
     }
 
     public void setData(List<I> data) {
-        this.mData = data;
+        this.data = data;
     }
 }

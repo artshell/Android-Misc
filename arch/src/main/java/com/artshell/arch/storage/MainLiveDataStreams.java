@@ -1,8 +1,6 @@
 package com.artshell.arch.storage;
 
 import android.arch.lifecycle.LiveData;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.NonNull;
 
 import org.reactivestreams.Publisher;
@@ -100,26 +98,7 @@ public class MainLiveDataStreams {
             }
 
             void post(final Resource<T> item) {
-                if (Holder.isMainThread()) {
-                    mainData.postValue(item);
-                } else {
-                    Holder.getInstance().post(() -> mainData.postValue(item));
-                }
-            }
-        }
-
-        private static class Holder {
-
-            private static Handler getInstance() {
-                return Singleton.instance;
-            }
-
-            private static boolean isMainThread() {
-                return Looper.getMainLooper().getThread() == Thread.currentThread();
-            }
-
-            private static class Singleton {
-                private static Handler instance = new Handler(Looper.getMainLooper());
+                mainData.postValue(item);
             }
         }
     }

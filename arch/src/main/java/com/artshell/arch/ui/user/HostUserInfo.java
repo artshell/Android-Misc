@@ -8,7 +8,7 @@ import com.artshell.arch.ui.DataBaseActivity;
 import com.artshell.arch.view_model.ServerCommonModel;
 
 /**
- * 用户偏好
+ * 用户信息
  * Created by artshell on 2018/3/16.
  */
 
