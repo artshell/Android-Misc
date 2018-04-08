@@ -28,11 +28,11 @@ public class Mixture2 implements Key {
         if (pairs.size() > 0) {
             List<String> keys = new ArrayList<>(pairs.keySet());
             Collections.sort(keys);
-            Iterator<String> iter = keys.iterator();
-            String first = iter.next();
+            Iterator<String> it = keys.iterator();
+            String first = it.next();
             buffer.append("?").append(first).append("=").append(pairs.get(first));
-            while (iter.hasNext()) {
-                String next = iter.next();
+            while (it.hasNext()) {
+                String next = it.next();
                 buffer.append("&").append(next).append("=").append(pairs.get(next));
             }
         }

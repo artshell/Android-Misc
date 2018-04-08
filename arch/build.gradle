@@ -79,7 +79,8 @@ dependencies {
     implementation deps.arch.room.rxjava2
 //    testImplementation deps.arch.room.testing
 
-    implementation deps.arch.paging
+    implementation deps.arch.paging.runtime
+    implementation deps.arch.paging.rxjava2
 
     implementation deps.rx.java
     implementation deps.rx.android

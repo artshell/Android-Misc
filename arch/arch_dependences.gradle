@@ -73,17 +73,22 @@ def arch = [
         ],
 
         room: [
-                runtime: 'android.arch.persistence.room:runtime:1.1.0-beta1',
-                compiler: 'android.arch.persistence.room:compiler:1.1.0-beta1',
+                runtime: 'android.arch.persistence.room:runtime:1.1.0-beta2',
+                compiler: 'android.arch.persistence.room:compiler:1.1.0-beta2',
 
                 // RxJava support for Room
-                rxjava2: 'android.arch.persistence.room:rxjava2:1.1.0-beta1',
+                rxjava2: 'android.arch.persistence.room:rxjava2:1.1.0-beta2',
 
                 // Test helpers for Room
                 testing: 'android.arch.persistence.room:testing:1.0.0',
         ],
 
-        paging: 'android.arch.paging:runtime:1.0.0-alpha7'
+        paging: [
+                runtime: 'android.arch.paging:runtime:1.0.0-beta1',
+
+                // RxJava support for Paging
+                rxjava2: 'android.arch.paging:rxjava2:1.0.0-alpha1'
+        ]
 ]
 
 def rx = [
