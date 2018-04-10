@@ -50,8 +50,18 @@ public class AppContext extends Application {
      * 开启Strict模式监控main线程中某些不该有的耗时任务,如：网络访问等
      */
     private static void enabledStrictMode() {
-        StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().penaltyDeath().build();
-        StrictMode.VmPolicy vmPolicy = new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build();
+        StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .penaltyDeath()
+                .build();
+
+        StrictMode.VmPolicy vmPolicy = new StrictMode.VmPolicy.Builder()
+                .detectActivityLeaks()
+                .detectAll()
+                .penaltyLog()
+                .build();
+
         StrictMode.setThreadPolicy(threadPolicy);
         StrictMode.setVmPolicy(vmPolicy);
     }
