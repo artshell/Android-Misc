@@ -57,6 +57,7 @@ public class CacheManager {
                     @Nonnull
                     @Override
                     public Maybe<String> read(@Nonnull I tuple) {
+                        // 从SharedPreference读取
                         String cache = PreferManager.apiData().get(tuple.getKey(), String.class, "");
                         if (cache.length() == 0) {
                             return Maybe.empty();
@@ -67,6 +68,7 @@ public class CacheManager {
                     @Nonnull
                     @Override
                     public Single<Boolean> write(@Nonnull I tuple, @Nonnull String source) {
+                        // 缓存存放至SharedPreference中, 也可以是FileSystems, Database, server, clouds
                         PreferManager.apiData().put(tuple.getKey(), source);
                         return Single.just(true);
                     }

@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  * @author artshell on 03/04/2018
  */
 @Entity(tableName = "app_city")
-public class CityEntity {
+public class City {
 
     @PrimaryKey
     @SerializedName("id")
