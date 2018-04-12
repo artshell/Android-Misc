@@ -2,6 +2,7 @@ package com.artshell.arch.storage.db.entity;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -12,6 +13,7 @@ import com.google.gson.annotations.SerializedName;
 public class City {
 
     @PrimaryKey
+    @NonNull
     @SerializedName("id")
     private String id;
 
