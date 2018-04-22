@@ -92,7 +92,7 @@ def arch = [
 ]
 
 def rx = [
-        java: 'io.reactivex.rxjava2:rxjava:2.1.11',
+        java: 'io.reactivex.rxjava2:rxjava:2.1.12',
         android: 'io.reactivex.rxjava2:rxandroid:2.0.2',
         lifecycle: 'com.trello.rxlifecycle2:rxlifecycle:2.2.1',
         lifecycle_android: 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1',

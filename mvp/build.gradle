@@ -58,12 +58,17 @@ dependencies {
     implementation deps.support.support_v13
     implementation deps.support.design
     implementation deps.support.constraint_layout
+    implementation deps.support.multidex
 
     implementation deps.rx.java
     implementation deps.rx.android
     implementation deps.rx.lifecycle
     implementation deps.rx.lifecycle_android
     implementation deps.rx.rxlifecycle_components
+    implementation (deps.rx.requestor, {
+        exclude group: 'xpp3'
+        exclude module: 'stax-api'
+    })
 
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.adapter_rxjava2
@@ -91,6 +96,9 @@ dependencies {
 
     implementation deps.misc.gson
     implementation deps.misc.stream
-//    implementation deps.misc.streamEx
+    implementation deps.misc.prefser
 
+    implementation deps.mvp.nucleus
+    implementation deps.mvp.nucleus_v4
+    implementation deps.mvp.nucleus_v7
 }

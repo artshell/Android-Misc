@@ -48,13 +48,15 @@ def support = [
 ]
 
 def rx = [
-        java: 'io.reactivex.rxjava2:rxjava:2.1.11',
+        java: 'io.reactivex.rxjava2:rxjava:2.1.12',
         android: 'io.reactivex.rxjava2:rxandroid:2.0.2',
         lifecycle: 'com.trello.rxlifecycle2:rxlifecycle:2.2.1',
         lifecycle_android: 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1',
         rxlifecycle_components: 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1',
         permissions: 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar',
-        binding: 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+        binding: 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
+        // General http request encapsulate base on Retrofit, OkHttp and RxJava
+        requestor: 'com.artshell:RxRequestor:1.0.3'
 ]
 
 def retrofit = [
@@ -100,7 +102,14 @@ def misc = [
         stream: 'com.annimon:stream:1.1.9',
         streamEx: 'one.util:streamex:0.6.6',
         compressor: 'id.zelory:compressor:2.1.0',
-        reactivenetwork: 'com.github.pwittchen:reactivenetwork-rx2:0.12.3'
+        reactivenetwork: 'com.github.pwittchen:reactivenetwork-rx2:0.12.3',
+        prefser: 'com.github.pwittchen:prefser-rx2:2.2.1'
+]
+
+def mvp = [
+        nucleus: 'info.android15.nucleus5:nucleus:7.0.0',
+        nucleus_v4: 'info.android15.nucleus5:nucleus-support-v4:7.0.0',
+        nucleus_v7: 'info.android15.nucleus5:nucleus-support-v7:7.0.0'
 ]
 
 ext.deps = [
@@ -115,4 +124,5 @@ ext.deps = [
         "glide": glide,
         "dagger2": dagger,
         "misc": misc,
+        "mvp": mvp
 ]
