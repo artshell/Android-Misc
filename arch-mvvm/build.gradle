@@ -1,0 +1,110 @@
+apply plugin: 'com.android.application'
+
+apply from: 'arch_mvvm_dependences.gradle'
+
+android {
+    compileSdkVersion deps.versions.compileVersion
+
+    defaultConfig {
+        applicationId "com.artshell.arch_mvvm"
+        minSdkVersion deps.versions.minVersion
+        targetSdkVersion deps.versions.targetVersion
+        versionCode deps.versions.arch_mvvm_module_version
+        versionName deps.versions.arch_mvvm_module_name
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    compileOptions {
+        sourceCompatibility deps.versions.compatVersion
+        targetCompatibility deps.versions.compatVersion
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    dexOptions {
+        preDexLibraries true
+        maxProcessCount 2
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        checkReleaseBuilds true
+        disable 'InvalidPackage'
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso
+
+    debugImplementation deps.detection.leakcanary
+    releaseImplementation deps.detection.leakcanary_no_op
+
+    implementation deps.support.annotations
+    implementation deps.support.support_v4
+    implementation deps.support.appcompat_v7
+    implementation deps.support.recyclerview_v7
+    implementation deps.support.support_v13
+    implementation deps.support.design
+    implementation deps.support.constraint_layout
+    implementation deps.support.multidex
+
+    implementation deps.arch_lifecycle.extensions
+    implementation deps.arch_lifecycle.runtime
+    annotationProcessor deps.arch_lifecycle.compiler
+
+    implementation deps.rx.java
+    implementation deps.rx.android
+    implementation deps.rx.lifecycle
+    implementation deps.rx.lifecycle_android
+    implementation deps.rx.rxlifecycle_components
+    implementation (deps.rx.requestor, {
+        exclude group: 'xpp3'
+        exclude module: 'stax-api'
+    })
+
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.adapter_rxjava2
+    implementation deps.retrofit.converter_gson
+    implementation deps.retrofit.converter_scalars
+    implementation deps.retrofit.converter_moshi
+
+    implementation deps.okHttp.okhttp
+    implementation deps.okHttp.okio
+
+    implementation deps.store.cache3
+    implementation deps.store.store3
+    implementation deps.store.middleware3
+    implementation deps.store.filesystem3
+
+    implementation deps.glide.glide_v4
+    implementation deps.glide.annotations
+    annotationProcessor deps.glide.annotationProcessor
+    implementation deps.glide.okhttp3_integration
+
+    implementation deps.dagger2.dagger
+    annotationProcessor deps.dagger2.annotation_dagger_compiler
+    implementation deps.dagger2.dagger_android
+    implementation deps.dagger2.dagger_android_support
+    annotationProcessor deps.dagger2.annotation_dagger_android_compiler
+
+    implementation deps.misc.gson
+    implementation deps.misc.stream
+    implementation deps.misc.prefser
+}

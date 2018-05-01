@@ -1,45 +1,45 @@
 package com.artshell.arch.storage.db.entity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
-
-import com.google.gson.annotations.SerializedName;
 
 /**
  * @author artshell on 03/04/2018
  */
-@Entity(tableName = "app_city")
+@Entity(tableName = "app_city", indices = {@Index("country_en"), @Index(value = {"country_id", "city_id"}, unique = true)})
 public class City {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(typeAffinity = ColumnInfo.INTEGER)
     @NonNull
-    @SerializedName("id")
-    private String id;
+    private int id;
 
-    @SerializedName("country_cn")
+    @ColumnInfo(name = "country_cn", typeAffinity = ColumnInfo.TEXT, collate = ColumnInfo.RTRIM)
     private String countryCn;
 
-    @SerializedName("country_en")
+    @ColumnInfo(name = "country_en", typeAffinity = ColumnInfo.TEXT, collate = ColumnInfo.RTRIM)
     private String countryEn;
 
-    @SerializedName("country_id")
+    @ColumnInfo(name = "country_id", typeAffinity = ColumnInfo.TEXT, collate = ColumnInfo.RTRIM)
     private String countryId;
 
-    @SerializedName("city_cn")
+    @ColumnInfo(name = "city_cn", typeAffinity = ColumnInfo.TEXT, collate = ColumnInfo.RTRIM)
     private String cityCn;
 
-    @SerializedName("city_en")
+    @ColumnInfo(name = "city_en", typeAffinity = ColumnInfo.TEXT, collate = ColumnInfo.RTRIM)
     private String cityEn;
 
-    @SerializedName("city_id")
+    @ColumnInfo(name = "city_id", typeAffinity = ColumnInfo.TEXT, collate = ColumnInfo.RTRIM)
     private String cityId;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -13,10 +13,10 @@ public class BaseContextViewModel extends AndroidViewModel {
     }
 
     protected static ThreadLocal<Gson> singleton() {
-        return LocalHolder.LOCAL;
+        return LocalGson.LOCAL;
     }
 
-    private static class LocalHolder {
+    private static class LocalGson {
         private static final ThreadLocal<Gson> LOCAL = new ThreadLocal<Gson>() {
             @Override
             protected Gson initialValue() {

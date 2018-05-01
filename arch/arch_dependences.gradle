@@ -11,8 +11,8 @@ def versions = [
 
 def test = [
         junit: 'junit:junit:4.12',
-        runner: 'com.android.support.test:runner:1.0.1',
-        espresso: 'com.android.support.test.espresso:espresso-core:3.0.1',
+        runner: 'com.android.support.test:runner:1.0.2',
+        espresso: 'com.android.support.test.espresso:espresso-core:3.0.2',
 ]
 
 def detection = [
@@ -43,7 +43,7 @@ def support = [
         design: "com.android.support:design:${versions.support}",
         support_v13: "com.android.support:support-v13:${versions.support}",
         annotations: "com.android.support:support-annotations:${versions.support}",
-        constraint_layout: 'com.android.support.constraint:constraint-layout:1.0.2',
+        constraint_layout: 'com.android.support.constraint:constraint-layout:1.1.0',
         multidex: 'com.android.support:multidex:1.0.2'
 ]
 
@@ -51,10 +51,14 @@ def arch = [
         lifecycle: [
                 // ViewModel and LiveData
                 extensions: 'android.arch.lifecycle:extensions:1.1.1',
+
                 // alternatively, just ViewModel
                 viewmodel: 'android.arch.lifecycle:viewmodel:1.1.1',
+
                 // alternatively, just LiveData
                 livedata: 'android.arch.lifecycle:livedata:1.1.1',
+
+                // compiler
                 compiler: 'android.arch.lifecycle:compiler:1.1.1',
 
                 // Java8 support for Lifecycles
@@ -68,23 +72,22 @@ def arch = [
 
                 // Support library depends on this lightweight import
                 // Lifecycles only (no ViewModel or LiveData)
-                lightweight_runtime: 'android.arch.lifecycle:runtime:1.1.1',
-                lightweight_compiler: 'android.arch.lifecycle:compiler:1.1.1'
+                runtime: 'android.arch.lifecycle:runtime:1.1.1',
         ],
 
         room: [
-                runtime: 'android.arch.persistence.room:runtime:1.1.0-beta2',
-                compiler: 'android.arch.persistence.room:compiler:1.1.0-beta2',
+                runtime: 'android.arch.persistence.room:runtime:1.1.0-beta3',
+                compiler: 'android.arch.persistence.room:compiler:1.1.0-beta3',
 
                 // RxJava support for Room
-                rxjava2: 'android.arch.persistence.room:rxjava2:1.1.0-beta2',
+                rxjava2: 'android.arch.persistence.room:rxjava2:1.1.0-beta3',
 
                 // Test helpers for Room
                 testing: 'android.arch.persistence.room:testing:1.0.0',
         ],
 
         paging: [
-                runtime: 'android.arch.paging:runtime:1.0.0-beta1',
+                runtime: 'android.arch.paging:runtime:1.0.0-rc1',
 
                 // RxJava support for Paging
                 rxjava2: 'android.arch.paging:rxjava2:1.0.0-alpha1'
@@ -130,9 +133,10 @@ def store = [
 ]
 
 def glide = [
-        glide_v4: 'com.github.bumptech.glide:glide:4.6.1',
-        annotationProcessor: 'com.github.bumptech.glide:compiler:4.6.1',
-        okhttp3_integration: 'com.github.bumptech.glide:okhttp3-integration:4.6.1'
+        glide_v4: 'com.github.bumptech.glide:glide:4.7.1',
+        annotations: 'com.github.bumptech.glide:annotations:4.7.1',
+        annotationProcessor: 'com.github.bumptech.glide:compiler:4.7.1',
+        okhttp3_integration: 'com.github.bumptech.glide:okhttp3-integration:4.7.1'
 ]
 
 def fresco = [

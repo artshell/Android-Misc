@@ -1,0 +1,34 @@
+apply plugin: 'com.android.library'
+
+apply from: 'arch_mvp_dependences.gradle'
+
+android {
+    compileSdkVersion deps.versions.compileVersion
+
+    defaultConfig {
+        minSdkVersion deps.versions.minVersion
+        targetSdkVersion deps.versions.targetVersion
+        versionCode deps.versions.arch_mvp_module_version
+        versionName deps.versions.arch_mvp_module_name
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.support.support_v4
+    implementation deps.support.appcompat_v7
+
+    implementation deps.arch_lifecycle.extensions
+    implementation deps.arch_lifecycle.runtime
+    annotationProcessor deps.arch_lifecycle.compiler
+
+    implementation deps.rx.java
+    api deps.rx.lifecycle
+}

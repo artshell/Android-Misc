@@ -8,9 +8,12 @@ import android.support.annotation.Nullable;
  */
 
 public class Resource<T> {
-    @NonNull public final String status;
-    @Nullable public final T data;
-    @Nullable public final Throwable thr;
+    @NonNull
+    public final String status;
+    @Nullable
+    public final T data;
+    @Nullable
+    public final Throwable thr;
 
     private Resource(@NonNull String status, T data, Throwable thr) {
         this.status = status;

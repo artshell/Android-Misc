@@ -7,9 +7,9 @@ import android.support.annotation.StringDef;
  */
 @StringDef({Status.SUCCESS, Status.ERROR, Status.LOADING, Status.LOADING, Status.COMPLETE, Status.CANCEL})
 public @interface Status {
-    String SUCCESS = "success";
-    String ERROR = "error";
-    String LOADING = "loading";
+    String SUCCESS  = "success";
+    String ERROR    = "error";
+    String LOADING  = "loading";
     String COMPLETE = "complete";
-    String CANCEL = "cancel";
+    String CANCEL   = "cancel";
 }

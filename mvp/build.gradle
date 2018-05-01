@@ -60,6 +60,10 @@ dependencies {
     implementation deps.support.constraint_layout
     implementation deps.support.multidex
 
+    implementation deps.arch_lifecycle.extensions
+    implementation deps.arch_lifecycle.runtime
+    annotationProcessor deps.arch_lifecycle.compiler
+
     implementation deps.rx.java
     implementation deps.rx.android
     implementation deps.rx.lifecycle
@@ -85,6 +89,7 @@ dependencies {
     implementation deps.store.filesystem3
 
     implementation deps.glide.glide_v4
+    implementation deps.glide.annotations
     annotationProcessor deps.glide.annotationProcessor
     implementation deps.glide.okhttp3_integration
 

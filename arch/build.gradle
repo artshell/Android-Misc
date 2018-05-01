@@ -66,10 +66,9 @@ dependencies {
     implementation deps.support.multidex
 
     implementation deps.arch.lifecycle.extensions
-    implementation deps.arch.lifecycle.viewmodel
-    implementation deps.arch.lifecycle.livedata
+    annotationProcessor deps.arch.lifecycle.runtime
     annotationProcessor deps.arch.lifecycle.compiler
-    implementation deps.arch.lifecycle.common_java8
+//    implementation deps.arch.lifecycle.common_java8
 
 //    testImplementation deps.arch.lifecycle.core_testing
     implementation deps.arch.lifecycle.reactivestreams
@@ -92,9 +91,9 @@ dependencies {
         exclude module: 'stax-api'
     })
 
-    implementation deps.auto.dispose
-    implementation deps.auto.android
-    implementation deps.auto.android_arch
+//    implementation deps.auto.dispose
+//    implementation deps.auto.android
+//    implementation deps.auto.android_arch
 
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.adapter_rxjava2
@@ -111,6 +110,7 @@ dependencies {
     implementation deps.store.filesystem3
 
     implementation deps.glide.glide_v4
+    implementation deps.glide.annotations
     annotationProcessor deps.glide.annotationProcessor
     implementation deps.glide.okhttp3_integration
 
@@ -127,6 +127,6 @@ dependencies {
     implementation deps.misc.gson
     implementation deps.misc.stream
     implementation deps.misc.prefser
-    implementation deps.misc.sqlbrite
+//    implementation deps.misc.sqlbrite
 
 }
