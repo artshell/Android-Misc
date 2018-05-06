@@ -44,6 +44,8 @@ public class BaseCyclePresenter<V extends BaseContract.View> extends BasePresent
 
     @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
     final void onEvent(LifecycleOwner owner, Lifecycle.Event event) {
-        cycleSubject.onNext(event);
+        if (cycleSubject.hasObservers()) {
+            cycleSubject.onNext(event);
+        }
     }
 }
