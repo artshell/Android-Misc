@@ -76,11 +76,11 @@ def arch = [
         ],
 
         room: [
-                runtime: 'android.arch.persistence.room:runtime:1.1.0-beta3',
-                compiler: 'android.arch.persistence.room:compiler:1.1.0-beta3',
+                runtime: 'android.arch.persistence.room:runtime:1.1.0-rc1',
+                compiler: 'android.arch.persistence.room:compiler:1.1.0-rc1',
 
                 // RxJava support for Room
-                rxjava2: 'android.arch.persistence.room:rxjava2:1.1.0-beta3',
+                rxjava2: 'android.arch.persistence.room:rxjava2:1.1.0-rc1',
 
                 // Test helpers for Room
                 testing: 'android.arch.persistence.room:testing:1.0.0',

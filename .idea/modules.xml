@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/databinding/databinding.iml" filepath="$PROJECT_DIR$/databinding/databinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvp/mvp.iml" filepath="$PROJECT_DIR$/mvp/mvp.iml" />
       <module fileurl="file://$PROJECT_DIR$/unicontainer/unicontainer.iml" filepath="$PROJECT_DIR$/unicontainer/unicontainer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/unicontainer/unicontainer.iml" filepath="$PROJECT_DIR$/unicontainer/unicontainer.iml" />
     </modules>
   </component>
 </project>
