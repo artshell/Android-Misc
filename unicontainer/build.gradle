@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+apply from: 'unicontainer_dependences.gradle'
+
+android {
+    compileSdkVersion deps.versions.compileVersion
+
+    defaultConfig {
+        applicationId "com.artshell.unicontainer"
+        minSdkVersion deps.versions.minVersion
+        targetSdkVersion deps.versions.targetVersion
+        versionCode deps.versions.unicontainer_module_version
+        versionName deps.versions.unicontainer_module_name
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    compileOptions {
+        sourceCompatibility deps.versions.compatVersion
+        targetCompatibility deps.versions.compatVersion
+    }
+
+    dexOptions {
+        preDexLibraries true
+        maxProcessCount 2
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        checkReleaseBuilds true
+        disable 'InvalidPackage'
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.google.code.findbugs:jsr305:2.0.1', 'com.google.code.findbugs:jsr305:3.0.2'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso
+
+    debugImplementation deps.detection.leakcanary
+    releaseImplementation deps.detection.leakcanary_no_op
+
+    implementation deps.support.appcompat_v7
+    implementation deps.support.constraint_layout
+
+    implementation deps.arch.lifecycle.extensions
+    annotationProcessor deps.arch.lifecycle.runtime
+    annotationProcessor deps.arch.lifecycle.compiler
+    implementation deps.arch.lifecycle.common_java8
+
+    implementation deps.misc.navigation
+
+}
