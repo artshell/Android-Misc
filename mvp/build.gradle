@@ -109,6 +109,9 @@ dependencies {
     implementation deps.misc.stream
     implementation deps.misc.prefser
 
+    implementation deps.router.rabbits
+    annotationProcessor deps.router.compiler
+
     implementation deps.mvp.nucleus
     implementation deps.mvp.nucleus_v4
     implementation deps.mvp.nucleus_v7

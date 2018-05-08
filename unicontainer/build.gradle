@@ -65,6 +65,9 @@ dependencies {
     annotationProcessor deps.arch.lifecycle.compiler
     implementation deps.arch.lifecycle.common_java8
 
+    implementation deps.router.rabbits
+    annotationProcessor deps.router.compiler
+
     implementation deps.misc.navigation
 
 }
