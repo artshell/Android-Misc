@@ -157,7 +157,7 @@ def dagger = [
 ]
 
 def router = [
-        rabbits: 'com.kyleduo.rabbits:rabbits:1.0.0',
+        rabbits : 'com.kyleduo.rabbits:rabbits:1.0.0',
         compiler: 'com.kyleduo.rabbits:compiler:1.0.0'
 ]
 
@@ -178,7 +178,6 @@ ext.deps = [
         "versions" : versions,
         "test"     : test,
         "detection": detection,
-<<<<<<< HEAD
         "support"  : support,
         "arch"     : arch,
         "rx"       : rx,
@@ -190,20 +189,6 @@ ext.deps = [
         "fresco"   : fresco,
         "picasso"  : picasso,
         "dagger2"  : dagger,
+        "router"   : router,
         "misc"     : misc,
-=======
-        "support": support,
-        "arch": arch,
-        "rx": rx,
-        "auto": auto,
-        "retrofit": retrofit,
-        "okHttp": okHttp,
-        "store": store,
-        "glide": glide,
-        "fresco": fresco,
-        "picasso": picasso,
-        "dagger2": dagger,
-        "router": router,
-        "misc": misc,
->>>>>>> f7a4c3ec39559d2c09f523eae5b1038eeecb5723
 ]

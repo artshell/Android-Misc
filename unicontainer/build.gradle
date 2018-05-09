@@ -65,7 +65,6 @@ dependencies {
     annotationProcessor deps.arch.lifecycle.compiler
     implementation deps.arch.lifecycle.common_java8
 
-<<<<<<< HEAD
     implementation deps.rx.java
     implementation deps.rx.android
     implementation deps.rx.lifecycle
@@ -78,11 +77,7 @@ dependencies {
     implementation deps.conductor.support
     implementation deps.conductor.rxlifecycle2
     implementation deps.conductor.arch
-=======
+
     implementation deps.router.rabbits
     annotationProcessor deps.router.compiler
-
-    implementation deps.misc.navigation
-
->>>>>>> f7a4c3ec39559d2c09f523eae5b1038eeecb5723
 }
