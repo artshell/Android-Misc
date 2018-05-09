@@ -104,6 +104,9 @@ dependencies {
     implementation deps.dagger2.dagger_android_support
     annotationProcessor deps.dagger2.annotation_dagger_android_compiler
 
+    implementation deps.router.rabbits
+    annotationProcessor deps.router.compiler
+
     implementation deps.misc.gson
     implementation deps.misc.stream
 //    implementation deps.misc.streamEx

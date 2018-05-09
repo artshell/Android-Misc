@@ -156,6 +156,7 @@ def dagger = [
         annotation_dagger_android_compiler: 'com.google.dagger:dagger-android-processor:2.15'
 ]
 
+<<<<<<< HEAD
 def nav = [
         navigation: 'me.listenzz:navigation:1.2.0'
 ]
@@ -165,6 +166,11 @@ def conductor = [
         support     : 'com.bluelinelabs:conductor-support:2.1.4',
         rxlifecycle2: 'com.bluelinelabs:conductor-rxlifecycle2:2.1.4',
         arch        : 'com.bluelinelabs:conductor-archlifecycle:0.1.1'
+=======
+def router = [
+        rabbits: 'com.kyleduo.rabbits:rabbits:1.0.0',
+        compiler: 'com.kyleduo.rabbits:compiler:1.0.0'
+>>>>>>> f7a4c3ec39559d2c09f523eae5b1038eeecb5723
 ]
 
 def misc = [
@@ -184,6 +190,7 @@ ext.deps = [
         "versions" : versions,
         "test"     : test,
         "detection": detection,
+<<<<<<< HEAD
         "support"  : support,
         "arch"     : arch,
         "rx"       : rx,
@@ -198,4 +205,19 @@ ext.deps = [
         "nav"      : nav,
         "conductor": conductor,
         "misc"     : misc,
+=======
+        "support": support,
+        "arch": arch,
+        "rx": rx,
+        "auto": auto,
+        "retrofit": retrofit,
+        "okHttp": okHttp,
+        "store": store,
+        "glide": glide,
+        "fresco": fresco,
+        "picasso": picasso,
+        "dagger2": dagger,
+        "router": router,
+        "misc": misc,
+>>>>>>> f7a4c3ec39559d2c09f523eae5b1038eeecb5723
 ]

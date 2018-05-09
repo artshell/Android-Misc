@@ -156,6 +156,11 @@ def dagger = [
         annotation_dagger_android_compiler: 'com.google.dagger:dagger-android-processor:2.15'
 ]
 
+def router = [
+        rabbits: 'com.kyleduo.rabbits:rabbits:1.0.0',
+        compiler: 'com.kyleduo.rabbits:compiler:1.0.0'
+]
+
 def misc = [
         multitype      : 'me.drakeet.multitype:multitype:3.4.4',
         gson           : 'com.google.code.gson:gson:2.8.2',
@@ -173,6 +178,7 @@ ext.deps = [
         "versions" : versions,
         "test"     : test,
         "detection": detection,
+<<<<<<< HEAD
         "support"  : support,
         "arch"     : arch,
         "rx"       : rx,
@@ -185,4 +191,19 @@ ext.deps = [
         "picasso"  : picasso,
         "dagger2"  : dagger,
         "misc"     : misc,
+=======
+        "support": support,
+        "arch": arch,
+        "rx": rx,
+        "auto": auto,
+        "retrofit": retrofit,
+        "okHttp": okHttp,
+        "store": store,
+        "glide": glide,
+        "fresco": fresco,
+        "picasso": picasso,
+        "dagger2": dagger,
+        "router": router,
+        "misc": misc,
+>>>>>>> f7a4c3ec39559d2c09f523eae5b1038eeecb5723
 ]
