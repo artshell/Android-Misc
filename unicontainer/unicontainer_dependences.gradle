@@ -1,34 +1,34 @@
 def versions = [
-        compileVersion: 27,
-        buildVersion: '27.0.3',
-        minVersion: 16,
-        targetVersion: 27,
+        compileVersion             : 27,
+        buildVersion               : '27.0.3',
+        minVersion                 : 16,
+        targetVersion              : 27,
         unicontainer_module_version: 100,
-        unicontainer_module_name: '1.0.0',
-        compatVersion: JavaVersion.VERSION_1_8,
-        support: '27.1.1'
+        unicontainer_module_name   : '1.0.0',
+        compatVersion              : JavaVersion.VERSION_1_8,
+        support                    : '27.1.1'
 ]
 
 def test = [
-        junit: 'junit:junit:4.12',
-        runner: 'com.android.support.test:runner:1.0.2',
+        junit   : 'junit:junit:4.12',
+        runner  : 'com.android.support.test:runner:1.0.2',
         espresso: 'com.android.support.test.espresso:espresso-core:3.0.2',
 ]
 
 def detection = [
-        leakcanary: 'com.squareup.leakcanary:leakcanary-android:1.5.4',
+        leakcanary      : 'com.squareup.leakcanary:leakcanary-android:1.5.4',
         leakcanary_no_op: 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4',
         // refer to [https://github.com/uber/AutoDispose]
-        errorProne: [
+        errorProne      : [
                 // http://errorprone.info/
                 // http://errorprone.info/docs/installation
         ],
-        nullAway: [
+        nullAway        : [
                 // for java project refer to [https://github.com/uber/NullAway]
                 // only for android project
                 nullAway: 'com.uber.nullaway:nullaway:0.1.4'
         ],
-        javax_extras: [
+        javax_extras    : [
                 // https://github.com/uber-common/javax-extras
                 javax_extras: 'com.uber.javaxextras:javax-extras:0.1.0'
         ]
@@ -37,56 +37,56 @@ def detection = [
 ]
 
 def support = [
-        support_v4: "com.android.support:support-v4:${versions.support}",
-        appcompat_v7: "com.android.support:appcompat-v7:${versions.support}",
-        recyclerview_v7: "com.android.support:recyclerview-v7:${versions.support}",
-        design: "com.android.support:design:${versions.support}",
-        support_v13: "com.android.support:support-v13:${versions.support}",
-        annotations: "com.android.support:support-annotations:${versions.support}",
+        support_v4       : "com.android.support:support-v4:${versions.support}",
+        appcompat_v7     : "com.android.support:appcompat-v7:${versions.support}",
+        recyclerview_v7  : "com.android.support:recyclerview-v7:${versions.support}",
+        design           : "com.android.support:design:${versions.support}",
+        support_v13      : "com.android.support:support-v13:${versions.support}",
+        annotations      : "com.android.support:support-annotations:${versions.support}",
         constraint_layout: 'com.android.support.constraint:constraint-layout:1.1.0',
-        multidex: 'com.android.support:multidex:1.0.2'
+        multidex         : 'com.android.support:multidex:1.0.2'
 ]
 
 def arch = [
         lifecycle: [
                 // ViewModel and LiveData
-                extensions: 'android.arch.lifecycle:extensions:1.1.1',
+                extensions     : 'android.arch.lifecycle:extensions:1.1.1',
 
                 // alternatively, just ViewModel
-                viewmodel: 'android.arch.lifecycle:viewmodel:1.1.1',
+                viewmodel      : 'android.arch.lifecycle:viewmodel:1.1.1',
 
                 // alternatively, just LiveData
-                livedata: 'android.arch.lifecycle:livedata:1.1.1',
+                livedata       : 'android.arch.lifecycle:livedata:1.1.1',
 
                 // compiler
-                compiler: 'android.arch.lifecycle:compiler:1.1.1',
+                compiler       : 'android.arch.lifecycle:compiler:1.1.1',
 
                 // Java8 support for Lifecycles
-                common_java8: "android.arch.lifecycle:common-java8:1.1.1",
+                common_java8   : "android.arch.lifecycle:common-java8:1.1.1",
 
                 // Test helpers for LiveData
-                core_testing: 'android.arch.core:core-testing:1.1.1',
+                core_testing   : 'android.arch.core:core-testing:1.1.1',
 
                 // ReactiveStreams support for LiveData
                 reactivestreams: 'android.arch.lifecycle:reactivestreams:1.1.1',
 
                 // Support library depends on this lightweight import
                 // Lifecycles only (no ViewModel or LiveData)
-                runtime: 'android.arch.lifecycle:runtime:1.1.1',
+                runtime        : 'android.arch.lifecycle:runtime:1.1.1',
         ],
 
-        room: [
-                runtime: 'android.arch.persistence.room:runtime:1.1.0-beta3',
+        room     : [
+                runtime : 'android.arch.persistence.room:runtime:1.1.0-beta3',
                 compiler: 'android.arch.persistence.room:compiler:1.1.0-beta3',
 
                 // RxJava support for Room
-                rxjava2: 'android.arch.persistence.room:rxjava2:1.1.0-beta3',
+                rxjava2 : 'android.arch.persistence.room:rxjava2:1.1.0-beta3',
 
                 // Test helpers for Room
-                testing: 'android.arch.persistence.room:testing:1.0.0',
+                testing : 'android.arch.persistence.room:testing:1.0.0',
         ],
 
-        paging: [
+        paging   : [
                 runtime: 'android.arch.paging:runtime:1.0.0-rc1',
 
                 // RxJava support for Paging
@@ -95,46 +95,46 @@ def arch = [
 ]
 
 def rx = [
-        java: 'io.reactivex.rxjava2:rxjava:2.1.12',
-        android: 'io.reactivex.rxjava2:rxandroid:2.0.2',
-        lifecycle: 'com.trello.rxlifecycle2:rxlifecycle:2.2.1',
-        lifecycle_android: 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1',
+        java                  : 'io.reactivex.rxjava2:rxjava:2.1.12',
+        android               : 'io.reactivex.rxjava2:rxandroid:2.0.2',
+        lifecycle             : 'com.trello.rxlifecycle2:rxlifecycle:2.2.1',
+        lifecycle_android     : 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1',
         rxlifecycle_components: 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1',
-        permissions: 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar',
-        binding: 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
+        permissions           : 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar',
+        binding               : 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
         // General http request encapsulate base on Retrofit, OkHttp and RxJava
-        requestor: 'com.artshell:RxRequestor:1.0.3'
+        requestor             : 'com.artshell:RxRequestor:1.0.3'
 ]
 
 def auto = [
-        dispose: 'com.uber.autodispose:autodispose:0.6.1',
-        android: 'com.uber.autodispose:autodispose-android:0.6.1',
+        dispose     : 'com.uber.autodispose:autodispose:0.6.1',
+        android     : 'com.uber.autodispose:autodispose-android:0.6.1',
         android_arch: 'com.uber.autodispose:autodispose-android-archcomponents:0.6.1'
 ]
 
 def retrofit = [
-        retrofit: 'com.squareup.retrofit2:retrofit:2.3.0',
-        adapter_rxjava2: 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
-        converter_gson: 'com.squareup.retrofit2:converter-gson:2.3.0',
+        retrofit         : 'com.squareup.retrofit2:retrofit:2.3.0',
+        adapter_rxjava2  : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+        converter_gson   : 'com.squareup.retrofit2:converter-gson:2.3.0',
         converter_scalars: 'com.squareup.retrofit2:converter-scalars:2.3.0',
-        converter_moshi: 'com.squareup.retrofit2:converter-moshi:2.3.0'
+        converter_moshi  : 'com.squareup.retrofit2:converter-moshi:2.3.0'
 ]
 
 def okHttp = [
         okhttp: 'com.squareup.okhttp3:okhttp:3.10.0',
-        okio: 'com.squareup.okio:okio:1.14.0'
+        okio  : 'com.squareup.okio:okio:1.14.0'
 ]
 
 def store = [
-        cache3: 'com.nytimes.android:cache3:3.0.1',
-        store3: 'com.nytimes.android:store3:3.0.1',
+        cache3     : 'com.nytimes.android:cache3:3.0.1',
+        store3     : 'com.nytimes.android:store3:3.0.1',
         middleware3: 'com.nytimes.android:middleware3:3.0.1',
         filesystem3: 'com.nytimes.android:filesystem3:3.0.1'
 ]
 
 def glide = [
-        glide_v4: 'com.github.bumptech.glide:glide:4.7.1',
-        annotations: 'com.github.bumptech.glide:annotations:4.7.1',
+        glide_v4           : 'com.github.bumptech.glide:glide:4.7.1',
+        annotations        : 'com.github.bumptech.glide:annotations:4.7.1',
         annotationProcessor: 'com.github.bumptech.glide:compiler:4.7.1',
         okhttp3_integration: 'com.github.bumptech.glide:okhttp3-integration:4.7.1'
 ]
@@ -148,42 +148,54 @@ def picasso = [
 ]
 
 def dagger = [
-        dagger: 'com.google.dagger:dagger:2.15',
-        annotation_dagger_compiler: 'com.google.dagger:dagger-compiler:2.15',
+        dagger                            : 'com.google.dagger:dagger:2.15',
+        annotation_dagger_compiler        : 'com.google.dagger:dagger-compiler:2.15',
         // If you're using classes in dagger.android you'll also want to include
-        dagger_android: 'com.google.dagger:dagger-android:2.15',
-        dagger_android_support: 'com.google.dagger:dagger-android-support:2.15',
+        dagger_android                    : 'com.google.dagger:dagger-android:2.15',
+        dagger_android_support            : 'com.google.dagger:dagger-android-support:2.15',
         annotation_dagger_android_compiler: 'com.google.dagger:dagger-android-processor:2.15'
 ]
 
-def misc = [
-        multitype: 'me.drakeet.multitype:multitype:3.4.4',
-        gson: 'com.google.code.gson:gson:2.8.2',
-        spinkit: 'com.github.ybq:Android-SpinKit:1.1.0',
-        // https://github.com/aNNiMON/Lightweight-Stream-API
-        stream: 'com.annimon:stream:1.1.9',
-        streamEx: 'one.util:streamex:0.6.6',
-        compressor: 'id.zelory:compressor:2.1.0',
-        reactivenetwork: 'com.github.pwittchen:reactivenetwork-rx2:0.12.3',
-        prefser: 'com.github.pwittchen:prefser-rx2:2.2.1',
-        sqlbrite: 'com.squareup.sqlbrite3:sqlbrite:3.2.0',
+def nav = [
         navigation: 'me.listenzz:navigation:1.2.0'
 ]
 
+def conductor = [
+        conductor   : 'com.bluelinelabs:conductor:2.1.4',
+        support     : 'com.bluelinelabs:conductor-support:2.1.4',
+        rxlifecycle2: 'com.bluelinelabs:conductor-rxlifecycle2:2.1.4',
+        arch        : 'com.bluelinelabs:conductor-archlifecycle:0.1.1'
+]
+
+def misc = [
+        multitype      : 'me.drakeet.multitype:multitype:3.4.4',
+        gson           : 'com.google.code.gson:gson:2.8.2',
+        spinkit        : 'com.github.ybq:Android-SpinKit:1.1.0',
+        // https://github.com/aNNiMON/Lightweight-Stream-API
+        stream         : 'com.annimon:stream:1.1.9',
+        streamEx       : 'one.util:streamex:0.6.6',
+        compressor     : 'id.zelory:compressor:2.1.0',
+        reactivenetwork: 'com.github.pwittchen:reactivenetwork-rx2:0.12.3',
+        prefser        : 'com.github.pwittchen:prefser-rx2:2.2.1',
+        sqlbrite       : 'com.squareup.sqlbrite3:sqlbrite:3.2.0',
+]
+
 ext.deps = [
-        "versions": versions,
-        "test": test,
+        "versions" : versions,
+        "test"     : test,
         "detection": detection,
-        "support": support,
-        "arch": arch,
-        "rx": rx,
-        "auto": auto,
-        "retrofit": retrofit,
-        "okHttp": okHttp,
-        "store": store,
-        "glide": glide,
-        "fresco": fresco,
-        "picasso": picasso,
-        "dagger2": dagger,
-        "misc": misc,
+        "support"  : support,
+        "arch"     : arch,
+        "rx"       : rx,
+        "auto"     : auto,
+        "retrofit" : retrofit,
+        "okHttp"   : okHttp,
+        "store"    : store,
+        "glide"    : glide,
+        "fresco"   : fresco,
+        "picasso"  : picasso,
+        "dagger2"  : dagger,
+        "nav"      : nav,
+        "conductor": conductor,
+        "misc"     : misc,
 ]

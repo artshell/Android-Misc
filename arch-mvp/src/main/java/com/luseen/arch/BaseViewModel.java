@@ -1,13 +1,19 @@
 package com.luseen.arch;
 
-import android.arch.lifecycle.ViewModel;
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
+import android.support.annotation.NonNull;
 
 /**
  * Created by Chatikyan on 20.05.2017.
  */
 
 public final class BaseViewModel<V extends BaseContract.View, P extends BaseContract.Presenter<V>>
-        extends ViewModel {
+        extends AndroidViewModel {
+
+    public BaseViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     private P presenter;
 

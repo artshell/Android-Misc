@@ -1,10 +1,10 @@
 package com.artshell.misc.arch_mvp.manual_impl;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.OnLifecycleEvent;
+import android.arch.lifecycle.LifecycleOwner;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.luseen.arch.BasePresenter;
@@ -58,8 +58,9 @@ public class ProgressPresenter extends BasePresenter<ProgressContract.View> impl
         }, progressTime / 100);
     }
 
-    @OnLifecycleEvent(value = Lifecycle.Event.ON_CREATE)
-    protected void onCreate() {
+    @Override
+    public void onCreate(@NonNull LifecycleOwner owner) {
+        super.onCreate(owner);
         if (stateBundle.getBoolean(PROGRESS_BAR_STATE_KEY)) {
             if (isViewAttached()) {
                 getView().showProgress();
@@ -67,11 +68,9 @@ public class ProgressPresenter extends BasePresenter<ProgressContract.View> impl
         }
     }
 
-    @OnLifecycleEvent(value = Lifecycle.Event.ON_DESTROY)
-    protected void onDestroy() {
-        if (isViewAttached()) {
-            getView().hideProgress();
-        }
+    @Override
+    public void onDestroy(@NonNull LifecycleOwner owner) {
+        super.onDestroy(owner);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.artshell.misc.arch_mvp.annotation_impl;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.OnLifecycleEvent;
+import android.arch.lifecycle.LifecycleOwner;
+import android.support.annotation.NonNull;
 
 import com.luseen.arch.BasePresenter;
 
@@ -11,10 +11,16 @@ import com.luseen.arch.BasePresenter;
 public class MasterPresenter extends BasePresenter<MasterContract.View>
         implements MasterContract.Presenter {
 
-    @OnLifecycleEvent(value = Lifecycle.Event.ON_CREATE)
-    protected void onCreate() {
+    @Override
+    public void onCreate(@NonNull LifecycleOwner owner) {
+        super.onCreate(owner);
         if (isViewAttached()) {
             getView().openSubFragment();
         }
+    }
+
+    @Override
+    public void onPresenterCreated() {
+        super.onPresenterCreated();
     }
 }

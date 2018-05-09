@@ -3,6 +3,7 @@ package com.luseen.arch;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -19,7 +20,7 @@ public abstract class BaseFragment<V extends BaseContract.View, P extends BaseCo
     @SuppressWarnings("unchecked")
     @CallSuper
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedState) {
         super.onViewCreated(view, savedState);
         BaseViewModel<V, P> viewModel = ViewModelProviders.of(this).get(BaseViewModel.class);
         boolean isPresenterCreated = false;

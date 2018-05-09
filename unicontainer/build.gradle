@@ -65,6 +65,16 @@ dependencies {
     annotationProcessor deps.arch.lifecycle.compiler
     implementation deps.arch.lifecycle.common_java8
 
-    implementation deps.misc.navigation
+    implementation deps.rx.java
+    implementation deps.rx.android
+    implementation deps.rx.lifecycle
+    implementation deps.rx.lifecycle_android
+    implementation deps.rx.rxlifecycle_components
 
+    implementation deps.nav.navigation
+
+    implementation deps.conductor.conductor
+    implementation deps.conductor.support
+    implementation deps.conductor.rxlifecycle2
+    implementation deps.conductor.arch
 }

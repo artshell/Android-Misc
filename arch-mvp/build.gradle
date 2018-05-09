@@ -12,6 +12,11 @@ android {
         versionName deps.versions.arch_mvp_module_name
     }
 
+    compileOptions {
+        sourceCompatibility deps.versions.compatVersion
+        targetCompatibility deps.versions.compatVersion
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,8 +31,7 @@ dependencies {
     implementation deps.support.appcompat_v7
 
     implementation deps.arch_lifecycle.extensions
-    implementation deps.arch_lifecycle.runtime
-    annotationProcessor deps.arch_lifecycle.compiler
+    implementation deps.arch_lifecycle.common_java8
 
     implementation deps.rx.java
     api deps.rx.lifecycle
