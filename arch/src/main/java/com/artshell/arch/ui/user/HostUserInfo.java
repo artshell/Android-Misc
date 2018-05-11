@@ -33,8 +33,7 @@ public class HostUserInfo extends DataBaseActivity {
         mPairs.put("user_id", "artshell");
 
         // 直接从服务器端获取
-        serverModel.fetchByParameter(UserInfoResponse.class, "user/profile", mPairs)
-                .observe(this, this::tackle);
+        serverModel.fetchByParameter(UserInfoResponse.class, "user/profile", mPairs).observe(this, this::tackle);
     }
 
     private void tackle(Resource<UserInfoResponse> resource) {

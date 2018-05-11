@@ -48,49 +48,74 @@ def support = [
 ]
 
 def arch = [
-        lifecycle: [
+        lifecycle : [
                 // ViewModel and LiveData
                 extensions     : 'android.arch.lifecycle:extensions:1.1.1',
 
-                // alternatively, just ViewModel
+                // alternatively - just ViewModel
                 viewmodel      : 'android.arch.lifecycle:viewmodel:1.1.1',
 
-                // alternatively, just LiveData
+                // alternatively - just LiveData
                 livedata       : 'android.arch.lifecycle:livedata:1.1.1',
 
                 // compiler
                 compiler       : 'android.arch.lifecycle:compiler:1.1.1',
 
-                // Java8 support for Lifecycles
+                // Java8 support for Lifecycle
+                // alternately - if using Java8, use the following instead of compiler
                 common_java8   : "android.arch.lifecycle:common-java8:1.1.1",
 
-                // Test helpers for LiveData
+                // optional - Test helpers for LiveData
                 core_testing   : 'android.arch.core:core-testing:1.1.1',
 
-                // ReactiveStreams support for LiveData
+                // optional - ReactiveStreams support for LiveData
                 reactivestreams: 'android.arch.lifecycle:reactivestreams:1.1.1',
 
+                // alternatively - Lifecycle only (no ViewModel or LiveData)
                 // Support library depends on this lightweight import
-                // Lifecycles only (no ViewModel or LiveData)
                 runtime        : 'android.arch.lifecycle:runtime:1.1.1',
         ],
 
-        room     : [
+        room      : [
                 runtime : 'android.arch.persistence.room:runtime:1.1.0',
                 compiler: 'android.arch.persistence.room:compiler:1.1.0',
 
-                // RxJava support for Room
+                // optional - RxJava support for Room
                 rxjava2 : 'android.arch.persistence.room:rxjava2:1.1.0',
 
+                // optional - Guava support for Room, including Optional and ListenableFuture
+                guava   : 'android.arch.persistence.room:guava:1.1.0',
+
                 // Test helpers for Room
-                testing : 'android.arch.persistence.room:testing:1.0.0',
+                testing : 'android.arch.persistence.room:testing:1.1.0',
         ],
 
-        paging   : [
+        paging    : [
                 runtime: 'android.arch.paging:runtime:1.0.0',
 
-                // RxJava support for Paging
+                // alternatively - without Android dependencies for testing
+                testing: 'android.arch.paging:common:1.0.0',
+
+                // optional - RxJava support for Paging, currently in alpha
                 rxjava2: 'android.arch.paging:rxjava2:1.0.0-alpha1'
+        ],
+
+        navigation: [
+                fragment: 'android.arch.navigation:navigation-fragment:1.0.0-alpha01',
+                ui      : 'android.arch.navigation:navigation-ui:1.0.0-alpha01',
+
+                // optional - Test helpers
+                testing : 'android.arch.navigation:navigation-testing:1.0.0-alpha01'
+        ],
+
+        work   : [
+                runtime: 'android.arch.work:work-runtime:1.0.0-alpha01',
+
+                // optional - Firebase JobDispatcher support
+                firebase: 'android.arch.work:work-firebase:1.0.0-alpha01',
+
+                // optional - Test helpers
+                testing: 'android.arch.work:work-testing:1.0.0-alpha01'
         ]
 ]
 

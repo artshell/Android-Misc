@@ -5,7 +5,6 @@ import android.arch.lifecycle.LifecycleOwner;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 
-import com.luseen.arch.BaseContract.Presenter;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.OutsideLifecycleException;
@@ -16,7 +15,7 @@ import io.reactivex.functions.Function;
 import io.reactivex.subjects.BehaviorSubject;
 
 /**
- * Add Reactive lifecycle's features for {@link Presenter}
+ * Add Reactive lifecycle's features for {@link BasePresenter}
  * @param <V>
  */
 public class BaseCyclePresenter<V extends BaseContract.View> extends BasePresenter<V>

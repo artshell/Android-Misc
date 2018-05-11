@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'androidx.navigation.safeargs'
 
 apply from: 'arch_dependences.gradle'
 
@@ -80,6 +81,11 @@ dependencies {
 
     implementation deps.arch.paging.runtime
     implementation deps.arch.paging.rxjava2
+
+//    implementation deps.arch.navigation.fragment
+//    implementation deps.arch.navigation.ui
+//
+//    implementation deps.arch.work.runtime
 
     implementation deps.rx.java
     implementation deps.rx.android
