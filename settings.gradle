@@ -1,1 +1,1 @@
-include ':app', ':arch', ':databinding', ':mvp', ':arch-mvp',':arch-mvvm', ':unicontainer'
+include ':app', ':arch', ':databinding', ':mvp', ':arch-mvp',':arch-mvvm', ':unicontainer', ':conductor'

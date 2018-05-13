@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
-apply from: 'unicontainer_dependences.gradle'
+apply from: 'conductor_dependences.gradle'
 
 android {
     compileSdkVersion deps.versions.compileVersion
 
     defaultConfig {
-        applicationId "com.artshell.unicontainer"
+        applicationId "com.artshell.conductor"
         minSdkVersion deps.versions.minVersion
         targetSdkVersion deps.versions.targetVersion
-        versionCode deps.versions.unicontainer_module_version
-        versionName deps.versions.unicontainer_module_name
+        versionCode deps.versions.conductor_module_version
+        versionName deps.versions.conductor_module_name
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -50,6 +50,7 @@ configurations.all {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso
@@ -71,7 +72,10 @@ dependencies {
     implementation deps.rx.lifecycle_android
     implementation deps.rx.rxlifecycle_components
 
-    implementation deps.nav.navigation
+    implementation deps.conductor.conductor
+    implementation deps.conductor.support
+    implementation deps.conductor.rxlifecycle2
+    implementation deps.conductor.arch
 
     implementation deps.router.rabbits
     annotationProcessor deps.router.compiler

@@ -17,6 +17,7 @@ def support = [
 def arch_lifecycle = [
         // ViewModel and LiveData
         extensions  : 'android.arch.lifecycle:extensions:1.1.1',
+        runtime     : 'android.arch.lifecycle:runtime:1.1.1',
         common_java8: 'android.arch.lifecycle:common-java8:1.1.1'
 ]
 
