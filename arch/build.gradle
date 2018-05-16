@@ -97,9 +97,9 @@ dependencies {
         exclude module: 'stax-api'
     })
 
-//    implementation deps.auto.dispose
-//    implementation deps.auto.android
-//    implementation deps.auto.android_arch
+    implementation deps.auto.dispose
+    implementation deps.auto.android
+    implementation deps.auto.android_arch
 
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.adapter_rxjava2

@@ -56,21 +56,21 @@ def arch_lifecycle = [
 ]
 
 def rx = [
-        java                  : 'io.reactivex.rxjava2:rxjava:2.1.12',
+        java                  : 'io.reactivex.rxjava2:rxjava:2.1.13',
         android               : 'io.reactivex.rxjava2:rxandroid:2.0.2',
         lifecycle             : 'com.trello.rxlifecycle2:rxlifecycle:2.2.1',
         lifecycle_android     : 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1',
         rxlifecycle_components: 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1',
-        permissions           : 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar',
-        binding               : 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+        permissions           : 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar',
+        binding               : 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
 ]
 
 def retrofit = [
-        retrofit         : 'com.squareup.retrofit2:retrofit:2.3.0',
-        adapter_rxjava2  : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
-        converter_gson   : 'com.squareup.retrofit2:converter-gson:2.3.0',
-        converter_scalars: 'com.squareup.retrofit2:converter-scalars:2.3.0',
-        converter_moshi  : 'com.squareup.retrofit2:converter-moshi:2.3.0'
+        retrofit         : 'com.squareup.retrofit2:retrofit:2.4.0',
+        adapter_rxjava2  : 'com.squareup.retrofit2:adapter-rxjava2:2.4.0',
+        converter_gson   : 'com.squareup.retrofit2:converter-gson:2.4.0',
+        converter_scalars: 'com.squareup.retrofit2:converter-scalars:2.4.0',
+        converter_moshi  : 'com.squareup.retrofit2:converter-moshi:2.4.0'
 ]
 
 def okHttp = [
