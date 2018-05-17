@@ -3,7 +3,7 @@ package com.artshell.misc.arch_mvp.reactive_stream_impl;
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.Lifecycle;
 
-import com.luseen.arch.BaseCyclePresenter;
+import com.arch.mvp.BaseCyclePresenter;
 
 import java.util.concurrent.TimeUnit;
 

@@ -6,8 +6,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.artshell.misc.R;
-import com.luseen.arch.BaseAnnotatedActivity;
-import com.luseen.arch.Viewable;
+import com.arch.mvp.BaseAnnotatedActivity;
+import com.arch.mvp.Viewable;
 
 /**
  * @author artshell on 2018/5/1

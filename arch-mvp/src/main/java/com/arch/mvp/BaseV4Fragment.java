@@ -1,25 +1,27 @@
-package com.luseen.arch;
+package com.arch.mvp;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.View;
 
 /**
- * Created by Chatikyan on 20.05.2017.
+ * Created by Chatikyan on 22.05.2017.
  */
 
-public abstract class BaseActivity<V extends BaseContract.View, P extends BaseContract.Presenter<V>>
-        extends AppCompatActivity implements BaseContract.View {
+public abstract class BaseV4Fragment<V extends BaseContract.View, P extends BaseContract.Presenter<V>>
+        extends Fragment implements BaseContract.View {
 
     protected P presenter;
 
     @SuppressWarnings("unchecked")
     @CallSuper
     @Override
-    protected void onCreate(@Nullable Bundle savedState) {
-        super.onCreate(savedState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedState) {
+        super.onViewCreated(view, savedState);
         BaseViewModel<V, P> viewModel = ViewModelProviders.of(this).get(BaseViewModel.class);
         boolean isPresenterCreated = false;
         if (viewModel.getPresenter() == null) {
@@ -36,10 +38,10 @@ public abstract class BaseActivity<V extends BaseContract.View, P extends BaseCo
 
     @CallSuper
     @Override
-    protected void onDestroy() {
+    public void onDestroyView() {
         presenter.detachLifecycle(getLifecycle());
         presenter.detachView();
-        super.onDestroy();
+        super.onDestroyView();
     }
 
     protected abstract P initPresenter();

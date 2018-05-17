@@ -1,10 +1,10 @@
-package com.luseen.arch;
+package com.arch.mvp;
 
 /**
  * Created by Chatikyan on 29.06.2017.
  */
 
-class AnnotationHelper {
+final class AnnotationHelper {
 
     static BaseContract.Presenter createPresenter(Class<?> annotatedClass) {
         try {

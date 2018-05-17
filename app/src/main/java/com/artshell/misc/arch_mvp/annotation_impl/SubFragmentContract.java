@@ -1,6 +1,6 @@
 package com.artshell.misc.arch_mvp.annotation_impl;
 
-import com.luseen.arch.BaseContract;
+import com.arch.mvp.BaseContract;
 
 /**
  * @author artshell on 2018/5/1

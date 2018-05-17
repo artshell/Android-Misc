@@ -2,7 +2,7 @@ package com.artshell.misc.arch_mvp.live_data_impl;
 
 import android.arch.lifecycle.LiveData;
 
-import com.luseen.arch.BaseContract;
+import com.arch.mvp.BaseContract;
 
 import java.util.List;
 

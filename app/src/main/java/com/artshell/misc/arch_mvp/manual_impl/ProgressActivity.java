@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.artshell.misc.R;
-import com.luseen.arch.BaseActivity;
+import com.arch.mvp.BaseActivity;
 
 /**
  * @author artshell on 2018/5/1

@@ -1,4 +1,4 @@
-package com.luseen.arch;
+package com.arch.mvp;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

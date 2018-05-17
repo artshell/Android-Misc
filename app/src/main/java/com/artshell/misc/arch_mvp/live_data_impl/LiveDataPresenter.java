@@ -3,7 +3,7 @@ package com.artshell.misc.arch_mvp.live_data_impl;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.LiveDataReactiveStreams;
 
-import com.luseen.arch.BasePresenter;
+import com.arch.mvp.BasePresenter;
 
 import java.util.Arrays;
 import java.util.List;

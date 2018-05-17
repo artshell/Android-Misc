@@ -1,7 +1,7 @@
 package com.artshell.misc.arch_mvp.reactive_stream_impl;
 
-import com.luseen.arch.BaseContract;
-import com.luseen.arch.BaseLoadingContract;
+import com.arch.mvp.BaseContract;
+import com.arch.mvp.BaseLoadingContract;
 
 /**
  * @author artshell on 2018/5/1

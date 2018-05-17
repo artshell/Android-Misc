@@ -1,4 +1,4 @@
-package com.luseen.arch;
+package com.arch.mvp;
 
 
 import android.arch.lifecycle.DefaultLifecycleObserver;

@@ -7,7 +7,7 @@ import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.luseen.arch.BasePresenter;
+import com.arch.mvp.BasePresenter;
 
 /**
  * @author artshell on 2018/5/1

@@ -1,4 +1,4 @@
-package com.luseen.arch;
+package com.arch.mvp;
 
 /**
  * Created by Chatikyan on 07.07.2017.

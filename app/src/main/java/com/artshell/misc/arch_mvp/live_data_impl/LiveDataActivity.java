@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.artshell.misc.R;
-import com.luseen.arch.BaseActivity;
+import com.arch.mvp.BaseActivity;
 
 public class LiveDataActivity extends BaseActivity<LiveDataContract.View, LiveDataContract.Presenter>
         implements LiveDataContract.View, View.OnClickListener {
