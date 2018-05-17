@@ -2,6 +2,7 @@ package com.luseen.arch;
 
 
 import android.arch.lifecycle.Lifecycle;
+import android.content.Context;
 import android.os.Bundle;
 
 /**
@@ -15,6 +16,8 @@ public interface BaseContract {
     }
 
     interface Presenter<V extends BaseContract.View> {
+
+        void onAppContext(Context appContext);
 
         Bundle getStateBundle();
 

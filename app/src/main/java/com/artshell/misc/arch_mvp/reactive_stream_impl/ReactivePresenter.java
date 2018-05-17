@@ -14,15 +14,14 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author artshell on 2018/5/1
  */
-public class RxPresenter extends BaseCyclePresenter<RxContract.View>
-        implements RxContract.Presenter {
+public class ReactivePresenter extends BaseCyclePresenter<ReactiveContract.View>
+        implements ReactiveContract.Presenter {
 
     @SuppressLint("CheckResult")
     @Override
     public void requestAfterDelay(long delay) {
         Observable.<String>create(
                 emitter -> {
-                    if (emitter.isDisposed()) return;
                     for (int i = 0; i < 5 && !emitter.isDisposed(); i++) {
                         emitter.onNext("$" + i);
                     }

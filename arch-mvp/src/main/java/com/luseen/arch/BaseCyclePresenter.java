@@ -17,6 +17,8 @@ import io.reactivex.subjects.BehaviorSubject;
 /**
  * Add Reactive lifecycle's features for {@link BasePresenter}
  * @param <V>
+ *
+ * @author artshell on 2018/5/6
  */
 public class BaseCyclePresenter<V extends BaseContract.View> extends BasePresenter<V>
         implements LifecycleProvider<Lifecycle.Event>, Function<Lifecycle.Event, Lifecycle.Event> {
@@ -24,37 +26,37 @@ public class BaseCyclePresenter<V extends BaseContract.View> extends BasePresent
     private final BehaviorSubject<Lifecycle.Event> cycleSubject = BehaviorSubject.create();
 
     @Override
-    final public void onCreate(@NonNull LifecycleOwner owner) {
+    public final void onCreate(@NonNull LifecycleOwner owner) {
         super.onCreate(owner);
         cycleSubject.onNext(Lifecycle.Event.ON_CREATE);
     }
 
     @Override
-    final public void onStart(@NonNull LifecycleOwner owner) {
+    public final void onStart(@NonNull LifecycleOwner owner) {
         super.onStart(owner);
         cycleSubject.onNext(Lifecycle.Event.ON_START);
     }
 
     @Override
-    final public void onResume(@NonNull LifecycleOwner owner) {
+    public final void onResume(@NonNull LifecycleOwner owner) {
         super.onResume(owner);
         cycleSubject.onNext(Lifecycle.Event.ON_RESUME);
     }
 
     @Override
-    final public void onPause(@NonNull LifecycleOwner owner) {
+    public final void onPause(@NonNull LifecycleOwner owner) {
         cycleSubject.onNext(Lifecycle.Event.ON_PAUSE);
         super.onPause(owner);
     }
 
     @Override
-    final public void onStop(@NonNull LifecycleOwner owner) {
+    public final void onStop(@NonNull LifecycleOwner owner) {
         cycleSubject.onNext(Lifecycle.Event.ON_STOP);
         super.onStop(owner);
     }
 
     @Override
-    final public void onDestroy(@NonNull LifecycleOwner owner) {
+    public final void onDestroy(@NonNull LifecycleOwner owner) {
         cycleSubject.onNext(Lifecycle.Event.ON_DESTROY);
         super.onDestroy(owner);
     }
@@ -62,26 +64,26 @@ public class BaseCyclePresenter<V extends BaseContract.View> extends BasePresent
     @NonNull
     @CheckResult
     @Override
-    final public Observable<Lifecycle.Event> lifecycle() {
+    public final Observable<Lifecycle.Event> lifecycle() {
         return cycleSubject.hide();
     }
 
     @NonNull
     @CheckResult
     @Override
-    final public <T> LifecycleTransformer<T> bindUntilEvent(@NonNull Lifecycle.Event event) {
+    public final <T> LifecycleTransformer<T> bindUntilEvent(@NonNull Lifecycle.Event event) {
         return RxLifecycle.bindUntilEvent(cycleSubject, event);
     }
 
     @NonNull
     @CheckResult
     @Override
-    final public <T> LifecycleTransformer<T> bindToLifecycle() {
+    public final <T> LifecycleTransformer<T> bindToLifecycle() {
         return RxLifecycle.bind(cycleSubject, this);
     }
 
     @Override
-    final public Lifecycle.Event apply(Lifecycle.Event lastEvent) throws Exception {
+    public final Lifecycle.Event apply(Lifecycle.Event lastEvent) throws Exception {
         switch (lastEvent) {
             case ON_CREATE:
                 return Lifecycle.Event.ON_DESTROY;

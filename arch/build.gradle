@@ -67,9 +67,9 @@ dependencies {
     implementation deps.support.multidex
 
     implementation deps.arch.lifecycle.extensions
-    annotationProcessor deps.arch.lifecycle.runtime
-    annotationProcessor deps.arch.lifecycle.compiler
-//    implementation deps.arch.lifecycle.common_java8
+    implementation deps.arch.lifecycle.runtime
+//    annotationProcessor deps.arch.lifecycle.compiler
+    implementation deps.arch.lifecycle.common_java8
 
 //    testImplementation deps.arch.lifecycle.core_testing
     implementation deps.arch.lifecycle.reactivestreams
@@ -136,6 +136,6 @@ dependencies {
     implementation deps.misc.gson
     implementation deps.misc.stream
     implementation deps.misc.prefser
-//    implementation deps.misc.sqlbrite
+    implementation deps.misc.sqlbrite
 
 }

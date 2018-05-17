@@ -12,11 +12,11 @@ import com.luseen.arch.Viewable;
 /**
  * @author artshell on 2018/5/1
  */
-@Viewable(presenter = RxPresenter.class, layout = R.layout.activity_reactive_stream)
-public class RxActivity extends BaseAnnotatedActivity<RxContract.View, RxContract.Presenter>
-        implements RxContract.View, View.OnClickListener {
+@Viewable(presenter = ReactivePresenter.class, layout = R.layout.activity_reactive_stream)
+public class ReactiveActivity extends BaseAnnotatedActivity<ReactiveContract.View, ReactiveContract.Presenter>
+        implements ReactiveContract.View, View.OnClickListener {
 
-    private static final String TAG = "RxActivity";
+    private static final String TAG = "ReactiveActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedState) {

@@ -37,9 +37,9 @@ public abstract class BaseActivity<V extends BaseContract.View, P extends BaseCo
     @CallSuper
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         presenter.detachLifecycle(getLifecycle());
         presenter.detachView();
+        super.onDestroy();
     }
 
     protected abstract P initPresenter();

@@ -6,7 +6,7 @@ import com.luseen.arch.BaseLoadingContract;
 /**
  * @author artshell on 2018/5/1
  */
-public interface RxContract {
+public interface ReactiveContract {
     interface View extends BaseLoadingContract.View {
         void onNext(String value);
     }

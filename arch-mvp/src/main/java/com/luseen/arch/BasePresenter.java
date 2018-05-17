@@ -4,6 +4,7 @@ package com.luseen.arch;
 import android.arch.lifecycle.DefaultLifecycleObserver;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
@@ -22,46 +23,54 @@ import android.support.annotation.NonNull;
 public class BasePresenter<V extends BaseContract.View> implements BaseContract.Presenter<V>,
         DefaultLifecycleObserver {
 
+    protected Context context;
     private Bundle stateBundle;
     private V view;
 
     @Override
-    final public void attachLifecycle(Lifecycle lifecycle) {
+    public final void attachLifecycle(Lifecycle lifecycle) {
         lifecycle.addObserver(this);
     }
 
     @Override
-    final public void detachLifecycle(Lifecycle lifecycle) {
+    public final void detachLifecycle(Lifecycle lifecycle) {
         lifecycle.removeObserver(this);
     }
 
     @Override
-    final public void attachView(V view) {
+    public final void attachView(V view) {
         this.view = view;
     }
 
     @Override
-    final public void detachView() {
+    public final void detachView() {
         view = null;
     }
 
     @Override
-    final public V getView() {
+    public final V getView() {
         return view;
     }
 
     @Override
-    final public boolean isViewAttached() {
+    public final boolean isViewAttached() {
         return view != null;
     }
 
     @Override
-    final public Bundle getStateBundle() {
+    public final Bundle getStateBundle() {
         return stateBundle == null
                 ? stateBundle = new Bundle()
                 : stateBundle;
     }
 
+    @CallSuper
+    @Override
+    public void onAppContext(Context appContext) {
+        context = appContext;
+    }
+
+    @CallSuper
     @Override
     public void onPresenterCreated() {
         //NO-OP

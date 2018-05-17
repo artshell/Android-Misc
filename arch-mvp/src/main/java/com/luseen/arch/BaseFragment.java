@@ -39,9 +39,9 @@ public abstract class BaseFragment<V extends BaseContract.View, P extends BaseCo
     @CallSuper
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
         presenter.detachLifecycle(getLifecycle());
         presenter.detachView();
+        super.onDestroyView();
     }
 
     protected abstract P initPresenter();
