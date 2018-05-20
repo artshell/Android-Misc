@@ -101,8 +101,8 @@ public class FurtherFragmentActivity<P extends Presenter> extends AppCompatActiv
 
     @Override
     protected void onPause() {
-        super.onPause();
         takeSubject.onNext(ActivityEvent.PAUSE);
+        super.onPause();
     }
 
     @Override
@@ -113,10 +113,10 @@ public class FurtherFragmentActivity<P extends Presenter> extends AppCompatActiv
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         takeSubject.onNext(ActivityEvent.DESTROY);
         presenterDelegate.onDropView();
         presenterDelegate.onDestroy(!isChangingConfigurations());
+        super.onDestroy();
     }
 
     public final <T> LifecycleTransformer<T> takeUntilEvent(@NonNull ActivityEvent event) {

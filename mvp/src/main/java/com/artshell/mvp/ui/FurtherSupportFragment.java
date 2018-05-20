@@ -120,8 +120,8 @@ public class FurtherSupportFragment<P extends Presenter> extends Fragment implem
 
     @Override
     public void onPause() {
-        super.onPause();
         takeSubject.onNext(FragmentEvent.PAUSE);
+        super.onPause();
     }
 
     @Override
@@ -133,15 +133,15 @@ public class FurtherSupportFragment<P extends Presenter> extends Fragment implem
     @Override
     public void onDestroyView() {
         takeSubject.onNext(FragmentEvent.DESTROY_VIEW);
-        super.onDestroyView();
         presenterDelegate.onDropView();
+        super.onDestroyView();
     }
 
     @Override
     public void onDestroy() {
         takeSubject.onNext(FragmentEvent.DESTROY);
-        super.onDestroy();
         presenterDelegate.onDestroy(!getActivity().isChangingConfigurations());
+        super.onDestroy();
     }
 
     @Override

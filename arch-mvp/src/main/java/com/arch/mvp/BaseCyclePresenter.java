@@ -13,6 +13,7 @@ import com.trello.rxlifecycle2.RxLifecycle;
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.subjects.Subject;
 
 /**
  * Add Reactive lifecycle's features for {@link BasePresenter}
@@ -23,7 +24,7 @@ import io.reactivex.subjects.BehaviorSubject;
 public class BaseCyclePresenter<V extends BaseContract.View> extends BasePresenter<V>
         implements LifecycleProvider<Lifecycle.Event>, Function<Lifecycle.Event, Lifecycle.Event> {
 
-    private final BehaviorSubject<Lifecycle.Event> cycleSubject = BehaviorSubject.create();
+    private final Subject<Lifecycle.Event> cycleSubject = BehaviorSubject.<Lifecycle.Event>create().toSerialized();
 
     @Override
     public final void onCreate(@NonNull LifecycleOwner owner) {

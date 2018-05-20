@@ -1,8 +1,7 @@
 package com.artshell.misc.arch_mvp.dialog_fragment_impl;
 
 import android.app.Dialog;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,8 +18,6 @@ import java.util.List;
 @Viewable(presenter = DialogPresenter.class, layout = R.layout.fragment_loading_dailog)
 public class DialogLoadingFragment extends BaseAnnotatedDialogFragment<DialogContract.View, DialogContract.Presenter>
         implements DialogContract.View {
-
-    private MutableLiveData<List<String>> items = new MutableLiveData<>();
 
     @NonNull
     @Override
@@ -46,11 +43,10 @@ public class DialogLoadingFragment extends BaseAnnotatedDialogFragment<DialogCon
 
     @Override
     public void deliveryResult(List<String> result) {
+        // 接受结果
         if (result == null || result.isEmpty()) return;
-        items.setValue(result);
-    }
-
-    public LiveData<List<String>> fellowship() {
-        return items;
+        ViewModelProviders.of(getActivity())
+                .get(FellowshipViewModel.class)
+                .setElement(result);
     }
 }

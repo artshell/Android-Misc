@@ -27,6 +27,11 @@ public class ProgressActivity extends BaseActivity<ProgressContract.View, Progre
         mProgressDialog = createDialog(this);
     }
 
+    @Override
+    protected ProgressContract.Presenter initPresenter() {
+        return new ProgressPresenter();
+    }
+
     private ProgressDialog createDialog(Context context) {
         ProgressDialog dialog = new ProgressDialog(context);
         dialog.setMessage("loading");
@@ -34,11 +39,6 @@ public class ProgressActivity extends BaseActivity<ProgressContract.View, Progre
         dialog.setCancelable(false);
         dialog.setProgress(0);
         return dialog;
-    }
-
-    @Override
-    protected ProgressContract.Presenter initPresenter() {
-        return new ProgressPresenter();
     }
 
     @Override

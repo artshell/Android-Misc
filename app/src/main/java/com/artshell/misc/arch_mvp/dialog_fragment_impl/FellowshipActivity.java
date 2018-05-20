@@ -1,5 +1,6 @@
 package com.artshell.misc.arch_mvp.dialog_fragment_impl;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -20,14 +21,15 @@ public class FellowshipActivity extends BaseAnnotatedActivity<FellowshipContract
         super.onCreate(savedState);
 
         findViewById(R.id.button).setOnClickListener(this);
+
+        // 订阅结果
+        FellowshipViewModel model = ViewModelProviders.of(this).get(FellowshipViewModel.class);
+        model.getItems().observe(this, items -> Log.i(TAG, "obtain result : " + items));
     }
 
     @Override
     public void onClick(View v) {
         DialogLoadingFragment dialog = new DialogLoadingFragment();
         dialog.show(getSupportFragmentManager(), TAG);
-
-        // 订阅加载结果
-        dialog.fellowship().observe(this, items -> Log.i(TAG, "obtain result : " + items));
     }
 }

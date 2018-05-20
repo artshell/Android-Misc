@@ -69,11 +69,6 @@ public class ProgressPresenter extends BasePresenter<ProgressContract.View> impl
     }
 
     @Override
-    public void onDestroy(@NonNull LifecycleOwner owner) {
-        super.onDestroy(owner);
-    }
-
-    @Override
     public void onPresenterDestroy() {
         super.onPresenterDestroy();
         Log.d(TAG, "Presenter destroyed");

@@ -79,9 +79,8 @@ public class BasePresenter<V extends BaseContract.View> implements BaseContract.
     @CallSuper
     @Override
     public void onPresenterDestroy() {
-        if (stateBundle != null && stateBundle.size() > 0) {
-            stateBundle.clear();
-        }
+        if (stateBundle == null || stateBundle.isEmpty()) return;
+        stateBundle.clear();
     }
 
     @CallSuper

@@ -35,5 +35,13 @@ public abstract class BaseDialogFragment<V extends BaseContract.View, P extends 
         }
     }
 
+    @CallSuper
+    @Override
+    public void onDestroyView() {
+        presenter.detachLifecycle(getLifecycle());
+        presenter.detachView();
+        super.onDestroyView();
+    }
+
     protected abstract P initPresenter();
 }
