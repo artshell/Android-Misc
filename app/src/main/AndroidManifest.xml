@@ -16,6 +16,76 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!-- =============== arch_mvp begin =============== -->
+        <activity
+            android:name=".arch_mvp.manual_impl.ProgressActivity"
+            android:description="@string/arch_mvp"
+            android:label="ProgressActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".arch_mvp.annotation_impl.MasterActivity"
+            android:description="@string/arch_mvp"
+            android:label="MasterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".arch_mvp.reactive_stream_impl.ReactiveActivity"
+            android:description="@string/arch_mvp"
+            android:label="ReactiveActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".arch_mvp.live_data_impl.LiveDataActivity"
+            android:description="@string/arch_mvp"
+            android:label="LiveDataActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".arch_mvp.dialog_fragment_impl.FellowshipActivity"
+            android:description="@string/arch_mvp"
+            android:label="FellowshipActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <!-- =============== end =============== -->
+
+
+        <!-- =============== service begin =============== -->
+        <activity
+            android:name=".service.ReactiveServiceActivity"
+            android:description="@string/service"
+            android:label="ReactiveServiceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <service android:name=".service.RxLiveDataService"
+            android:exported="false">
+        </service>
+
+        <!-- =============== end =============== -->
     </application>
 
 </manifest>
