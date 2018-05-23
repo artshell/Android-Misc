@@ -22,7 +22,7 @@ import io.reactivex.subjects.Subject;
 /**
  * @author artshell on 2018/5/21
  */
-public class ReactiveService extends LifecycleService implements
+public class ReactiveLifeService extends LifecycleService implements
         DefaultLifecycleObserver, LifecycleProvider<Lifecycle.Event>,
         Function<Lifecycle.Event, Lifecycle.Event> {
 

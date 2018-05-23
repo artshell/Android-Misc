@@ -1,7 +1,6 @@
 package com.artshell.misc.service;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Intent;
@@ -27,8 +26,8 @@ import io.reactivex.subjects.Subject;
 /**
  * @author artshell on 2018/5/21
  */
-public class RxLiveDataService extends ReactiveService {
-    private static final String TAG = "RxLiveDataService";
+public class ReactiveLiveDataService extends ReactiveLifeService {
+    private static final String TAG = "ReactiveLiveDataService";
 
     public static final String PARAMETER_KEY = "parameter_key";
 
@@ -40,25 +39,15 @@ public class RxLiveDataService extends ReactiveService {
     private SourceBinder                  mBinder     = new SourceBinder();
 
     public class SourceBinder extends Binder {
-
-        public RxLiveDataService getService() {
-            return RxLiveDataService.this;
-        }
-
-        public LiveData<List<String>> getLiveSource(Bundle args) {
-            return RxLiveDataService.this.LiveSource(args);
-        }
-
-        public Observable<String[]> getPublisherSource(Bundle args) {
-            return RxLiveDataService.this.getPublisherSource(args)
-                    .compose(bindUntilEvent(Lifecycle.Event.ON_STOP));
+        public ReactiveLiveDataService getService() {
+            return ReactiveLiveDataService.this;
         }
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        HandlerThread thread = new HandlerThread("RxLiveDataService");
+        HandlerThread thread = new HandlerThread("ReactiveLiveDataService");
         thread.start();
 
         mLooper = thread.getLooper();
@@ -85,7 +74,7 @@ public class RxLiveDataService extends ReactiveService {
      * @param args
      * @return
      */
-    private LiveData<List<String>> LiveSource(Bundle args) {
+    LiveData<List<String>> getLiveSource(Bundle args) {
         String key = args.getString(PARAMETER_KEY);
         mHandler.postDelayed(() -> {
             List<String> asList = Arrays.asList("liveData-" + key, "lifecycle-" + key, "Room-" + key, "Paging-" + key);
@@ -101,7 +90,7 @@ public class RxLiveDataService extends ReactiveService {
      * @return
      */
     @SuppressLint("CheckResult")
-    private Observable<String[]> getPublisherSource(Bundle args) {
+    Observable<String[]> getPublisherSource(Bundle args) {
         String key = args.getString(PARAMETER_KEY);
         Observable.fromArray("A", "B", "C", "D", "E", "F")
                 .collectInto(new ArrayList<String>(), (list, item) -> list.add(item + "-" + key))

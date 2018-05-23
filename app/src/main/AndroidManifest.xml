@@ -81,7 +81,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.RxLiveDataService"
+        <service android:name=".service.ReactiveLiveDataService"
             android:exported="false">
         </service>
 
