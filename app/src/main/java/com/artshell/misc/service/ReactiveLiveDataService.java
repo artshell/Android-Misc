@@ -1,6 +1,7 @@
 package com.artshell.misc.service;
 
 import android.annotation.SuppressLint;
+import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Intent;
@@ -36,6 +37,7 @@ public class ReactiveLiveDataService extends ReactiveLifeService {
 
     private MutableLiveData<List<String>> mLiveSource = new MutableLiveData<>();
     private Subject<String[]>             mPublisher  = PublishSubject.<String[]>create().toSerialized();
+    private Observable<String[]>          mRealSource = mPublisher.compose(bindUntilEvent(Lifecycle.Event.ON_PAUSE));
     private SourceBinder                  mBinder     = new SourceBinder();
 
     public class SourceBinder extends Binder {
@@ -97,8 +99,7 @@ public class ReactiveLiveDataService extends ReactiveLifeService {
                 .delay(10000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(arr -> mPublisher.onNext(arr.toArray(new String[arr.size()])), throwable -> {
-                });
-        return mPublisher;
+                .subscribe(arr -> mPublisher.onNext(arr.toArray(new String[arr.size()])));
+        return mRealSource;
     }
 }

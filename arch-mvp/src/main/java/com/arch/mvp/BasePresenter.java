@@ -20,8 +20,8 @@ import android.support.annotation.NonNull;
  *
  * Created by Chatikyan on 20.05.2017.
  */
-public class BasePresenter<V extends BaseContract.View> implements BaseContract.Presenter<V>,
-        DefaultLifecycleObserver {
+public class BasePresenter<V extends BaseContract.View>
+        implements BaseContract.Presenter<V>, DefaultLifecycleObserver {
 
     protected Context context;
     private Bundle stateBundle;

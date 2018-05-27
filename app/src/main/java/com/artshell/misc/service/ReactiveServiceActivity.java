@@ -29,14 +29,9 @@ public class ReactiveServiceActivity extends AppCompatActivity implements View.O
 
         findViewById(R.id.btn_obtain).setOnClickListener(this);
         findViewById(R.id.btn_unbind).setOnClickListener(v -> {
-            if (model != null) {
-                // 解绑, 验证"延时10秒的任务"是否能收到结果
-                model.onCleared();
-                model = null;
-            }
+            // 解绑, 验证"延时10秒的任务"是否能收到结果
+            unbind();
         });
-
-
     }
 
     @SuppressLint("CheckResult")
@@ -58,8 +53,14 @@ public class ReactiveServiceActivity extends AppCompatActivity implements View.O
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        unbind();
+    }
 
+    private void unbind() {
         // 置空ServiceConnection防止泄露
-        model = null;
+        if (model != null) {
+            model.onCleared();
+            model = null;
+        }
     }
 }

@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/arch-mvvm" />
             <option value="$PROJECT_DIR$/conductor" />
             <option value="$PROJECT_DIR$/databinding" />
+            <option value="$PROJECT_DIR$/effects" />
             <option value="$PROJECT_DIR$/mvp" />
             <option value="$PROJECT_DIR$/unicontainer" />
           </set>

@@ -1,6 +1,8 @@
 package com.artshell.arch.storage;
 
 import android.arch.lifecycle.LiveData;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 
 import org.reactivestreams.Publisher;
@@ -58,6 +60,8 @@ public class MainLiveDataStreams {
             private static final AtomicReferenceFieldUpdater<MainSubscriber, Subscription> UPDATER =
                     AtomicReferenceFieldUpdater.newUpdater(MainSubscriber.class, Subscription.class, "sub");
 
+            private Handler handler = new Handler(Looper.getMainLooper());
+
             MainSubscriber(MainPublisherLiveData<T> mainData) {
                 this.mainData = mainData;
             }
@@ -98,7 +102,20 @@ public class MainLiveDataStreams {
             }
 
             void post(final Resource<T> item) {
-                mainData.postValue(item);
+                if (isMainThread()) {
+                    mainData.setValue(item);
+                } else {
+                    handler.postAtFrontOfQueue(new Runnable() {
+                        @Override
+                        public void run() {
+                            mainData.setValue(item);
+                        }
+                    });
+                }
+            }
+
+            boolean isMainThread() {
+                return Looper.getMainLooper().getThread() == Thread.currentThread();
             }
         }
     }
