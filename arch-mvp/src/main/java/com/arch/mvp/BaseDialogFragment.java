@@ -11,6 +11,7 @@ import android.view.View;
 /**
  * @author artshell on 2018/5/17
  */
+
 public abstract class BaseDialogFragment<V extends BaseContract.View, P extends BaseContract.Presenter<V>>
         extends AppCompatDialogFragment implements BaseContract.View {
 
@@ -19,8 +20,8 @@ public abstract class BaseDialogFragment<V extends BaseContract.View, P extends 
     @SuppressWarnings("unchecked")
     @CallSuper
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedState) {
-        super.onViewCreated(view, savedState);
+    public void onCreate(@Nullable Bundle savedState) {
+        super.onCreate(savedState);
         BaseViewModel<V, P> viewModel = ViewModelProviders.of(this).get(BaseViewModel.class);
         boolean isPresenterCreated = false;
         if (viewModel.getPresenter() == null) {
@@ -29,18 +30,32 @@ public abstract class BaseDialogFragment<V extends BaseContract.View, P extends 
         }
         presenter = viewModel.getPresenter();
         presenter.attachLifecycle(getLifecycle());
-        presenter.attachView((V) this);
         if (isPresenterCreated) {
             presenter.onPresenterCreated();
         }
     }
 
+    @SuppressWarnings("unchecked")
+    @CallSuper
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedState) {
+        super.onViewCreated(view, savedState);
+        presenter.attachView((V) this);
+    }
+
     @CallSuper
     @Override
     public void onDestroyView() {
-        presenter.detachLifecycle(getLifecycle());
-        presenter.detachView();
         super.onDestroyView();
+        presenter.detachView();
+    }
+
+    @CallSuper
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.detachLifecycle(getLifecycle());
+        presenter = null;
     }
 
     protected abstract P initPresenter();

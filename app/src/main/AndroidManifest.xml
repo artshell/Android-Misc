@@ -67,6 +67,17 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".arch_mvp.presenter_lifecycle_test.LifecycleActivity"
+            android:description="@string/arch_mvp"
+            android:label="LifecycleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
         <!-- =============== end =============== -->
 
 
@@ -77,7 +88,7 @@
             android:label="ReactiveServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 

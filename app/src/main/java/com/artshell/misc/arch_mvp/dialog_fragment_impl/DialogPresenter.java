@@ -25,6 +25,7 @@ public class DialogPresenter extends BaseCyclePresenter<DialogContract.View>
                 .observeOn(AndroidSchedulers.mainThread())
                 .onTerminateDetach()
                 .compose(bindUntilEvent(Lifecycle.Event.ON_PAUSE))
+                .filter(items -> isViewAttached())
                 .subscribe(items -> getView().deliveryResult(items), thr -> {});
     }
 }

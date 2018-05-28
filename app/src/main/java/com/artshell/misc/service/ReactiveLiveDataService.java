@@ -27,7 +27,7 @@ import io.reactivex.subjects.Subject;
 /**
  * @author artshell on 2018/5/21
  */
-public class ReactiveLiveDataService extends ReactiveLifeService {
+public class ReactiveLiveDataService extends ReactorService {
     private static final String TAG = "ReactiveLiveDataService";
 
     public static final String PARAMETER_KEY = "parameter_key";

@@ -23,7 +23,7 @@ import android.support.annotation.NonNull;
 public class BasePresenter<V extends BaseContract.View>
         implements BaseContract.Presenter<V>, DefaultLifecycleObserver {
 
-    protected Context context;
+    private Context context;
     private Bundle stateBundle;
     private V view;
 
@@ -37,13 +37,15 @@ public class BasePresenter<V extends BaseContract.View>
         lifecycle.removeObserver(this);
     }
 
+    @CallSuper
     @Override
-    public final void attachView(V view) {
+    public void attachView(V view) {
         this.view = view;
     }
 
+    @CallSuper
     @Override
-    public final void detachView() {
+    public void detachView() {
         view = null;
     }
 
@@ -68,6 +70,11 @@ public class BasePresenter<V extends BaseContract.View>
     @Override
     public void onAppContext(Context appContext) {
         context = appContext;
+    }
+
+    @Override
+    public final Context getAppContext() {
+        return context;
     }
 
     @CallSuper

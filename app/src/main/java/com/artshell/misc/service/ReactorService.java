@@ -22,7 +22,7 @@ import io.reactivex.subjects.Subject;
 /**
  * @author artshell on 2018/5/21
  */
-public class ReactiveLifeService extends LifecycleService implements
+public class ReactorService extends LifecycleService implements
         DefaultLifecycleObserver, LifecycleProvider<Lifecycle.Event>,
         Function<Lifecycle.Event, Lifecycle.Event> {
 
@@ -42,26 +42,31 @@ public class ReactiveLifeService extends LifecycleService implements
         getLifecycle().removeObserver(this);
     }
 
+    @CallSuper
     @Override
     public void onCreate(@NonNull LifecycleOwner owner) {
         serviceCycle.onNext(Lifecycle.Event.ON_CREATE);
     }
 
+    @CallSuper
     @Override
     public void onStart(@NonNull LifecycleOwner owner) {
         serviceCycle.onNext(Lifecycle.Event.ON_START);
     }
 
+    @CallSuper
     @Override
     public void onStop(@NonNull LifecycleOwner owner) {
         serviceCycle.onNext(Lifecycle.Event.ON_STOP);
     }
 
+    @CallSuper
     @Override
     public void onDestroy(@NonNull LifecycleOwner owner) {
         serviceCycle.onNext(Lifecycle.Event.ON_DESTROY);
     }
 
+    @CallSuper
     @Nonnull
     @Override
     public Observable<Lifecycle.Event> lifecycle() {

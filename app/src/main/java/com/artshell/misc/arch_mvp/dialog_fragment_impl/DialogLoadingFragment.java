@@ -43,9 +43,9 @@ public class DialogLoadingFragment extends BaseAnnotatedDialogFragment<DialogCon
 
     @Override
     public void deliveryResult(List<String> result) {
-        // 接受结果
+        // 接收结果
         if (result == null || result.isEmpty()) return;
-        ViewModelProviders.of(getActivity())
+        ViewModelProviders.of(requireActivity())
                 .get(FellowshipViewModel.class)
                 .setElement(result);
     }

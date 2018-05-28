@@ -20,12 +20,12 @@ public final class BaseViewModel<V extends BaseContract.View, P extends BaseCont
     void setPresenter(P presenter) {
         if (this.presenter == null) {
             this.presenter = presenter;
-            presenter.onAppContext(getApplication());
+            this.presenter.onAppContext(getApplication());
         }
     }
 
     P getPresenter() {
-        return this.presenter;
+        return presenter;
     }
 
     @Override

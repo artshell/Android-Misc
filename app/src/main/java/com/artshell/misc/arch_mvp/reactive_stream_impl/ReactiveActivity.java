@@ -45,7 +45,7 @@ public class ReactiveActivity extends BaseAnnotatedActivity<ReactiveContract.Vie
     }
 
     @Override
-    public void showError(String message) {
-        Log.e(TAG, message);
+    public void handleError(Throwable throwable) {
+        Log.e(TAG, throwable.getMessage());
     }
 }

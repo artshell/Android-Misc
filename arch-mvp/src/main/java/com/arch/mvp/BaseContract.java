@@ -19,6 +19,8 @@ public interface BaseContract {
 
         void onAppContext(Context appContext);
 
+        Context getAppContext();
+
         Bundle getStateBundle();
 
         void attachLifecycle(Lifecycle lifecycle);

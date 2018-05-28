@@ -28,7 +28,7 @@ public class MasterActivity extends BaseAnnotatedActivity<MasterContract.View, M
     }
 
     @Override
-    public void showError(String errorMessage) {
+    public void handleError(Throwable throwable) {
 
     }
 }

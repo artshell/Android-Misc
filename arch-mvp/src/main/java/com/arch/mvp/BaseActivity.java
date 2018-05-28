@@ -27,8 +27,8 @@ public abstract class BaseActivity<V extends BaseContract.View, P extends BaseCo
             isPresenterCreated = true;
         }
         presenter = viewModel.getPresenter();
-        presenter.attachLifecycle(getLifecycle());
         presenter.attachView((V) this);
+        presenter.attachLifecycle(getLifecycle());
         if (isPresenterCreated) {
             presenter.onPresenterCreated();
         }
@@ -37,9 +37,10 @@ public abstract class BaseActivity<V extends BaseContract.View, P extends BaseCo
     @CallSuper
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         presenter.detachLifecycle(getLifecycle());
         presenter.detachView();
-        super.onDestroy();
+        presenter = null;
     }
 
     protected abstract P initPresenter();

@@ -34,8 +34,9 @@ public class ReactivePresenter extends BaseCyclePresenter<ReactiveContract.View>
                 .observeOn(AndroidSchedulers.mainThread())
                 .onTerminateDetach()
                 .compose(bindUntilEvent(Lifecycle.Event.ON_PAUSE))
+                .filter(result -> isViewAttached())
                 .doOnSubscribe(dis -> getView().showLoading())
                 .doFinally(() -> getView().hideLoading())
-                .subscribe(value -> getView().onNext(value), thr -> getView().showError(thr.getMessage()));
+                .subscribe(value -> getView().onNext(value), thr -> getView().handleError(thr));
     }
 }

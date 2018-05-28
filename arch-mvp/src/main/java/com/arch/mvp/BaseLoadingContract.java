@@ -1,5 +1,7 @@
 package com.arch.mvp;
 
+import android.util.Log;
+
 /**
  * Created by Chatikyan on 07.07.2017.
  */
@@ -12,11 +14,20 @@ public interface BaseLoadingContract {
 
         void hideLoading();
 
-        void showError(String message);
+        default void showTips(String message) {
+            if (BuildConfig.DEBUG) {
+                Log.i("BaseLoadingContract", ".View#showTips(): " + message);
+            }
+        }
+
+        default void handleError(Throwable throwable) {
+            if (BuildConfig.DEBUG) {
+                throwable.printStackTrace();
+            }
+        }
     }
 
     interface Presenter extends BaseContract.Presenter<View> {
 
     }
-
 }

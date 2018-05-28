@@ -22,7 +22,7 @@ def arch_lifecycle = [
 ]
 
 def rx = [
-        java     : 'io.reactivex.rxjava2:rxjava:2.1.13',
+        java     : 'io.reactivex.rxjava2:rxjava:2.1.14',
         lifecycle: 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
 ]
 
