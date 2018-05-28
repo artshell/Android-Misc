@@ -4,7 +4,7 @@ package com.arch.mvp;
  * Created by Chatikyan on 01.07.2017.
  */
 
-final class ArchMvpException extends RuntimeException {
+class ArchMvpException extends RuntimeException {
 
     ArchMvpException(String message) {
         super(message);

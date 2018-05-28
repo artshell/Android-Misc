@@ -37,15 +37,13 @@ public class BasePresenter<V extends BaseContract.View>
         lifecycle.removeObserver(this);
     }
 
-    @CallSuper
     @Override
-    public void attachView(V view) {
+    public final void attachView(V view) {
         this.view = view;
     }
 
-    @CallSuper
     @Override
-    public void detachView() {
+    public final void detachView() {
         view = null;
     }
 
@@ -68,7 +66,7 @@ public class BasePresenter<V extends BaseContract.View>
 
     @CallSuper
     @Override
-    public void onAppContext(Context appContext) {
+    public void onAppContext(@NonNull Context appContext) {
         context = appContext;
     }
 
