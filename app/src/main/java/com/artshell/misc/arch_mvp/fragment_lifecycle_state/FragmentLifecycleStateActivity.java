@@ -14,9 +14,9 @@ public class FragmentLifecycleStateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_lifecycle_state);
 
-        ViewPager container = findViewById(R.id.layout_container);
+        ViewPager viewPager = findViewById(R.id.pager_container);
         TabLayout layout = findViewById(R.id.tab_container);
-        container.setAdapter(new StatePager(getSupportFragmentManager()));
-        layout.setupWithViewPager(container);
+        viewPager.setAdapter(new StatePager(getSupportFragmentManager()));
+        layout.setupWithViewPager(viewPager);
     }
 }

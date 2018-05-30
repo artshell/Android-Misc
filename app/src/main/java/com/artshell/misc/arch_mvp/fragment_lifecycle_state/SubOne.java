@@ -26,6 +26,9 @@ public class SubOne extends BaseAnnotatedV4Fragment<StateContract.View, StateCon
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         Log.i(TAG, "setUserVisibleHint: => " + isVisibleToUser);
+        Log.i(TAG, "setUserVisibleHint: isVisible => " + isVisible());
+        Log.i(TAG, "setUserVisibleHint: isResumed => " + isResumed());
+        Log.i(TAG, "setUserVisibleHint: isHidden => " + isHidden());
     }
 
     @Override
@@ -56,6 +59,9 @@ public class SubOne extends BaseAnnotatedV4Fragment<StateContract.View, StateCon
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedState) {
         Log.i(TAG, "onViewCreated: ");
+        Log.i(TAG, "setUserVisibleHint: isVisible => " + isVisible());
+        Log.i(TAG, "setUserVisibleHint: isResumed => " + isResumed());
+        Log.i(TAG, "setUserVisibleHint: isHidden => " + isHidden());
         super.onViewCreated(view, savedState);
     }
 

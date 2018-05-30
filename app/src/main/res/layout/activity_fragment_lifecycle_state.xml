@@ -8,7 +8,7 @@
     tools:context=".arch_mvp.fragment_lifecycle_state.FragmentLifecycleStateActivity">
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/layout_container"
+        android:id="@+id/pager_container"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>
 
