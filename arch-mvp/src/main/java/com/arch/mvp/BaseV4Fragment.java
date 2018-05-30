@@ -16,6 +16,7 @@ public abstract class BaseV4Fragment<V extends BaseContract.View, P extends Base
         extends Fragment implements BaseContract.View {
 
     protected P presenter;
+    private boolean isConsumed;
 
     @SuppressWarnings("unchecked")
     @CallSuper
@@ -35,12 +36,34 @@ public abstract class BaseV4Fragment<V extends BaseContract.View, P extends Base
         }
     }
 
+    @CallSuper
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedState) {
+        super.onActivityCreated(savedState);
+    }
+
     @SuppressWarnings("unchecked")
     @CallSuper
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedState) {
         super.onViewCreated(view, savedState);
+        findBackState(savedState);
         presenter.attachView((V) this);
+        if (isSupportLazyLoad() && !isConsumed && getUserVisibleHint() && !isHidden()) {
+            onLazyLoad();
+            isConsumed = true;
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("is_consumed", false);
+    }
+
+    private void findBackState(Bundle outState) {
+        if (outState == null || outState.isEmpty()) return;
+        isConsumed = outState.getBoolean("is_consumed", false);
     }
 
     @CallSuper
@@ -59,4 +82,34 @@ public abstract class BaseV4Fragment<V extends BaseContract.View, P extends Base
     }
 
     protected abstract P initPresenter();
+
+    // 默认不支持懒加载, 子类可继承修改此返回值
+    protected boolean isSupportLazyLoad() {
+        return false;
+    }
+
+    // 是否可以执行懒加载
+    private void requireLoad() {
+        if (getUserVisibleHint() && isSupportLazyLoad() && !isConsumed && isResumed() && !isHidden()) {
+            onLazyLoad();
+            isConsumed = true;
+        }
+    }
+
+    // 执行懒加载
+    protected void onLazyLoad() {
+
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        requireLoad();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        requireLoad();
+    }
 }

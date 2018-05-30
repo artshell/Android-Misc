@@ -49,6 +49,12 @@ public class SubOne extends BaseAnnotatedV4Fragment<StateContract.View, StateCon
         Log.i(TAG, "onCreate: ");
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedState) {
+        super.onActivityCreated(savedState);
+        setRetainInstance(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedState) {
