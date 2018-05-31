@@ -16,7 +16,6 @@ public abstract class BaseV4Fragment<V extends BaseContract.View, P extends Base
         extends Fragment implements BaseContract.View {
 
     protected P presenter;
-    private boolean isConsumed;
 
     @SuppressWarnings("unchecked")
     @CallSuper
@@ -42,28 +41,21 @@ public abstract class BaseV4Fragment<V extends BaseContract.View, P extends Base
         super.onActivityCreated(savedState);
     }
 
+    @CallSuper
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedState) {
+        super.onViewStateRestored(savedState);
+    }
+
     @SuppressWarnings("unchecked")
     @CallSuper
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedState) {
         super.onViewCreated(view, savedState);
-        findBackState(savedState);
         presenter.attachView((V) this);
-        if (isSupportLazyLoad() && !isConsumed && getUserVisibleHint() && !isHidden()) {
+        if (isSupportLazyLoad() && getUserVisibleHint() && !isHidden()) {
             onLazyLoad();
-            isConsumed = true;
         }
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putBoolean("is_consumed", false);
-    }
-
-    private void findBackState(Bundle outState) {
-        if (outState == null || outState.isEmpty()) return;
-        isConsumed = outState.getBoolean("is_consumed", false);
     }
 
     @CallSuper
@@ -90,9 +82,8 @@ public abstract class BaseV4Fragment<V extends BaseContract.View, P extends Base
 
     // 是否可以执行懒加载
     private void requireLoad() {
-        if (getUserVisibleHint() && isSupportLazyLoad() && !isConsumed && isResumed() && !isHidden()) {
+        if (getUserVisibleHint() && isSupportLazyLoad() && isResumed() && !isHidden()) {
             onLazyLoad();
-            isConsumed = true;
         }
     }
 
@@ -101,12 +92,14 @@ public abstract class BaseV4Fragment<V extends BaseContract.View, P extends Base
 
     }
 
+    @CallSuper
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         requireLoad();
     }
 
+    @CallSuper
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);

@@ -35,12 +35,27 @@ public abstract class BaseDialogFragment<V extends BaseContract.View, P extends 
         }
     }
 
+    @CallSuper
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedState) {
+        super.onActivityCreated(savedState);
+    }
+
+    @CallSuper
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedState) {
+        super.onViewStateRestored(savedState);
+    }
+
     @SuppressWarnings("unchecked")
     @CallSuper
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedState) {
         super.onViewCreated(view, savedState);
         presenter.attachView((V) this);
+        if (isSupportLazyLoad() && getUserVisibleHint() && !isHidden()) {
+            onLazyLoad();
+        }
     }
 
     @CallSuper
@@ -59,4 +74,35 @@ public abstract class BaseDialogFragment<V extends BaseContract.View, P extends 
     }
 
     protected abstract P initPresenter();
+
+    // 默认不支持懒加载, 子类可继承修改此返回值
+    protected boolean isSupportLazyLoad() {
+        return false;
+    }
+
+    // 是否可以执行懒加载
+    private void requireLoad() {
+        if (getUserVisibleHint() && isSupportLazyLoad() && isResumed() && !isHidden()) {
+            onLazyLoad();
+        }
+    }
+
+    // 执行懒加载
+    protected void onLazyLoad() {
+
+    }
+
+    @CallSuper
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        requireLoad();
+    }
+
+    @CallSuper
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        requireLoad();
+    }
 }

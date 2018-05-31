@@ -22,6 +22,10 @@ public class SubTwo extends BaseAnnotatedV4Fragment<StateContract.View, StateCon
 
     private static final String TAG = "SubTwo";
 
+    public SubTwo() {
+        Log.i(TAG, "SubTwo()");
+    }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);

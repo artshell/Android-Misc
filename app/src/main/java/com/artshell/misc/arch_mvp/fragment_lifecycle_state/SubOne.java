@@ -22,6 +22,15 @@ public class SubOne extends BaseAnnotatedV4Fragment<StateContract.View, StateCon
 
     private static final String TAG = "SubOne";
 
+    public SubOne() {
+        Log.i(TAG, "SubOne()");
+    }
+
+    @Override
+    protected boolean isSupportLazyLoad() {
+        return true;
+    }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
