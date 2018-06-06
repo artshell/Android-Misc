@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Android-Misc</string>
 
-    <string name="arch_mvp">arch_mvp_package</string>
+    <string name="activity">activity_package</string>
 
     <string name="service">service_package</string>
 </resources>

@@ -17,77 +17,26 @@
             </intent-filter>
         </activity>
 
-        <!-- =============== arch_mvp begin =============== -->
+        <!-- =============== activity begin =============== -->
         <activity
-            android:name=".arch_mvp.manual_impl.ProgressActivity"
-            android:description="@string/arch_mvp"
-            android:label="ProgressActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".arch_mvp.annotation_impl.MasterActivity"
-            android:description="@string/arch_mvp"
-            android:label="MasterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".arch_mvp.reactive_stream_impl.ReactiveActivity"
-            android:description="@string/arch_mvp"
-            android:label="ReactiveActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".arch_mvp.live_data_impl.LiveDataActivity"
-            android:description="@string/arch_mvp"
-            android:label="LiveDataActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".arch_mvp.dialog_fragment_impl.FellowshipActivity"
-            android:description="@string/arch_mvp"
-            android:label="FellowshipActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".arch_mvp.presenter_lifecycle_test.LifecycleActivity"
-            android:description="@string/arch_mvp"
-            android:label="LifecycleActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".arch_mvp.fragment_lifecycle_state.FragmentLifecycleStateActivity"
-            android:description="@string/arch_mvp"
-            android:label="FragmentLifecycleStateActivity">
+            android:name=".activity.ConfigurationViewModelActivity"
+            android:description="@string/activity"
+            android:label="ConfigurationViewModelActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.ConfigurationChangeActivity"
+            android:description="@string/activity"
+            android:label="ConfigurationChangeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 

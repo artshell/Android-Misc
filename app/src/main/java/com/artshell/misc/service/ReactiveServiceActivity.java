@@ -23,7 +23,7 @@ public class ReactiveServiceActivity extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(@Nullable Bundle savedState) {
         super.onCreate(savedState);
-        setContentView(R.layout.activity_rx_live_service);
+        setContentView(R.layout.activity_reactive_service);
 
         model = ViewModelProviders.of(this).get(ReactiveLiveDataViewModel.class);
 
