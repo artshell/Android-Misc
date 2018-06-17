@@ -10,23 +10,39 @@ import android.view.Menu;
 import com.artshell.misc.R;
 
 /**
- * <a href="https://developer.android.google.cn/guide/topics/resources/runtime-changes#HandlingTheChange">HandlingTheChange</a>
+ * Handling the configuration change yourself
+ * <a href="https://developer.android.google.cn/guide/topics/resources/runtime-changes#HandlingTheChange">Handle configuration changes</a>
+ * <a href="https://www.jianshu.com/p/dbc7e81aead2">Android 横竖屏切换</a>
+ * <a href="https://developer.android.google.cn/guide/topics/manifest/activity-element#config">android:configChanges</a>
+ * <a href="https://developer.android.google.cn/guide/topics/manifest/activity-element#screen">android:screenOrientation</a>
+ * <a href="https://github.com/xxv/android-lifecycle">Complete Android Fragment & Activity Lifecycle</a>
+ * @see ReLauncherActivity
  * @author artshell on 2018/6/3
  */
-public class ConfigurationViewModelActivity extends AppCompatActivity {
-    private static final String TAG = "ConfigurationViewModel";
-
+public class NoReLauncherActivity extends AppCompatActivity {
+    private static final String TAG = "NoReLauncherActivity";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate: ");
-        setContentView(R.layout.activity_configuration_view_model);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_no_re_launcher);
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Log.i(TAG, "onConfigurationChanged: ");
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.i(TAG, "onConfigurationChanged: ORIENTATION_PORTRAIT");
+            // 修改布局文件
+            // findViewById
+            // do other something
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.i(TAG, "onConfigurationChanged: ORIENTATION_LANDSCAPE");
+            // 修改布局文件
+            // findViewById
+            // do other something
+        }
     }
 
     @Override
@@ -34,7 +50,7 @@ public class ConfigurationViewModelActivity extends AppCompatActivity {
         super.onContentChanged();
         Log.i(TAG, "onContentChanged: ");
     }
-    
+
     @Override
     protected void onStart() {
         super.onStart();

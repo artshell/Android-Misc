@@ -85,7 +85,7 @@ dependencies {
 //    implementation deps.arch.navigation.fragment
 //    implementation deps.arch.navigation.ui
 //
-//    implementation deps.arch.work.runtime
+//    implementation deps.arch.workmanager.runtime
 
     implementation deps.rx.java
     implementation deps.rx.android

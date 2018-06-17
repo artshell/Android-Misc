@@ -40,14 +40,12 @@ public class ReactiveServiceActivity extends AppCompatActivity implements View.O
         // 延时10秒
         Bundle reactArgs = new Bundle();
         reactArgs.putString(ReactiveLiveDataService.PARAMETER_KEY, "React");
-        model.getPublisherSource(reactArgs)
-                .subscribe(result -> Log.i(TAG, "PublisherSource: " + Arrays.toString(result)));
+        model.getPublisherSource(reactArgs).subscribe(result -> Log.i(TAG, "PublisherSource: " + Arrays.toString(result)));
 
         // 延时5秒
         Bundle liveArgs = new Bundle();
         liveArgs.putString(ReactiveLiveDataService.PARAMETER_KEY, "Live");
-        model.getLiveSource(liveArgs)
-                .observe(ReactiveServiceActivity.this, items -> Log.i(TAG, "LiveSource: " + items));
+        model.getLiveSource(liveArgs).observe(this, items -> Log.i(TAG, "LiveSource: " + items));
     }
 
     @Override

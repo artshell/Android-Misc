@@ -99,7 +99,7 @@ public class ReactiveLiveDataService extends ReactorService {
                 .delay(10000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(arr -> mPublisher.onNext(arr.toArray(new String[arr.size()])));
+                .subscribe(ary -> mPublisher.onNext(ary.toArray(new String[ary.size()])));
         return mRealSource;
     }
 }

@@ -9,30 +9,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
 
         <!-- =============== activity begin =============== -->
-        <activity
-            android:name=".activity.ConfigurationViewModelActivity"
-            android:description="@string/activity"
-            android:label="ConfigurationViewModelActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".activity.ConfigurationChangeActivity"
+            android:name=".activity.StateRetainObjectViewModelActivity"
             android:description="@string/activity"
-            android:label="ConfigurationChangeActivity">
+            android:label="StateRetainObjectViewModelActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.StateSaveInstanceActivity"
+            android:description="@string/activity"
+            android:label="StateSaveInstanceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.NoReLauncherActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboardHidden|screenLayout|locale"
+            android:description="@string/activity"
+            android:label="NoReLauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.ReLauncherActivity"
+            android:description="@string/activity"
+            android:label="ReLauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -50,7 +70,6 @@
             android:label="ReactiveServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>

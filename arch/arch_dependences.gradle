@@ -43,7 +43,7 @@ def support = [
         design           : "com.android.support:design:${versions.support}",
         support_v13      : "com.android.support:support-v13:${versions.support}",
         annotations      : "com.android.support:support-annotations:${versions.support}",
-        constraint_layout: 'com.android.support.constraint:constraint-layout:1.1.1',
+        constraint_layout: 'com.android.support.constraint:constraint-layout:1.1.2',
         multidex         : 'com.android.support:multidex:1.0.2'
 ]
 
@@ -101,21 +101,21 @@ def arch = [
         ],
 
         navigation: [
-                fragment: 'android.arch.navigation:navigation-fragment:1.0.0-alpha01',
-                ui      : 'android.arch.navigation:navigation-ui:1.0.0-alpha01',
+                fragment: 'android.arch.navigation:navigation-fragment:1.0.0-alpha02',
+                ui      : 'android.arch.navigation:navigation-ui:1.0.0-alpha02',
 
                 // optional - Test helpers
-                testing : 'android.arch.navigation:navigation-testing:1.0.0-alpha01'
+                testing : 'android.arch.navigation:navigation-testing:1.0.0-alpha02'
         ],
 
-        work      : [
-                runtime : 'android.arch.work:work-runtime:1.0.0-alpha01',
+        workmanager      : [
+                runtime : 'android.arch.work:work-runtime:1.0.0-alpha02',
 
                 // optional - Firebase JobDispatcher support
-                firebase: 'android.arch.work:work-firebase:1.0.0-alpha01',
+                firebase: 'android.arch.work:work-firebase:1.0.0-alpha02',
 
                 // optional - Test helpers
-                testing : 'android.arch.work:work-testing:1.0.0-alpha01'
+                testing : 'android.arch.work:work-testing:1.0.0-alpha02'
         ]
 ]
 

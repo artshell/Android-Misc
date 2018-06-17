@@ -74,8 +74,8 @@ dependencies {
 
     implementation deps.conductor.conductor
     implementation deps.conductor.support
-    implementation deps.conductor.rxlifecycle2
     implementation deps.conductor.arch
+    implementation deps.conductor.rxlifecycle2
 
     implementation deps.router.rabbits
     annotationProcessor deps.router.compiler
