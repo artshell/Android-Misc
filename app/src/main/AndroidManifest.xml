@@ -36,7 +36,6 @@
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
-
             </intent-filter>
         </activity>
         <activity
@@ -46,6 +45,7 @@
             android:label="NoReLauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
@@ -53,6 +53,17 @@
             android:name=".activity.ReLauncherActivity"
             android:description="@string/activity"
             android:label="ReLauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.RequestOrientationActivity"
+            android:description="@string/activity"
+            android:label="RequestOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -70,6 +81,7 @@
             android:label="ReactiveServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>

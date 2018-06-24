@@ -1,5 +1,6 @@
 package com.artshell.misc;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
@@ -21,7 +22,7 @@ import java.util.List;
 import me.drakeet.multitype.ItemViewBinder;
 import me.drakeet.multitype.MultiTypeAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ItemClickListener {
     private static final String TAG = "MainActivity";
 
     private List<Object> mItems = new ArrayList<>();
@@ -36,12 +37,23 @@ public class MainActivity extends AppCompatActivity {
     private void setProperty() {
         RecyclerView container = findViewById(R.id.layout_container);
         MultiTypeAdapter adapter = new MultiTypeAdapter(mItems);
-        adapter.register(String.class, new ActivityBinder<>(getPackageManager()));
-        adapter.register(ResolveInfo.class, new ActivityBinder<>(getPackageManager()));
+        adapter.register(String.class, new ActivityBinder<>(getPackageManager(), this));
+        adapter.register(ResolveInfo.class, new ActivityBinder<>(getPackageManager(), this));
         container.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         container.setAdapter(adapter);
         findCorrectActivity();
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void itemClick(View v, int pos) {
+        Object o = mItems.get(pos);
+        if (o instanceof String) return;
+        ResolveInfo info = (ResolveInfo) o;
+        ComponentName comp = new ComponentName(info.activityInfo.packageName, info.activityInfo.name);
+        Intent tent = new Intent();
+        tent.setComponent(comp);
+        startActivity(tent);
     }
 
     /**
@@ -70,30 +82,33 @@ public class MainActivity extends AppCompatActivity {
         int descService = -1;
         for (ResolveInfo info : resolves) {
             int descRes = info.activityInfo.descriptionRes;
-            if (descRes == 0) continue; /* no set, so skip */
-            if (descRes == R.string.activity && descActivity == -1) {
-                mItems.add(getString(R.string.activity));
-                descActivity = 0; /* found */
+            if (descRes == R.string.activity || descRes == R.string.service) {
+                if (descRes == R.string.activity && descActivity == -1) {
+                    mItems.add(getString(R.string.activity));
+                    descActivity = 0; /* found */
+                }
+                if (descRes == R.string.service && descService == -1) {
+                    mItems.add(getString(R.string.service));
+                    descService = 0; /* found */
+                }
+                mItems.add(info);
             }
-            if (descRes == R.string.service && descService == -1) {
-                mItems.add(getString(R.string.service));
-                descService = 0; /* found */
-            }
-            mItems.add(info);
         }
     }
 
     private static class ActivityBinder<T> extends ItemViewBinder<T, ActivityBinder.NameViewHolder> {
         private PackageManager mManager;
+        private ItemClickListener mListener;
 
-        ActivityBinder(PackageManager manager) {
+        ActivityBinder(PackageManager manager, ItemClickListener listener) {
             mManager = manager;
+            mListener = listener;
         }
 
         @NonNull
         @Override
         protected NameViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-            return new NameViewHolder(inflater.inflate(R.layout.item_main_activity_name, parent, false));
+            return new NameViewHolder(inflater.inflate(R.layout.item_main_activity_name, parent, false), mListener);
         }
 
         @Override
@@ -107,11 +122,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        static class NameViewHolder extends RecyclerView.ViewHolder {
+        static class NameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             TextView name;
-            NameViewHolder(View itemView) {
+            ItemClickListener mListener;
+            NameViewHolder(View itemView, ItemClickListener listener) {
                 super(itemView);
                 name = itemView.findViewById(R.id.tv_name);
+                mListener = listener;
+                itemView.setOnClickListener(this);
+            }
+
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    mListener.itemClick(v, getAdapterPosition());
+                }
             }
         }
     }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ReLauncherActivity">
-
-</android.support.constraint.ConstraintLayout>
+    android:gravity="center"
+    android:textColor="@android:color/white"
+    android:background="@android:color/holo_red_light"
+    android:text="Portrait"
+    tools:context=".activity.ReLauncherActivity"/>

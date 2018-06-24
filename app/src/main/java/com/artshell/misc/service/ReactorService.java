@@ -73,6 +73,12 @@ public class ReactorService extends LifecycleService implements
         return serviceCycle.hide();
     }
 
+    /**
+     * @param event 对于Service只支持{@link Lifecycle.Event#ON_CREATE}, {@link Lifecycle.Event#ON_START}
+     *              {@link Lifecycle.Event#ON_STOP}, {@link Lifecycle.Event#ON_DESTROY}
+     * @param <T>
+     * @return
+     */
     @Nonnull
     @Override
     public <T> LifecycleTransformer<T> bindUntilEvent(@Nonnull Lifecycle.Event event) {
@@ -91,8 +97,6 @@ public class ReactorService extends LifecycleService implements
             case ON_CREATE:
                 return Lifecycle.Event.ON_DESTROY;
             case ON_START:
-                return Lifecycle.Event.ON_STOP;
-            case ON_PAUSE:
                 return Lifecycle.Event.ON_STOP;
             case ON_STOP:
                 return Lifecycle.Event.ON_DESTROY;

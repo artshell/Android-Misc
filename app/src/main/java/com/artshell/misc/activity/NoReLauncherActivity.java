@@ -26,7 +26,7 @@ public class NoReLauncherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_no_re_launcher);
+        setContentView(R.layout.activity_no_re_launcher_port);
     }
 
     @Override
@@ -35,11 +35,13 @@ public class NoReLauncherActivity extends AppCompatActivity {
         if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             Log.i(TAG, "onConfigurationChanged: ORIENTATION_PORTRAIT");
             // 修改布局文件
+            setContentView(R.layout.activity_no_re_launcher_port);
             // findViewById
             // do other something
         } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Log.i(TAG, "onConfigurationChanged: ORIENTATION_LANDSCAPE");
             // 修改布局文件
+            setContentView(R.layout.activity_no_re_launcher_land);
             // findViewById
             // do other something
         }

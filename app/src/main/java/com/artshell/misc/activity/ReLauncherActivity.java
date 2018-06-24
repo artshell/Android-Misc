@@ -26,7 +26,6 @@ public class ReLauncherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_re_launcher);
     }
 
-
     @Override
     public void onContentChanged() {
         super.onContentChanged();

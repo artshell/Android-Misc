@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".activity.RequestOrientationActivity">
+
+    <Button
+        android:id="@+id/btn_portrait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Request landscape"/>
+
+    <Button
+        android:id="@+id/btn_landscape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Request portrait"/>
+</LinearLayout>

@@ -37,7 +37,7 @@ public class ReactiveLiveDataService extends ReactorService {
 
     private MutableLiveData<List<String>> mLiveSource = new MutableLiveData<>();
     private Subject<String[]>             mPublisher  = PublishSubject.<String[]>create().toSerialized();
-    private Observable<String[]>          mRealSource = mPublisher.compose(bindUntilEvent(Lifecycle.Event.ON_PAUSE));
+    private Observable<String[]>          mRealSource = mPublisher.compose(bindUntilEvent(Lifecycle.Event.ON_STOP));
     private SourceBinder                  mBinder     = new SourceBinder();
 
     public class SourceBinder extends Binder {

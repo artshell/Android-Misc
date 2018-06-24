@@ -157,7 +157,7 @@ def dagger = [
 ]
 
 def nav = [
-        navigation: 'me.listenzz:navigation:1.6.4'
+        navigation: 'me.listenzz:navigation:1.6.7'
 ]
 
 def router = [
