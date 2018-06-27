@@ -50,6 +50,6 @@ public class HttpManager {
     }
 
     public static <T> Flowable<T> post(Class<T> target, String url, Map<String, String> postPairs) {
-        return requestor.postFields(target, url, postPairs);
+        return requestor.postCouples(target, url, postPairs);
     }
 }

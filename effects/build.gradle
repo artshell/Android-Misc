@@ -1,14 +1,16 @@
 apply plugin: 'com.android.application'
 
+apply from: 'effects_dependences.gradle'
+
 android {
-    compileSdkVersion 27
+    compileSdkVersion deps.versions.compileVersion
 
     defaultConfig {
         applicationId "com.artshell.effects"
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion deps.versions.minVersion
+        targetSdkVersion deps.versions.targetVersion
+        versionCode deps.versions.effects_module_version
+        versionName deps.versions.effects_module_name
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -28,18 +30,27 @@ android {
 
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'com.google.code.findbugs:jsr305:2.0.1', deps.findbugs.jsr305
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation deps.findbugs.jsr305
 
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
-    implementation 'android.arch.lifecycle:common-java8:1.1.1'
+    implementation deps.support.annotations
+    implementation deps.support.support_v4
+    implementation deps.support.appcompat_v7
+    implementation deps.support.constraint_layout
+
+    implementation deps.arch.lifecycle.extensions
+    implementation deps.arch.lifecycle.common_java8
 
 
 }

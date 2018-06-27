@@ -71,9 +71,9 @@ dependencies {
     implementation deps.support.constraint_layout
     implementation deps.support.multidex
 
-    implementation deps.arch_lifecycle.extensions
-    implementation deps.arch_lifecycle.runtime
-    annotationProcessor deps.arch_lifecycle.compiler
+    implementation deps.arch.lifecycle.extensions
+    implementation deps.arch.lifecycle.runtime
+    annotationProcessor deps.arch.lifecycle.compiler
 
     implementation deps.rx.java
     implementation deps.rx.android
