@@ -5,10 +5,10 @@ import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
 import com.artshell.arch.storage.MainLiveDataStreams;
-import com.artshell.arch.storage.server.Mixture;
-import com.artshell.arch.storage.server.Mixture2;
+import com.artshell.arch.storage.cache.Mixture;
+import com.artshell.arch.storage.cache.Mixture2;
 import com.artshell.arch.storage.Resource;
-import com.artshell.arch.storage.server.CacheManager;
+import com.artshell.arch.storage.cache.PreferCacheManager;
 
 import java.util.Map;
 
@@ -29,7 +29,7 @@ public class CacheCommonModel extends BaseContextViewModel {
     // Get请求
     public <T> LiveData<Resource<T>> get(Class<T> target, String path) {
         return MainLiveDataStreams.fromPublisher(
-                CacheManager.store()
+                PreferCacheManager.store()
                         .get(new Mixture(path))
                         .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
@@ -39,7 +39,7 @@ public class CacheCommonModel extends BaseContextViewModel {
     // Get请求带参数
     public <T> LiveData<Resource<T>> getWithParameter(Class<T> target, String path, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
-                CacheManager.storeWithParameter()
+                PreferCacheManager.storeWithParameter()
                         .get(new Mixture2(path, pairs))
                         .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()
@@ -49,7 +49,7 @@ public class CacheCommonModel extends BaseContextViewModel {
     // Post请求带字段
     public <T> LiveData<Resource<T>> post(Class<T> target, String path, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
-                CacheManager.storeWithField()
+                PreferCacheManager.storeWithCouples()
                         .get(new Mixture2(path, pairs))
                         .map(raw -> singleton().get().fromJson(raw, target))
                         .toFlowable()

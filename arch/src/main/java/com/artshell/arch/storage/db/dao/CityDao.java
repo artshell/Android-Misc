@@ -14,10 +14,10 @@ import java.util.List;
 public interface CityDao {
 
     @Query("SELECT * FROM app_city")
-    LiveData<List<City>> loadCities();
+    LiveData<List<City>> getCities();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void saveCities(List<City> entities);
+    void insertCities(List<City> entities);
 
     @Query("SELECT * FROM app_city WHERE id=:id")
     LiveData<City> getCity(String id);

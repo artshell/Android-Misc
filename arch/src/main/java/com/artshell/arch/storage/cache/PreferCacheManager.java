@@ -1,6 +1,7 @@
-package com.artshell.arch.storage.server;
+package com.artshell.arch.storage.cache;
 
 import com.artshell.arch.storage.prefer.PreferManager;
+import com.artshell.arch.storage.server.HttpManager;
 import com.nytimes.android.external.store3.base.Fetcher;
 import com.nytimes.android.external.store3.base.Persister;
 import com.nytimes.android.external.store3.base.impl.Store;
@@ -15,39 +16,36 @@ import io.reactivex.Single;
  * @author artshell on 17/03/2018
  */
 
-public class CacheManager {
+public class PreferCacheManager {
 
-    // GET 请求
+    // GET 请求(无参数)
     public static Store<String, Mixture> store() {
-        return MixtureHolder.MIXTURE;
+        return StoreHolder.MIXTURE;
     }
 
     // GET 请求 + 查询参数
     public static Store<String, Mixture2> storeWithParameter() {
-        return MixtureParameterHolder.MIXTURE;
+        return StoreParameterHolder.MIXTURE;
     }
 
     // POST 请求 + 字段
-    public static Store<String, Mixture2> storeWithField() {
-        return MixtureFieldHolder.MIXTURE;
+    public static Store<String, Mixture2> storeWithCouples() {
+        return StoreCouplesHolder.MIXTURE;
     }
 
-    private static final class MixtureHolder {
+    private static final class StoreHolder {
         private static final Store<String, Mixture> MIXTURE = createStore(
-                mixture -> HttpManager.get(String.class, mixture.getPath()).singleOrError()
-        );
+                mixture -> HttpManager.get(String.class, mixture.getPath()).singleOrError());
     }
 
-    private static final class MixtureParameterHolder {
+    private static final class StoreParameterHolder {
         private static final Store<String, Mixture2> MIXTURE = createStore(
-                mixture -> HttpManager.get(String.class, mixture.getPath(), mixture.getPairs()).singleOrError()
-        );
+                mixture -> HttpManager.get(String.class, mixture.getPath(), mixture.getPairs()).singleOrError());
     }
 
-    private static final class MixtureFieldHolder {
+    private static final class StoreCouplesHolder {
         private static final Store<String, Mixture2> MIXTURE = createStore(
-                mixture -> HttpManager.post(String.class, mixture.getPath(), mixture.getPairs()).singleOrError()
-        );
+                mixture -> HttpManager.post(String.class, mixture.getPath(), mixture.getPairs()).singleOrError());
     }
 
     public static <I extends Key> Store<String, I> createStore(Fetcher<String, I> fetcher) {

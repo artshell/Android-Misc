@@ -1,4 +1,4 @@
-package com.artshell.arch.storage.server;
+package com.artshell.arch.storage.cache;
 
 /**
  * @author artshell on 17/03/2018

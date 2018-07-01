@@ -1,12 +1,15 @@
-package com.artshell.arch.storage.server;
+package com.artshell.arch.storage.cache;
 
 import android.support.annotation.NonNull;
 
+import com.artshell.arch.storage.server.ApiConstants;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.HttpUrl;
 
 
 /**
@@ -18,25 +21,19 @@ public class Mixture2 implements Key {
     private String url;
     private String path;
     private Map<String, String> pairs;
-    private static StringBuffer buffer = new StringBuffer();
 
-    public Mixture2(@NonNull String path, @NonNull Map<String, String> pairs) {
-        this.path = path;
+    public Mixture2(@NonNull String urlPath, @NonNull Map<String, String> pairs) {
+        this.path = urlPath;
         this.pairs = pairs;
-        buffer.setLength(0);
-        buffer.append(ApiConstants.ENDPOINT).append("/").append(path);
-        if (pairs.size() > 0) {
-            List<String> keys = new ArrayList<>(pairs.keySet());
-            Collections.sort(keys);
-            Iterator<String> it = keys.iterator();
-            String first = it.next();
-            buffer.append("?").append(first).append("=").append(pairs.get(first));
-            while (it.hasNext()) {
-                String next = it.next();
-                buffer.append("&").append(next).append("=").append(pairs.get(next));
-            }
+
+        HttpUrl.Builder builder = HttpUrl.parse(ApiConstants.ENDPOINT).newBuilder();
+        builder.addPathSegments(urlPath);
+        List<String> keys = new ArrayList<>(pairs.keySet());
+        Collections.sort(keys);
+        for (String key : keys) {
+            builder.addQueryParameter(key, pairs.get(key));
         }
-        url = buffer.toString();
+        url = builder.build().toString();
     }
 
     public Map<String, String> getPairs() {
@@ -64,6 +61,6 @@ public class Mixture2 implements Key {
 
     @Override
     public int hashCode() {
-        return url != null ? url.hashCode() : 0;
+        return url != null ? url.hashCode() : ApiConstants.ENDPOINT.hashCode() + Long.valueOf(System.currentTimeMillis()).hashCode();
     }
 }

@@ -1,6 +1,8 @@
-package com.artshell.arch.storage.server;
+package com.artshell.arch.storage.cache;
 
 import android.support.annotation.NonNull;
+
+import com.artshell.arch.storage.server.ApiConstants;
 
 /**
  * @author artshell on 17/03/2018
@@ -37,6 +39,6 @@ public class Mixture implements Key {
 
     @Override
     public int hashCode() {
-        return url != null ? url.hashCode() : 0;
+        return url != null ? url.hashCode() : ApiConstants.ENDPOINT.hashCode() + Long.valueOf(System.currentTimeMillis()).hashCode();
     }
 }

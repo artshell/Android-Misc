@@ -9,5 +9,5 @@ public class ApiConstants {
     public static final String DATA_CACHE = "api_data_cache";
 
     // base url
-    public static final String ENDPOINT = "";
+    public static final String ENDPOINT = "https://www.baidu.com/";
 }
