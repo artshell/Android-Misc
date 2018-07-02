@@ -11,7 +11,7 @@ import com.artshell.arch.storage.db.entity.City;
 import java.util.List;
 
 @Dao
-public interface CityDao {
+public interface CountryDao {
 
     @Query("SELECT * FROM app_city")
     LiveData<List<City>> getCities();

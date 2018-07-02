@@ -92,6 +92,7 @@ dependencies {
     implementation deps.rx.lifecycle
     implementation deps.rx.lifecycle_android
     implementation deps.rx.rxlifecycle_components
+    implementation deps.rx.permissions
     implementation (deps.rx.requestor, {
         exclude group: 'xpp3'
         exclude module: 'stax-api'

@@ -60,7 +60,10 @@ def versions = [
         dagger             : '2.15',
 
         // rabbits
-        rabbits            : '1.0.0'
+        rabbits            : '1.0.0',
+
+        // butterknife
+        knife              : '8.8.1'
 ]
 
 def test = [
@@ -240,6 +243,11 @@ def router = [
         compiler: "com.kyleduo.rabbits:compiler:${versions.rabbits}"
 ]
 
+def butterKnife = [
+        knife   : "com.jakewharton:butterknife:${versions.knife}",
+        compiler: "com.jakewharton:butterknife-compiler:${versions.knife}",
+]
+
 def misc = [
         multitype      : 'me.drakeet.multitype:multitype:3.4.4',
         gson           : 'com.google.code.gson:gson:2.8.2',
@@ -254,20 +262,21 @@ def misc = [
 ]
 
 ext.deps = [
-        "versions" : versions,
-        "test"     : test,
-        "detection": detection,
-        "support"  : support,
-        "arch"     : arch,
-        "rx"       : rx,
-        "auto"     : auto,
-        "retrofit" : retrofit,
-        "okHttp"   : okHttp,
-        "store"    : store,
-        "glide"    : glide,
-        "fresco"   : fresco,
-        "picasso"  : picasso,
-        "dagger2"  : dagger,
-        "router"   : router,
-        "misc"     : misc,
+        "versions"   : versions,
+        "test"       : test,
+        "detection"  : detection,
+        "support"    : support,
+        "arch"       : arch,
+        "rx"         : rx,
+        "auto"       : auto,
+        "retrofit"   : retrofit,
+        "okHttp"     : okHttp,
+        "store"      : store,
+        "glide"      : glide,
+        "fresco"     : fresco,
+        "picasso"    : picasso,
+        "dagger2"    : dagger,
+        "router"     : router,
+        "butterKnife": butterKnife,
+        "misc"       : misc,
 ]

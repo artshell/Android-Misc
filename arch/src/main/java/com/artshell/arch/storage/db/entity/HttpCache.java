@@ -15,31 +15,33 @@ public class HttpCache {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(typeAffinity = ColumnInfo.INTEGER)
     @NonNull
-    private int id;
+    private Integer id;
 
+    @NonNull
     @ColumnInfo(name = "cache_key", typeAffinity = ColumnInfo.TEXT, collate = ColumnInfo.RTRIM)
     private String key;
 
     @ColumnInfo(name = "cache_content", typeAffinity = ColumnInfo.TEXT)
-    private String content;
+    private String content = "";
 
     @ColumnInfo(name = "cache_time", typeAffinity = ColumnInfo.TEXT)
     private String time;
 
-    public void setId(@NonNull int id) {
+    public void setId(@NonNull Integer id) {
         this.id = id;
     }
 
     @NonNull
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
+    @NonNull
     public String getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(@NonNull String key) {
         this.key = key;
     }
 
