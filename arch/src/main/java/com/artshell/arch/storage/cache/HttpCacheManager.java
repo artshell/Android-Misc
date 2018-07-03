@@ -58,17 +58,17 @@ public class HttpCacheManager {
             @Override
             public Observable<String> read(@Nonnull I key) {
                 HttpCache cache = dbCache.cacheDao().fetch(key.getKey());
-                return cache == null || cache.getContent() == null || cache.getContent().isEmpty()
+                return cache == null || cache.content == null || cache.content.isEmpty()
                         ? Observable.empty()
-                        : Observable.just(cache.getContent());
+                        : Observable.just(cache.content);
             }
 
             @Nonnull
             @Override
             public void write(@Nonnull I key, @Nonnull String s) {
                 HttpCache cache = new HttpCache();
-                cache.setKey(key.getKey());
-                cache.setContent(s);
+                cache.key = key.getKey();
+                cache.content = s;
 
                 dbCache.cacheDao().insertCache(cache);
             }
