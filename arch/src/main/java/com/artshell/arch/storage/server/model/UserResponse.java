@@ -5,8 +5,8 @@ package com.artshell.arch.storage.server.model;
  * Created by artshell on 2018/3/16.
  */
 
-public class UserInfoResponse extends HttpResult<UserInfoResponse.UserInfo>{
-    public static class UserInfo {
+public class UserResponse extends HttpResult<UserResponse.UserEntity>{
+    public static class UserEntity {
         private String name;
         private String address;
         private String phone;

@@ -2,7 +2,7 @@ package com.artshell.arch.storage.server.model;
 
 import java.util.List;
 
-public class HttpArrayResult<I> {
+public class HttpListResult<I> {
     private String code;
     private String msg;
     private List<I> data;

@@ -13,12 +13,12 @@ import java.util.List;
 @Dao
 public interface CountryDao {
 
-    @Query("SELECT * FROM app_city")
+    @Query("SELECT * FROM city_snippet")
     LiveData<List<City>> getCities();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCities(List<City> entities);
 
-    @Query("SELECT * FROM app_city WHERE id=:id")
+    @Query("SELECT * FROM city_snippet WHERE id=:id")
     LiveData<City> getCity(String id);
 }

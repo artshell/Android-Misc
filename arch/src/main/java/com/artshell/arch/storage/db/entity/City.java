@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 /**
  * @author artshell on 03/04/2018
  */
-@Entity(tableName = "app_city", indices = {@Index("country_en"), @Index(value = {"country_id", "city_id"}, unique = true)})
+@Entity(tableName = "city_snippet", indices = {@Index("country_en"), @Index(value = {"country_id", "city_id"}, unique = true)})
 public class City {
 
     @PrimaryKey(autoGenerate = true)
