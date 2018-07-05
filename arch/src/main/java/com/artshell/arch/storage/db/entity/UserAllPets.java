@@ -10,7 +10,7 @@ public class UserAllPets {
     @Embedded
     public User user;
 
-    @Relation(parentColumn = "desc", entityColumn = "userId", entity = Pet.class)
+    @Relation(parentColumn = "id", entityColumn = "userId", entity = Pet.class)
     public List<PetAndId> pets;
 
     @Relation(parentColumn = "id", entityColumn = "userId", entity = Pet.class, projection = {"name"})
