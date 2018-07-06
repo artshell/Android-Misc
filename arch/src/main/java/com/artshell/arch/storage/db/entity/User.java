@@ -8,4 +8,5 @@ public class User {
     @PrimaryKey
     public Integer id;
     public String name;
+    public String lastName;
 }
