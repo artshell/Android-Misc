@@ -1,4 +1,4 @@
-package com.artshell.arch.storage.db.dao;
+package com.artshell.misc.arch.dao;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
@@ -6,7 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import com.artshell.arch.storage.db.entity.City;
+import com.artshell.misc.arch.entity.City;
 
 import java.util.List;
 

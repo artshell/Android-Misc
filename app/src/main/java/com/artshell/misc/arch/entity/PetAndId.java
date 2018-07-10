@@ -1,4 +1,4 @@
-package com.artshell.arch.storage.db.entity;
+package com.artshell.misc.arch.entity;
 
 public class PetAndId {
     public Integer id;

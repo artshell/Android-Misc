@@ -6,9 +6,9 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 
-public class BaseContextViewModel extends AndroidViewModel {
+public class ContextViewModel extends AndroidViewModel {
 
-    public BaseContextViewModel(@NonNull Application application) {
+    public ContextViewModel(@NonNull Application application) {
         super(application);
     }
 

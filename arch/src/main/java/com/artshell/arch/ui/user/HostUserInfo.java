@@ -5,7 +5,7 @@ import com.artshell.arch.storage.Status;
 import com.artshell.arch.storage.server.model.UserResponse;
 import com.artshell.arch.storage.server.model.UserResponse.UserEntity;
 import com.artshell.arch.ui.DataBaseActivity;
-import com.artshell.arch.view_model.ServerCommonModel;
+import com.artshell.arch.view_model.HttpViewModel;
 
 /**
  * 用户信息
@@ -26,14 +26,15 @@ public class HostUserInfo extends DataBaseActivity {
 
     @Override
     protected void loadData() {
-        ServerCommonModel serverModel = createViewModel(ServerCommonModel.class);
+        HttpViewModel serverModel = createViewModel(HttpViewModel.class);
 
         // 参数
         mPairs.clear();
         mPairs.put("user_id", "artshell");
 
         // 直接从服务器端获取
-        serverModel.fetchByParameter(UserResponse.class, "user/profile", mPairs).observe(this, this::tackle);
+        serverModel.fetchByParameter(UserResponse.class, "user/profile", mPairs)
+                .observe(this, this::tackle);
     }
 
     private void tackle(Resource<UserResponse> resource) {

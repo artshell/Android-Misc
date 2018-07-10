@@ -20,17 +20,29 @@ import io.reactivex.Observable;
  */
 public class HttpCacheManager {
 
-    // GET 请求(无参数)
+    /**
+     * GET 请求(无参数)
+     * @see Mixture
+     * @return
+     */
     public static StoreRoom<String, Mixture> store() {
         return StoreHolder.MIXTURE;
     }
 
-    // GET 请求 + 查询参数
+    /**
+     * GET 请求 + 查询参数
+     * @see Mixture2
+     * @return
+     */
     public static StoreRoom<String, Mixture2> storeWithParameter() {
         return StoreParameterHolder.MIXTURE;
     }
 
-    // POST 请求 + 字段
+    /**
+     * POST 请求(Key/Value字段)
+     * @see Mixture2
+     * @return
+     */
     public static StoreRoom<String, Mixture2> storeWithCouples() {
         return StoreCouplesHolder.MIXTURE;
     }
@@ -51,13 +63,13 @@ public class HttpCacheManager {
     }
 
     public static <I extends Key> StoreRoom<String, I> createStore(Fetcher<String, I> fetcher) {
-        HttpCacheDatabase dbCache = Room.databaseBuilder(AppContext.getAppContext(), HttpCacheDatabase.class, "db_http_cache").build();
+        HttpCacheDatabase db = Room.databaseBuilder(AppContext.getAppContext(), HttpCacheDatabase.class, "db_http_cache").build();
 
         return StoreRoom.from(fetcher, new RoomPersister<String, String, I>() {
             @Nonnull
             @Override
             public Observable<String> read(@Nonnull I key) {
-                HttpCache cache = dbCache.cacheDao().fetch(key.getKey());
+                HttpCache cache = db.cacheDao().fetch(key.getKey());
                 return cache == null || cache.content == null || cache.content.isEmpty()
                         ? Observable.empty()
                         : Observable.just(cache.content);
@@ -69,8 +81,8 @@ public class HttpCacheManager {
                 HttpCache cache = new HttpCache();
                 cache.key = key.getKey();
                 cache.content = s;
-
-                dbCache.cacheDao().insertCache(cache);
+                // ...
+                db.cacheDao().insertCache(cache);
             }
         }, StalePolicy.NETWORK_BEFORE_STALE);
     }

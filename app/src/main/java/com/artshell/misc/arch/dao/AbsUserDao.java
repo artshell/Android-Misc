@@ -1,11 +1,11 @@
-package com.artshell.arch.storage.db.dao;
+package com.artshell.misc.arch.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Transaction;
 
-import com.artshell.arch.storage.db.AbsUserDatabase;
-import com.artshell.arch.storage.db.entity.User;
+import com.artshell.misc.arch.AbsUserDatabase;
+import com.artshell.misc.arch.entity.User;
 
 import java.util.List;
 
@@ -23,6 +23,6 @@ public abstract class AbsUserDao {
     }
 
     @Transaction
-    @Query("SELECT id, name FROM user")
+    @Query("SELECT id, name, lastName FROM user")
     public abstract Flowable<List<User>> getUsers();
 }

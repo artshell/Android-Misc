@@ -1,4 +1,4 @@
-package com.artshell.arch.storage.db.entity;
+package com.artshell.misc.arch.entity;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;

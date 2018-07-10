@@ -2,8 +2,8 @@ package com.artshell.arch.ui.main;
 
 import com.artshell.arch.R;
 import com.artshell.arch.ui.DataBaseActivity;
-import com.artshell.arch.view_model.CacheCommonModel;
-import com.artshell.arch.view_model.ServerCommonModel;
+import com.artshell.arch.view_model.PreferCacheViewModel;
+import com.artshell.arch.view_model.HttpViewModel;
 
 /**
  * 主界面
@@ -11,8 +11,8 @@ import com.artshell.arch.view_model.ServerCommonModel;
 public class HostMain extends DataBaseActivity {
     private static final String TAG = "HostMain";
 
-    private ServerCommonModel serverModel;
-    private CacheCommonModel cacheModel;
+    private HttpViewModel        serverModel;
+    private PreferCacheViewModel cacheModel;
 
     @Override
     protected int applyLayoutId() {
@@ -26,7 +26,7 @@ public class HostMain extends DataBaseActivity {
 
     @Override
     protected void loadData() {
-        serverModel = createViewModel(ServerCommonModel.class);
-        cacheModel = createViewModel(CacheCommonModel.class);
+        serverModel = createViewModel(HttpViewModel.class);
+        cacheModel = createViewModel(PreferCacheViewModel.class);
     }
 }

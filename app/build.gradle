@@ -13,6 +13,13 @@ android {
         versionName deps.versions.app_module_name
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // https://stackoverflow.com/questions/44322178/room-schema-export-directory-is-not-provided-to-the-annotation-processor-so-we/
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     compileOptions {
@@ -66,6 +73,10 @@ dependencies {
     implementation deps.arch.lifecycle.runtime
     implementation deps.arch.lifecycle.common_java8
     implementation deps.arch.lifecycle.reactivestreams
+
+    implementation deps.arch.room.runtime
+    annotationProcessor deps.arch.room.compiler
+    implementation deps.arch.room.rxjava2
 
     implementation deps.rx.java
     implementation deps.rx.android

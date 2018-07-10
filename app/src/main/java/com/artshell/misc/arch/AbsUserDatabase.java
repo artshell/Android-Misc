@@ -1,10 +1,10 @@
-package com.artshell.arch.storage.db;
+package com.artshell.misc.arch;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
-import com.artshell.arch.storage.db.dao.AbsUserDao;
-import com.artshell.arch.storage.db.entity.User;
+import com.artshell.misc.arch.dao.AbsUserDao;
+import com.artshell.misc.arch.entity.User;
 
 /**
  * @author artshell on 2018/7/9

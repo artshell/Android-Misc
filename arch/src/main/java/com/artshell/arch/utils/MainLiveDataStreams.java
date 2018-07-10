@@ -1,9 +1,11 @@
-package com.artshell.arch.storage;
+package com.artshell.arch.utils;
 
 import android.arch.lifecycle.LiveData;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
+
+import com.artshell.arch.storage.Resource;
 
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;

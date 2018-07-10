@@ -1,14 +1,14 @@
-package com.artshell.arch.storage.db.dao;
+package com.artshell.misc.arch.dao;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.db.SupportSQLiteQuery;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.RawQuery;
 
-import com.artshell.arch.storage.db.entity.User;
-import com.artshell.arch.storage.db.entity.UserEmbedded;
-import com.artshell.arch.storage.db.entity.UserOfPets;
-import com.artshell.arch.storage.db.entity.UserPoJo;
+import com.artshell.misc.arch.entity.User;
+import com.artshell.misc.arch.entity.UserEmbedded;
+import com.artshell.misc.arch.entity.UserOfPets;
+import com.artshell.misc.arch.entity.UserPoJo;
 
 import java.util.List;
 

@@ -18,17 +18,29 @@ import io.reactivex.Single;
 
 public class PreferCacheManager {
 
-    // GET 请求(无参数)
+    /**
+     * GET 请求(无参数)
+     * @see Mixture
+     * @return
+     */
     public static Store<String, Mixture> store() {
         return StoreHolder.MIXTURE;
     }
 
-    // GET 请求 + 查询参数
+    /**
+     * GET 请求 + 查询参数
+     * @see Mixture2
+     * @return
+     */
     public static Store<String, Mixture2> storeWithParameter() {
         return StoreParameterHolder.MIXTURE;
     }
 
-    // POST 请求 + 字段
+    /**
+     * POST 请求(Key/Value字段)
+     * @see Mixture2
+     * @return
+     */
     public static Store<String, Mixture2> storeWithCouples() {
         return StoreCouplesHolder.MIXTURE;
     }

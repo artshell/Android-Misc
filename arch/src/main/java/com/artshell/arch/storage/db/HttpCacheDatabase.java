@@ -9,7 +9,7 @@ import com.artshell.arch.storage.db.entity.HttpCache;
 /**
  * @author artshell on 2018/6/30
  */
-@Database(entities = {HttpCache.class}, version = 1)
+@Database(entities = {HttpCache.class}, version = 1, exportSchema = true)
 public abstract class HttpCacheDatabase extends RoomDatabase {
     public abstract HttpCacheDao cacheDao();
 }
