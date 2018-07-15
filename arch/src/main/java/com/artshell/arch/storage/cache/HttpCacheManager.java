@@ -11,6 +11,8 @@ import com.nytimes.android.external.store3.base.impl.StalePolicy;
 import com.nytimes.android.external.store3.base.impl.room.StoreRoom;
 import com.nytimes.android.external.store3.base.room.RoomPersister;
 
+import java.util.Date;
+
 import javax.annotation.Nonnull;
 
 import io.reactivex.Observable;
@@ -81,7 +83,7 @@ public class HttpCacheManager {
                 HttpCache cache = new HttpCache();
                 cache.key = key.getKey();
                 cache.content = s;
-                // ...
+                cache.time = new Date();
                 db.cacheDao().insertCache(cache);
             }
         }, StalePolicy.NETWORK_BEFORE_STALE);

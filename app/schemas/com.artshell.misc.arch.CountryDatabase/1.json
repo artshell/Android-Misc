@@ -1,0 +1,87 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "9299a7f4e9c61a4f8c45cedacaa96b7a",
+    "entities": [
+      {
+        "tableName": "city_snippet",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `country_cn` TEXT COLLATE RTRIM, `country_en` TEXT COLLATE RTRIM, `country_id` TEXT COLLATE RTRIM, `city_cn` TEXT COLLATE RTRIM, `city_en` TEXT COLLATE RTRIM, `city_id` TEXT COLLATE RTRIM)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "countryCn",
+            "columnName": "country_cn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countryEn",
+            "columnName": "country_en",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countryId",
+            "columnName": "country_id",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cityCn",
+            "columnName": "city_cn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cityEn",
+            "columnName": "city_en",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cityId",
+            "columnName": "city_id",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_city_snippet_country_en",
+            "unique": false,
+            "columnNames": [
+              "country_en"
+            ],
+            "createSql": "CREATE  INDEX `index_city_snippet_country_en` ON `${TABLE_NAME}` (`country_en`)"
+          },
+          {
+            "name": "index_city_snippet_country_id_city_id",
+            "unique": true,
+            "columnNames": [
+              "country_id",
+              "city_id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_city_snippet_country_id_city_id` ON `${TABLE_NAME}` (`country_id`, `city_id`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9299a7f4e9c61a4f8c45cedacaa96b7a\")"
+    ]
+  }
+}

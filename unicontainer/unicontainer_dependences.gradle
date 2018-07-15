@@ -60,7 +60,7 @@ def versions = [
         dagger                     : '2.15',
 
         // android navigation
-        and_navigation             : '1.7.0',
+        and_navigation             : '1.8.5',
 
         // rabbits
         rabbits                    : '1.0.0'
