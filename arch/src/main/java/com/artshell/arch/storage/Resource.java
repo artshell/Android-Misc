@@ -21,27 +21,49 @@ public class Resource<T> {
         this.thr = thr;
     }
 
-    // 加载成功
+    /**
+     * 加载成功
+     * @param data
+     * @param <T>
+     * @return
+     */
     public static <T> Resource<T> success(@NonNull T data) {
         return new Resource<>(Status.SUCCESS, data, null);
     }
 
-    // 加载失败
+    /**
+     * 加载失败
+     * @param thr
+     * @param <T>
+     * @return
+     */
     public static <T> Resource<T> error(@NonNull Throwable thr) {
         return new Resource<>(Status.ERROR, null, thr);
     }
 
-    // 正在加载(例如：显示加载dialog)
+    /**
+     * 正在加载(例如：可以显示加载dialog)
+     * @param <T>
+     * @return
+     */
     public static <T> Resource<T> loading() {
         return new Resource<>(Status.LOADING, null, null);
     }
 
-    // 完成(例如：关闭dialog)
+    /**
+     * 完成(例如：可以关闭dialog操作)
+     * @param <T>
+     * @return
+     */
     public static <T> Resource<T> complete() {
         return new Resource<>(Status.COMPLETE, null, null);
     }
 
-    // 任务取消(例如：关闭dialog)
+    /**
+     * 任务取消(例如：可以关闭dialog操作)
+     * @param <T>
+     * @return
+     */
     public static <T> Resource<T> cancel() {
         return new Resource<>(Status.CANCEL, null, null);
     }

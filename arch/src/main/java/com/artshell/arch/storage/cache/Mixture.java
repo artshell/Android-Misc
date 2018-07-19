@@ -10,8 +10,8 @@ import com.artshell.arch.storage.server.ApiConstants;
 
 public class Mixture implements Key {
 
-    private String url;
-    private String path;
+    private String url = "";
+    private String path = "";
 
     public Mixture(@NonNull String path) {
         this.path = path;
@@ -39,6 +39,16 @@ public class Mixture implements Key {
 
     @Override
     public int hashCode() {
-        return url != null ? url.hashCode() : ApiConstants.ENDPOINT.hashCode() + Long.valueOf(System.currentTimeMillis()).hashCode();
+        return url != null
+                ? 31 * url.hashCode()
+                : 31 * (ApiConstants.ENDPOINT.hashCode() + Long.valueOf(System.currentTimeMillis()).hashCode());
+    }
+
+    @Override
+    public String toString() {
+        return "Mixture{" +
+                "url='" + url + '\'' +
+                ", path='" + path + '\'' +
+                '}';
     }
 }
