@@ -32,7 +32,7 @@ def versions = [
         rxlifecycle                : '2.2.1',
         rxpermissions              : '0.9.5@aar',
         rxbinding                  : '2.1.1',
-        rxrequestor                : '1.0.4',
+        rxrequestor                : '1.0.5',
 
         // autodispose
         autodispose                : '0.8.0',

@@ -1,10 +1,8 @@
 package com.artshell.arch.ui.user;
 
-import com.artshell.arch.storage.Resource;
-import com.artshell.arch.storage.Status;
 import com.artshell.arch.storage.server.model.UserResponse;
-import com.artshell.arch.storage.server.model.UserResponse.UserEntity;
 import com.artshell.arch.ui.DataBaseActivity;
+import com.artshell.arch.ui.SimpleObserver;
 import com.artshell.arch.view_model.HttpViewModel;
 
 /**
@@ -34,25 +32,11 @@ public class HostUserInfo extends DataBaseActivity {
 
         // 直接从服务器端获取
         serverModel.fetchByParameter(UserResponse.class, "user/profile", mPairs)
-                .observe(this, this::tackle);
-    }
+                .observe(this, new SimpleObserver<UserResponse>() {
+                    @Override
+                    public void onData(UserResponse data) {
 
-    private void tackle(Resource<UserResponse> resource) {
-        if (resource == null) return;
-        @Status String state = resource.status;
-        switch (state) {
-            case Status.LOADING: /* 显示加载dialog */
-                break;
-            case Status.SUCCESS: /* 处理结果数据 */
-                UserResponse response = resource.data;
-                if (response == null) return;
-                UserEntity info = response.getData();
-                // ...
-                break;
-            case Status.ERROR: /* 关闭dialog/显示错误信息 */
-                break;
-            case Status.COMPLETE: /* 关闭dialog */
-                break;
-        }
+                    }
+                });
     }
 }

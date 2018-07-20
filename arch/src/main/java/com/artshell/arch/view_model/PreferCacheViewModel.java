@@ -36,7 +36,7 @@ public class PreferCacheViewModel extends ContextViewModel {
         return MainLiveDataStreams.fromPublisher(
                 PreferCacheManager.store()
                         .get(new Mixture(path))
-                        .map(raw -> singleton().get().fromJson(raw, target))
+                        .map(raw -> threadGson.get().fromJson(raw, target))
                         .toFlowable()
                         .subscribeOn(Schedulers.io()));
     }
@@ -53,7 +53,7 @@ public class PreferCacheViewModel extends ContextViewModel {
         return MainLiveDataStreams.fromPublisher(
                 PreferCacheManager.storeWithParameter()
                         .get(new Mixture2(path, pairs))
-                        .map(raw -> singleton().get().fromJson(raw, target))
+                        .map(raw -> threadGson.get().fromJson(raw, target))
                         .toFlowable()
                         .subscribeOn(Schedulers.io()));
     }
@@ -70,7 +70,7 @@ public class PreferCacheViewModel extends ContextViewModel {
         return MainLiveDataStreams.fromPublisher(
                 PreferCacheManager.storeWithCouples()
                         .get(new Mixture2(path, pairs))
-                        .map(raw -> singleton().get().fromJson(raw, target))
+                        .map(raw -> threadGson.get().fromJson(raw, target))
                         .toFlowable()
                         .subscribeOn(Schedulers.io()));
     }

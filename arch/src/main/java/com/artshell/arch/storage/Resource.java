@@ -8,12 +8,9 @@ import android.support.annotation.Nullable;
  */
 
 public class Resource<T> {
-    @NonNull
-    public final String status;
-    @Nullable
-    public final T data;
-    @Nullable
-    public final Throwable thr;
+    @NonNull public final String status;
+    @Nullable public final T data;
+    @Nullable public final Throwable thr;
 
     private Resource(@NonNull String status, T data, Throwable thr) {
         this.status = status;
@@ -51,7 +48,7 @@ public class Resource<T> {
     }
 
     /**
-     * 完成(例如：可以关闭dialog操作)
+     * 完成(例如：可以关闭dialog)
      * @param <T>
      * @return
      */
@@ -60,7 +57,7 @@ public class Resource<T> {
     }
 
     /**
-     * 任务取消(例如：可以关闭dialog操作)
+     * 任务取消(例如：可以关闭dialog)
      * @param <T>
      * @return
      */
