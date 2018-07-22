@@ -55,6 +55,7 @@ configurations.all {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso
@@ -77,6 +78,9 @@ dependencies {
     implementation deps.arch.room.runtime
     annotationProcessor deps.arch.room.compiler
     implementation deps.arch.room.rxjava2
+
+    implementation deps.arch.paging.runtime
+    implementation deps.arch.paging.rxjava2
 
     implementation deps.rx.java
     implementation deps.rx.android

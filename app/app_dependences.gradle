@@ -157,7 +157,7 @@ def arch = [
                 // alternatively - without Android dependencies for testing
                 testing: "android.arch.paging:common:${versions.paging}",
 
-                // optional - RxJava support for Paging, currently in alpha
+                // optional - RxJava support for Paging
                 rxjava2: "android.arch.paging:rxjava2:${versions.paging}"
         ],
 

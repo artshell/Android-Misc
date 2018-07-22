@@ -80,16 +80,23 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         List<ResolveInfo> resolves = getPackageManager().queryIntentActivities(correct, PackageManager.GET_RESOLVED_FILTER);
         int descActivity = -1;
         int descService = -1;
+        int descRecycler = -1;
         for (ResolveInfo info : resolves) {
             int descRes = info.activityInfo.descriptionRes;
-            if (descRes == R.string.activity || descRes == R.string.service) {
+            if (descRes == R.string.activity || descRes == R.string.service || descRes == R.string.rv) {
                 if (descRes == R.string.activity && descActivity == -1) {
                     mItems.add(getString(R.string.activity));
                     descActivity = 0; /* found */
                 }
+
                 if (descRes == R.string.service && descService == -1) {
                     mItems.add(getString(R.string.service));
                     descService = 0; /* found */
+                }
+
+                if (descRes == R.string.rv && descRecycler == -1) {
+                    mItems.add(getString(R.string.rv));
+                    descRecycler = 0; /* found */
                 }
                 mItems.add(info);
             }

@@ -59,7 +59,6 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.RequestOrientationActivity"
             android:description="@string/activity"
@@ -70,27 +69,37 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".rv.DiffUtilTest"
-            android:description="@string/activity"
+            android:description="@string/rv"
             android:label="DiffUtilTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".rv.AsyncListDifferTest"
+            android:description="@string/rv"
+            android:label="AsyncListDifferTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".rv.AsyncListDifferTest"
-            android:description="@string/activity"
-            android:label="AsyncListDifferTest">
+            android:name=".rv.paging.AsyncPagedListDifferTest"
+            android:description="@string/rv"
+            android:label="AsyncPagedListDifferTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-
 
         <!-- =============== end =============== -->
 

@@ -4,4 +4,7 @@
     <string name="activity">activity_package</string>
 
     <string name="service">service_package</string>
+
+    <string name="rv">recyclerview_package</string>
+
 </resources>

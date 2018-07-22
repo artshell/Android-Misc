@@ -50,7 +50,7 @@ public class AsyncListDifferTest extends AppCompatActivity {
         mDelete.setOnClickListener(v -> {
             List<String> items = mAdapter.getItems();
 
-            // 删除内容
+            // 模拟删除内容
             if (items.size() > 10) {
                 List<String> newList = new ArrayList<>(items);
                 newList.remove(1);

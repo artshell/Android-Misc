@@ -1,5 +1,6 @@
 package com.artshell.misc.arch.dao;
 
+import android.arch.paging.DataSource;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Transaction;
@@ -25,4 +26,7 @@ public abstract class AbsUserDao {
     @Transaction
     @Query("SELECT id, name, lastName FROM user")
     public abstract Flowable<List<User>> getUsers();
+
+    @Query("SELECT * FROM user ORDER BY lastName ASC")
+    public abstract DataSource.Factory<Integer, User> getUsersByLastName();
 }

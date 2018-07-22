@@ -48,7 +48,7 @@ public class DiffUtilTest extends AppCompatActivity {
         mDelete.setOnClickListener(v -> {
             List<String> oldList = new ArrayList<>((Collection<String>) mAdapter.getItems());
 
-            // 删除内容
+            // 模拟删除内容
             List<String> newList = new ArrayList<>(oldList);
             newList.remove(0);
             newList.remove(2);
