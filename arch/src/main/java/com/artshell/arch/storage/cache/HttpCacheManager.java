@@ -1,13 +1,12 @@
 package com.artshell.arch.storage.cache;
 
-import android.arch.persistence.room.Room;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
-import com.artshell.arch.app.AppContext;
 import com.artshell.arch.storage.db.HttpCacheDatabase;
 import com.artshell.arch.storage.db.entity.HttpCache;
 import com.artshell.arch.storage.server.HttpManager;
-import com.nytimes.android.external.store3.base.Fetcher;
-import com.nytimes.android.external.store3.base.impl.StalePolicy;
+import com.google.gson.Gson;
 import com.nytimes.android.external.store3.base.impl.room.StoreRoom;
 import com.nytimes.android.external.store3.base.room.RoomPersister;
 
@@ -18,74 +17,73 @@ import javax.annotation.Nonnull;
 import io.reactivex.Observable;
 
 /**
- * @author artshell on 2018/6/30
+ * 适合大数据量缓存
+ * @see PreferCacheManager
  */
 public class HttpCacheManager {
 
     /**
-     * GET 请求(无参数)
-     * @see Mixture
+     * GET请求(无参数)
+     * @param target 实体class
+     * @param <T>    实体类型
      * @return
      */
-    public static StoreRoom<String, Mixture> store() {
-        return StoreHolder.MIXTURE;
+    public static <T> StoreRoom<T, Mixture> store(@NonNull Class<T> target) {
+        return StoreRoom.from(mixture -> HttpManager.get(String.class, mixture.getPath()).singleOrError(), persistFromRoom(target));
     }
 
     /**
-     * GET 请求 + 查询参数
-     * @see Mixture2
+     * GET请求 + 查询参数
+     * @param target 实体class
+     * @param <T>    实体类型
      * @return
      */
-    public static StoreRoom<String, Mixture2> storeWithParameter() {
-        return StoreParameterHolder.MIXTURE;
+    public static <T> StoreRoom<T, Mixture2> storeWithParameter(@NonNull Class<T> target) {
+        return StoreRoom.from(
+                mixture -> HttpManager.get(String.class, mixture.getPath(), mixture.getPairs()).singleOrError(),
+                persistFromRoom(target));
     }
 
     /**
-     * POST 请求(Key/Value字段)
-     * @see Mixture2
+     * POST请求 + (Key/Value), 表单提交
+     * @param target 实体class
+     * @param <T>    实体类型
      * @return
      */
-    public static StoreRoom<String, Mixture2> storeWithCouples() {
-        return StoreCouplesHolder.MIXTURE;
+    public static <T> StoreRoom<T, Mixture2> storeWithCouples(@NonNull Class<T> target) {
+        return StoreRoom.from(
+                mixture -> HttpManager.post(String.class, mixture.getPath(), mixture.getPairs()).singleOrError(),
+                persistFromRoom(target));
     }
 
-    private static final class StoreHolder {
-        private static final StoreRoom<String, Mixture> MIXTURE = createStore(
-                mixture -> HttpManager.get(String.class, mixture.getPath()).singleOrError());
-    }
-
-    private static final class StoreParameterHolder {
-        private static final StoreRoom<String, Mixture2> MIXTURE = createStore(
-                mixture -> HttpManager.get(String.class, mixture.getPath(), mixture.getPairs()).singleOrError());
-    }
-
-    private static final class StoreCouplesHolder {
-        private static final StoreRoom<String, Mixture2> MIXTURE = createStore(
-                mixture -> HttpManager.post(String.class, mixture.getPath(), mixture.getPairs()).singleOrError());
-    }
-
-    public static <I extends Key> StoreRoom<String, I> createStore(Fetcher<String, I> fetcher) {
-        HttpCacheDatabase db = Room.databaseBuilder(AppContext.getAppContext(), HttpCacheDatabase.class, "db_http_cache").build();
-
-        return StoreRoom.from(fetcher, new RoomPersister<String, String, I>() {
+    /**
+     * 从Database中读取/写入缓存
+     * @param clazz
+     * @param <T>
+     * @param <I>
+     * @return
+     * @see HttpCacheDatabase
+     */
+    private static <T, I extends Key> RoomPersister<String, T, I> persistFromRoom(@NonNull Class<T> clazz) {
+        return new RoomPersister<String, T, I>() {
             @Nonnull
             @Override
-            public Observable<String> read(@Nonnull I key) {
-                HttpCache cache = db.cacheDao().fetch(key.getKey());
-                return cache == null || cache.content == null || cache.content.isEmpty()
-                        ? Observable.empty()
-                        : Observable.just(cache.content);
+            public Observable<T> read(@Nonnull I mixture) {
+                HttpCache cache = HttpCacheDatabase.getInstance().cacheDao().fetch(mixture.getKey());
+                if (TextUtils.isEmpty(cache.content)) return Observable.empty();
+                if (clazz == String.class) return Observable.just(clazz.cast(cache.content));
+                return Observable.just(new Gson().fromJson(cache.content, clazz));
             }
 
             @Nonnull
             @Override
-            public void write(@Nonnull I key, @Nonnull String s) {
+            public void write(@Nonnull I mixture, @Nonnull String source) {
                 HttpCache cache = new HttpCache();
-                cache.key = key.getKey();
-                cache.content = s;
+                cache.key = mixture.getKey();
+                cache.content = source;
                 cache.time = new Date();
-                db.cacheDao().insertCache(cache);
+                HttpCacheDatabase.getInstance().cacheDao().insertCache(cache);
             }
-        }, StalePolicy.NETWORK_BEFORE_STALE);
+        };
     }
 }

@@ -4,14 +4,15 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
-import com.artshell.arch.utils.MainLiveDataStreams;
+import com.artshell.arch.storage.Resource;
+import com.artshell.arch.storage.cache.HttpCacheManager;
 import com.artshell.arch.storage.cache.Mixture;
 import com.artshell.arch.storage.cache.Mixture2;
-import com.artshell.arch.storage.Resource;
-import com.artshell.arch.storage.cache.PreferCacheManager;
+import com.artshell.arch.utils.MainLiveDataStreams;
 
 import java.util.Map;
 
+import io.reactivex.BackpressureStrategy;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -19,9 +20,9 @@ import io.reactivex.schedulers.Schedulers;
  * Created by artshell on 2018/3/16.
  */
 
-public class PreferCacheViewModel extends ContextViewModel {
+public class HttpCacheViewModel extends ContextViewModel {
 
-    public PreferCacheViewModel(@NonNull Application application) {
+    public HttpCacheViewModel(@NonNull Application application) {
         super(application);
     }
 
@@ -34,10 +35,9 @@ public class PreferCacheViewModel extends ContextViewModel {
      */
     public <T> LiveData<Resource<T>> get(Class<T> target, String path) {
         return MainLiveDataStreams.fromPublisher(
-                PreferCacheManager.store()
+                HttpCacheManager.store(target)
                         .get(new Mixture(path))
-                        .map(raw -> threadGson.get().fromJson(raw, target))
-                        .toFlowable()
+                        .toFlowable(BackpressureStrategy.LATEST)
                         .subscribeOn(Schedulers.io()));
     }
 
@@ -51,10 +51,9 @@ public class PreferCacheViewModel extends ContextViewModel {
      */
     public <T> LiveData<Resource<T>> getWithParameter(Class<T> target, String path, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
-                PreferCacheManager.storeWithParameter()
+                HttpCacheManager.storeWithParameter(target)
                         .get(new Mixture2(path, pairs))
-                        .map(raw -> threadGson.get().fromJson(raw, target))
-                        .toFlowable()
+                        .toFlowable(BackpressureStrategy.LATEST)
                         .subscribeOn(Schedulers.io()));
     }
 
@@ -68,10 +67,9 @@ public class PreferCacheViewModel extends ContextViewModel {
      */
     public <T> LiveData<Resource<T>> post(Class<T> target, String path, Map<String, String> pairs) {
         return MainLiveDataStreams.fromPublisher(
-                PreferCacheManager.storeWithCouples()
+                HttpCacheManager.storeWithCouples(target)
                         .get(new Mixture2(path, pairs))
-                        .map(raw -> threadGson.get().fromJson(raw, target))
-                        .toFlowable()
+                        .toFlowable(BackpressureStrategy.LATEST)
                         .subscribeOn(Schedulers.io()));
     }
 }
