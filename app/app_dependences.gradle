@@ -44,8 +44,8 @@ def versions = [
         retrofit          : '2.4.0',
 
         // okhttp3
-        okhttp            : '3.10.0',
-        okio              : '1.14.0',
+        okhttp            : '3.11.0',
+        okio              : '1.15.0',
 
         // store
         store             : '3.1.0',
@@ -208,7 +208,9 @@ def retrofit = [
 
 def okHttp = [
         okhttp: "com.squareup.okhttp3:okhttp:${versions.okhttp}",
-        okio  : "com.squareup.okio:okio:${versions.okio}"
+        interceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+        mockwebserver: "com.squareup.okhttp3:mockwebserver:${versions.okhttp}",
+        okio: "com.squareup.okio:okio:${versions.okio}"
 ]
 
 def store = [

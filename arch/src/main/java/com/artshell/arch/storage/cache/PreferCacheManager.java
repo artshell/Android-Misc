@@ -24,6 +24,7 @@ public class PreferCacheManager {
 
     /**
      * GET请求(无参数)
+     * @param target
      * @return
      * @see Mixture
      */
@@ -33,6 +34,7 @@ public class PreferCacheManager {
 
     /**
      * GET请求 + 查询参数
+     * @param target
      * @return
      * @see Mixture2
      */
@@ -42,6 +44,7 @@ public class PreferCacheManager {
 
     /**
      * POST请求 + (Key/Value), 表单提交
+     * @param target
      * @return
      * @see Mixture2
      */

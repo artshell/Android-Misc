@@ -86,5 +86,13 @@ dependencies {
     implementation deps.rx.android
     implementation deps.rx.lifecycle
 
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.converter_gson
+
+    implementation deps.okHttp.okhttp
+    implementation deps.okHttp.interceptor
+    implementation deps.okHttp.okio
+
     implementation deps.misc.multitype
+    implementation deps.misc.gson
 }
