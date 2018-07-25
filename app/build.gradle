@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 apply from: 'app_dependences.gradle'
 
@@ -95,4 +96,8 @@ dependencies {
 
     implementation deps.misc.multitype
     implementation deps.misc.gson
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
