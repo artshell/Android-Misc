@@ -1,4 +1,4 @@
-package com.artshell.misc.rv.helper;
+package com.artshell.misc.rv.official_paging_example;
 
 import android.arch.paging.DataSource;
 import android.arch.paging.PagedList.BoundaryCallback;

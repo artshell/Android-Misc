@@ -1,8 +1,9 @@
-package com.artshell.misc.rv.helper;
+package com.artshell.misc.rv.official_paging_example;
 
 import android.util.Log;
 
 import com.artshell.misc.BuildConfig;
+import com.artshell.misc.rv.official_paging_example.api.RedditApi;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -10,7 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RedditApiCreator {
-    public static final String BASE_URL = "https://www.reddit.com/";
+    private static final String BASE_URL = "https://www.reddit.com/";
 
     public static RedditApi create() {
         HttpLoggingInterceptor.Logger logger = msg -> {

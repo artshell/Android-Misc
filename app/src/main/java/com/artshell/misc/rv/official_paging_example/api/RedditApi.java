@@ -1,6 +1,8 @@
-package com.artshell.misc.rv.helper;
+package com.artshell.misc.rv.official_paging_example.api;
 
 import android.support.annotation.Nullable;
+
+import com.artshell.misc.rv.official_paging_example.db.RedditPost;
 
 import java.util.List;
 
@@ -9,6 +11,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+/**
+ * API communication setup
+ */
 public interface RedditApi {
 
     @GET("/r/{subreddit}/hot.json")
@@ -46,7 +51,7 @@ public interface RedditApi {
         private String after;
 
         public ListingData(List<RedditChildrenResponse> children, @Nullable String before, @Nullable String after) {
-            mChildren = children;
+            this.mChildren = children;
             this.before = before;
             this.after = after;
         }
