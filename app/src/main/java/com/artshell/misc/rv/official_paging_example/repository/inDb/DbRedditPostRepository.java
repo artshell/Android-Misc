@@ -25,7 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DbRedditPostRepository2 implements RedditPostRepository {
+public class DbRedditPostRepository implements RedditPostRepository {
     private static final int DEFAULT_NETWORK_PAGE_SIZE = 10;
 
     private RedditDb  db;
@@ -33,7 +33,7 @@ public class DbRedditPostRepository2 implements RedditPostRepository {
     private Executor  ioExecutor;
     private Integer pageSize = DEFAULT_NETWORK_PAGE_SIZE;
 
-    public DbRedditPostRepository2(RedditDb db, RedditApi webService, Executor ioExecutor, Integer pageSize) {
+    public DbRedditPostRepository(RedditDb db, RedditApi webService, Executor ioExecutor, Integer pageSize) {
         this.db = db;
         this.webService = webService;
         this.ioExecutor = ioExecutor;
