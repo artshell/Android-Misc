@@ -53,6 +53,14 @@ public class ItemKeyedSubredditDataSource extends ItemKeyedDataSource<String, Re
         this.retryExecutor = retryExecutor;
     }
 
+    public MutableLiveData<NetworkState> getNetworkState() {
+        return networkState;
+    }
+
+    public MutableLiveData<NetworkState> getInitialLoad() {
+        return initialLoad;
+    }
+
     public void retryAllFailed() {
         Runnable prevRetry = retry;
         retry = null;

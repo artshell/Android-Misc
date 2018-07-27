@@ -1,5 +1,6 @@
 package com.artshell.misc.rv.official_paging_example.repository.inMemory.byItem;
 
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.paging.DataSource;
 
 import com.artshell.misc.rv.official_paging_example.api.RedditApi;
@@ -8,17 +9,31 @@ import com.artshell.misc.rv.official_paging_example.db.RedditPost;
 import java.util.concurrent.Executor;
 
 /**
- * @author artshell on 2018/7/26
+ * A simple data source factory which also provides a way to observe the last created data source.
+ * This allows us to channel its network request status etc back to the UI. See the Listing creation
+ * in the Repository class.
  */
 public class SubRedditDataSourceFactory extends DataSource.Factory<String, RedditPost> {
     private RedditApi webService;
     private String subredditName;
     private Executor retryExecutor;
+    private MutableLiveData<ItemKeyedSubredditDataSource> sourceLiveData;
 
+    public SubRedditDataSourceFactory(RedditApi webService, String subredditName, Executor retryExecutor) {
+        this.webService = webService;
+        this.subredditName = subredditName;
+        this.retryExecutor = retryExecutor;
+        sourceLiveData = new MutableLiveData<>();
+    }
 
+    public MutableLiveData<ItemKeyedSubredditDataSource> getSourceLiveData() {
+        return sourceLiveData;
+    }
 
     @Override
     public DataSource<String, RedditPost> create() {
-        return null;
+        ItemKeyedSubredditDataSource source = new ItemKeyedSubredditDataSource(webService, subredditName, retryExecutor);
+        sourceLiveData.postValue(source);
+        return source;
     }
 }
