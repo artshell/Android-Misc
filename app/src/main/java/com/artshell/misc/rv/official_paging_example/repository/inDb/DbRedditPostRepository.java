@@ -33,10 +33,14 @@ public class DbRedditPostRepository implements RedditPostRepository {
     private Executor  ioExecutor;
     private Integer pageSize = DEFAULT_NETWORK_PAGE_SIZE;
 
-    public DbRedditPostRepository(RedditDb db, RedditApi webService, Executor ioExecutor, Integer pageSize) {
+    public DbRedditPostRepository(RedditDb db, RedditApi webService, Executor ioExecutor) {
         this.db = db;
         this.webService = webService;
         this.ioExecutor = ioExecutor;
+        this.pageSize = pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
@@ -72,7 +76,7 @@ public class DbRedditPostRepository implements RedditPostRepository {
     @MainThread
     private LiveData<NetworkState> refresh(String subredditName) {
         MutableLiveData<NetworkState> networkState = new MutableLiveData<>();
-        networkState.setValue(NetworkState.loading());
+        networkState.setValue(NetworkState.LOADING);
         webService.getTop(subredditName, pageSize)
                 .enqueue(new Callback<RedditApi.ListingResponse>() {
                     @Override
@@ -84,7 +88,7 @@ public class DbRedditPostRepository implements RedditPostRepository {
                             });
 
                             // since we are in bg thread now, post the result.
-                            networkState.postValue(NetworkState.loaded());
+                            networkState.postValue(NetworkState.LOADED);
                         });
                     }
 

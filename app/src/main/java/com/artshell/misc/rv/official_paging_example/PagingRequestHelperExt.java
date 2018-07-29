@@ -30,11 +30,11 @@ public class PagingRequestHelperExt extends PagingRequestHelper {
         MutableLiveData<NetworkState> data = new MutableLiveData<>();
         addListener(report -> {
             if (report.hasRunning()) {
-                data.postValue(NetworkState.loading());
+                data.postValue(NetworkState.LOADING);
             } else if (report.hasError()) {
                 data.postValue(NetworkState.error(getErrorMessage(report)));
             } else {
-                data.postValue(NetworkState.loaded());
+                data.postValue(NetworkState.LOADED);
             }
         });
         return data;

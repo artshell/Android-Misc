@@ -101,6 +101,28 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".rv.official_paging_example.ui.MainActivity"
+            android:description="@string/rv"
+            android:label="MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".rv.official_paging_example.ui.RedditActivity"
+            android:description="@string/rv"
+            android:label="RedditActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
         <!-- =============== end =============== -->
 
 

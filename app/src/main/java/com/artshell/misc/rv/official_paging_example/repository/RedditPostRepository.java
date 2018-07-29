@@ -11,7 +11,7 @@ public interface RedditPostRepository {
 
     Listing<RedditPost> postsSubreddit(String subReddit, int pageSize);
 
-    enum Type {
+    public enum Type {
         IN_MEMORY_BY_ITEM,
         IN_MEMORY_BY_PAGE,
         DB

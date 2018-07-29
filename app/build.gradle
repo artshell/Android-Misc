@@ -94,6 +94,11 @@ dependencies {
     implementation deps.okHttp.interceptor
     implementation deps.okHttp.okio
 
+    implementation deps.glide.glide_v4
+    implementation deps.glide.annotations
+    annotationProcessor deps.glide.annotationProcessor
+
+
     implementation deps.misc.multitype
     implementation deps.misc.gson
     implementation deps.misc.stream

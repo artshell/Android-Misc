@@ -66,8 +66,8 @@ public class PageKeyedSubredditDataSource extends PageKeyedDataSource<String, Re
     @Override
     public void loadInitial(@NonNull LoadInitialParams<String> params, @NonNull LoadInitialCallback<String, RedditPost> callback) {
         Call<ListingResponse> request = webservice.getTop(subredditName, params.requestedLoadSize);
-        networkState.postValue(NetworkState.loading());
-        initialLoad.postValue(NetworkState.loading());
+        networkState.postValue(NetworkState.LOADING);
+        initialLoad.postValue(NetworkState.LOADING);
 
         // triggered by a refresh, we better execute sync
         try {
@@ -100,7 +100,7 @@ public class PageKeyedSubredditDataSource extends PageKeyedDataSource<String, Re
 
     @Override
     public void loadAfter(@NonNull LoadParams<String> params, @NonNull LoadCallback<String, RedditPost> callback) {
-        networkState.postValue(NetworkState.loading());
+        networkState.postValue(NetworkState.LOADING);
         webservice.getTopAfter(subredditName, params.key, params.requestedLoadSize)
                 .enqueue(new Callback<ListingResponse>() {
                     @Override

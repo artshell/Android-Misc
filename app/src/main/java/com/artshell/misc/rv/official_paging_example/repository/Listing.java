@@ -72,6 +72,6 @@ public class Listing<T> {
     }
 
     public interface Callback {
-        void action();
+        void invoke();
     }
 }

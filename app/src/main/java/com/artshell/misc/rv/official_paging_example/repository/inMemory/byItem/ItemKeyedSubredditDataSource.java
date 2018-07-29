@@ -76,8 +76,8 @@ public class ItemKeyedSubredditDataSource extends ItemKeyedDataSource<String, Re
         // update network states.
         // we also provide an initial load state to the listeners so that the UI can know when the
         // very first list is loaded.
-        networkState.postValue(NetworkState.loading());
-        initialLoad.postValue(NetworkState.loading());
+        networkState.postValue(NetworkState.LOADING);
+        initialLoad.postValue(NetworkState.LOADING);
 
         // triggered by a refresh, we better execute sync
         try {
@@ -92,8 +92,8 @@ public class ItemKeyedSubredditDataSource extends ItemKeyedDataSource<String, Re
                 }
             }
             retry = null;
-            networkState.postValue(NetworkState.loaded());
-            initialLoad.postValue(NetworkState.loaded());
+            networkState.postValue(NetworkState.LOADED);
+            initialLoad.postValue(NetworkState.LOADED);
             callback.onResult(items);
         } catch (IOException ioExec) {
             retry = () -> loadInitial(params, callback);
@@ -107,7 +107,7 @@ public class ItemKeyedSubredditDataSource extends ItemKeyedDataSource<String, Re
     @Override
     public void loadAfter(@NonNull LoadParams<String> params, @NonNull LoadCallback<RedditPost> callback) {
         // set network value to loading.
-        networkState.postValue(NetworkState.loading());
+        networkState.postValue(NetworkState.LOADING);
         // even though we are using async retrofit API here, we could also use sync
         // it is just different to show that the callback can be called async.
         webService.getTopAfter(subredditName, params.key, params.requestedLoadSize)
@@ -126,7 +126,7 @@ public class ItemKeyedSubredditDataSource extends ItemKeyedDataSource<String, Re
                                 // clear retry since last request succeeded
                                 retry = null;
                                 callback.onResult(items);
-                                networkState.postValue(NetworkState.loaded());
+                                networkState.postValue(NetworkState.LOADED);
                             }
                         } else {
                             retry = () -> loadAfter(params, callback);
