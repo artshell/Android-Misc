@@ -17,13 +17,12 @@ public class SubRedditDataSourceFactory extends DataSource.Factory<String, Reddi
     private RedditApi webService;
     private String subredditName;
     private Executor retryExecutor;
-    private MutableLiveData<ItemKeyedSubredditDataSource> sourceLiveData;
+    private MutableLiveData<ItemKeyedSubredditDataSource> sourceLiveData = new MutableLiveData<>();
 
     public SubRedditDataSourceFactory(RedditApi webService, String subredditName, Executor retryExecutor) {
         this.webService = webService;
         this.subredditName = subredditName;
         this.retryExecutor = retryExecutor;
-        sourceLiveData = new MutableLiveData<>();
     }
 
     public MutableLiveData<ItemKeyedSubredditDataSource> getSourceLiveData() {

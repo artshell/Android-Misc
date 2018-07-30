@@ -41,7 +41,6 @@ public class PostsAdapter extends PagedListAdapter<RedditPost, RecyclerView.View
             default:
                 throw new IllegalArgumentException("unknown view type " + viewType);
         }
-
     }
 
     @Override

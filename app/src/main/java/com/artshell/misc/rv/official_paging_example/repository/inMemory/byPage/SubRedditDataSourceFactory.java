@@ -18,7 +18,7 @@ public class SubRedditDataSourceFactory extends DataSource.Factory<String, Reddi
     private RedditApi webService;
     private String subredditName;
     private Executor retryExecutor;
-    private MutableLiveData<PageKeyedSubredditDataSource> sourceLiveData;
+    private MutableLiveData<PageKeyedSubredditDataSource> sourceLiveData = new MutableLiveData<>();
 
     public SubRedditDataSourceFactory(RedditApi webService, String subredditName, Executor retryExecutor) {
         this.webService = webService;

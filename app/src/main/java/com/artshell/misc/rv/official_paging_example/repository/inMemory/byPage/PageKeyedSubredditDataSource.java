@@ -85,9 +85,9 @@ public class PageKeyedSubredditDataSource extends PageKeyedDataSource<String, Re
                 }
                 callback.onResult(items, data.getBefore(), data.getAfter());
             }
-        } catch (IOException ioex) {
+        } catch (IOException ioExc) {
             retry = () -> loadInitial(params, callback);
-            NetworkState error = NetworkState.error(ioex.getMessage() == null ? "unknown error" : ioex.getMessage());
+            NetworkState error = NetworkState.error(ioExc.getMessage() == null ? "unknown error" : ioExc.getMessage());
             networkState.postValue(error);
             initialLoad.postValue(error);
         }

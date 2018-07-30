@@ -1,7 +1,6 @@
 package com.artshell.misc.rv.official_paging_example.repository.inMemory.byPage;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Transformations;
 import android.arch.paging.LivePagedListBuilder;
 
 import com.artshell.misc.rv.official_paging_example.api.RedditApi;
@@ -11,6 +10,8 @@ import com.artshell.misc.rv.official_paging_example.repository.NetworkState;
 import com.artshell.misc.rv.official_paging_example.repository.RedditPostRepository;
 
 import java.util.concurrent.Executor;
+
+import static android.arch.lifecycle.Transformations.switchMap;
 
 /**
  * Repository implementation that returns a Listing that loads data directly from network by using
@@ -33,13 +34,13 @@ public class InMemoryByPageKeyRepository implements RedditPostRepository {
         // provide custom executor for network requests, otherwise it will default to
         // Arch Components' IO pool which is also used for disk access
         LivePagedListBuilder<String, RedditPost> pageList = new LivePagedListBuilder<>(sourceFactory, pageSize)
-                                                 .setFetchExecutor(networkExecutor);
+                                                            .setFetchExecutor(networkExecutor);
 
-        LiveData<NetworkState> refreshState = Transformations.switchMap(sourceFactory.getSourceLiveData(), PageKeyedSubredditDataSource::getInitialLoad);
+        LiveData<NetworkState> refreshState = switchMap(sourceFactory.getSourceLiveData(), PageKeyedSubredditDataSource::getInitialLoad);
 
         return new Listing<>(
                 pageList.build(),
-                Transformations.switchMap(sourceFactory.getSourceLiveData(), PageKeyedSubredditDataSource::getNetworkState),
+                switchMap(sourceFactory.getSourceLiveData(), PageKeyedSubredditDataSource::getNetworkState),
                 refreshState,
                 () -> {
                     PageKeyedSubredditDataSource source = sourceFactory.getSourceLiveData().getValue();

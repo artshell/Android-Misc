@@ -30,7 +30,7 @@ def versions = [
         workmanager       : '1.0.0-alpha04',
 
         // rx
-        rxjava            : '2.1.16',
+        rxjava            : '2.1.17',
         rxandroid         : '2.0.2',
         rxlifecycle       : '2.2.1',
         rxpermissions     : '0.9.5@aar',
