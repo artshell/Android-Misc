@@ -1,4 +1,4 @@
-package com.artshell.arch.utils;
+package com.artshell.arch.widget.rv;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -75,7 +75,9 @@ public class DecorateAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return isEmpty() ? getHeadersCount() + getFootersCount() : getHeadersCount() + mContentAdapter.getItemCount() + getFootersCount();
+        return isEmpty()
+                ? getHeadersCount() + getFootersCount()
+                : getHeadersCount() + mContentAdapter.getItemCount() + getFootersCount();
     }
 
     public int getHeadersCount() {
@@ -99,7 +101,7 @@ public class DecorateAdapter extends RecyclerView.Adapter {
     }
 
     public boolean removeHeader(int layoutResId) {
-        for (int i = 0; i < mHeaders.size(); i++) {
+        for (int i = 0, len = mHeaders.size(); i < len; i++) {
             FixedViewInfo info = mHeaders.get(i);
             if (info.getLayoutResId() == layoutResId) {
                 mHeaders.remove(i);
@@ -110,7 +112,7 @@ public class DecorateAdapter extends RecyclerView.Adapter {
     }
 
     public boolean removeFooter(int layoutResId) {
-        for (int i = 0; i < mFooters.size(); i++) {
+        for (int i = 0, len = mFooters.size(); i < len; i++) {
             FixedViewInfo info = mFooters.get(i);
             if (info.getLayoutResId() == layoutResId) {
                 mFooters.remove(i);
@@ -121,20 +123,20 @@ public class DecorateAdapter extends RecyclerView.Adapter {
     }
 
     public void removeAllHeader() {
-        if (!mHeaders.isEmpty()) {
+        if (mHeaders.size() > 0) {
             mHeaders.clear();
         }
     }
 
     public void removeAllFooter() {
-        if (!mFooters.isEmpty()) {
+        if (mFooters.size() > 0) {
             mFooters.clear();
         }
     }
 
     public void addHeaderView(int layoutResId) {
         if (layoutResId <= 0) {
-            throw new IllegalArgumentException("layoutResId <= 0");
+            throw new IllegalArgumentException("header layoutResId <= 0");
         }
         FixedViewInfo info = new FixedViewInfo();
         info.setLayoutResId(layoutResId);
@@ -144,7 +146,7 @@ public class DecorateAdapter extends RecyclerView.Adapter {
 
     public void addFooterView(int layoutResId) {
         if (layoutResId <= 0) {
-            throw new IllegalArgumentException("layoutResId <= 0");
+            throw new IllegalArgumentException("footer layoutResId <= 0");
         }
         FixedViewInfo info = new FixedViewInfo();
         info.setLayoutResId(layoutResId);
@@ -153,7 +155,7 @@ public class DecorateAdapter extends RecyclerView.Adapter {
     }
 
     public boolean containsFooter(int layoutResId) {
-        for (int i = 0; i < mFooters.size(); i++) {
+        for (int i = 0, len = mFooters.size(); i < len; i++) {
             FixedViewInfo info = mFooters.get(i);
             if (info.getLayoutResId() == layoutResId) {
                 return true;
@@ -163,7 +165,7 @@ public class DecorateAdapter extends RecyclerView.Adapter {
     }
 
     public boolean containsHeader(int layoutResId) {
-        for (int i = 0; i < mHeaders.size(); i++) {
+        for (int i = 0, len = mHeaders.size(); i < len; i++) {
             FixedViewInfo info = mHeaders.get(i);
             if (info.getLayoutResId() == layoutResId) {
                 return true;
