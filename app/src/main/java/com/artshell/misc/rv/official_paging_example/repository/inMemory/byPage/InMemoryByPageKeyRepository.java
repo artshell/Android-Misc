@@ -45,13 +45,13 @@ public class InMemoryByPageKeyRepository implements RedditPostRepository {
                 () -> {
                     PageKeyedSubredditDataSource source = sourceFactory.getSourceLiveData().getValue();
                     if (source != null) {
-                        source.retryAllFailed();
+                        source.invalidate();
                     }
                 },
                 () -> {
                     PageKeyedSubredditDataSource source = sourceFactory.getSourceLiveData().getValue();
                     if (source != null) {
-                        source.invalidate();
+                        source.retryAllFailed();
                     }
                 }
         );

@@ -53,13 +53,13 @@ public class InMemoryByItemRepository implements RedditPostRepository {
                 () -> {
                     ItemKeyedSubredditDataSource source = sourceFactory.getSourceLiveData().getValue();
                     if (source != null) {
-                        source.retryAllFailed();
+                        source.invalidate();
                     }
                 },
                 () -> {
                     ItemKeyedSubredditDataSource source = sourceFactory.getSourceLiveData().getValue();
                     if (source != null) {
-                        source.invalidate();
+                        source.retryAllFailed();
                     }
                 }
         );

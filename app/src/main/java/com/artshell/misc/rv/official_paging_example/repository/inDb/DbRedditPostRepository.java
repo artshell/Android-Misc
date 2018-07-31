@@ -129,8 +129,8 @@ public class DbRedditPostRepository implements RedditPostRepository {
                 builder.build(),
                 boundaryCallback.getNetworkState(),
                 refreshState,
-                () -> boundaryCallback.getHelper().retryAllFailed(),
-                () -> refreshTrigger.postValue(null)
+                () -> refreshTrigger.postValue(null),
+                () -> boundaryCallback.getHelper().retryAllFailed()
         );
     }
 }

@@ -7,8 +7,8 @@ public class HttpPagingResult<T> {
      * pageData :
      */
 
-    private int         code;
-    private String      msg;
+    private int code;
+    private String msg;
     private Pageable<T> pageData;
 
     public int getCode() {

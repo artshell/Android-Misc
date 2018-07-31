@@ -40,7 +40,7 @@ public class SubRedditViewModel extends ViewModel {
     public void retry() {
         Listing<RedditPost> value = repoResult.getValue();
         if (value != null && value.getRetry() != null) {
-            value.getRefresh().invoke();
+            value.getRetry().invoke();
         }
     }
 
