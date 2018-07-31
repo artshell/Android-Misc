@@ -6,10 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.recyclerview.extensions.AsyncDifferConfig;
 import android.support.v7.util.DiffUtil;
+import android.support.v7.util.ListUpdateCallback;
 import android.support.v7.widget.RecyclerView;
 
 /**
  * Modified form {@link android.arch.paging.PagedListAdapter}
+ * @see DecorateAdapter
  * @author artshell on 2018/7/30
  */
 public abstract class AppendPagedListAdapter<T, VH extends RecyclerView.ViewHolder>
@@ -33,7 +35,16 @@ public abstract class AppendPagedListAdapter<T, VH extends RecyclerView.ViewHold
      */
     @SuppressWarnings("unused, WeakerAccess")
     protected AppendPagedListAdapter(@NonNull DecorateAdapter adapter, @NonNull AsyncDifferConfig<T> config) {
-        mDiffer = new AsyncPagedListDiffer<>(new DecorateListUpdateCallback(adapter), config);
+        this(new DecorateListUpdateCallback(adapter), config);
+    }
+
+    /**
+     * @param callback
+     * @param config
+     */
+    @SuppressWarnings("unused, WeakerAccess")
+    protected AppendPagedListAdapter(@NonNull ListUpdateCallback callback, @NonNull AsyncDifferConfig<T> config) {
+        mDiffer = new AsyncPagedListDiffer<>(callback, config);
     }
 
     /**

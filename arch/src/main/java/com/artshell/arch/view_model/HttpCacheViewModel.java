@@ -8,6 +8,7 @@ import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.cache.HttpCacheManager;
 import com.artshell.arch.storage.cache.Mixture;
 import com.artshell.arch.storage.cache.Mixture2;
+import com.artshell.arch.ui.ResourceObserver;
 import com.artshell.arch.utils.MainLiveDataStreams;
 
 import java.util.Map;
@@ -17,9 +18,9 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * 常用请求(单接口数据, 从缓存中获取, 没有则自动从服务器端获取)
+ * @see ResourceObserver
  * Created by artshell on 2018/3/16.
  */
-
 public class HttpCacheViewModel extends ContextViewModel {
 
     public HttpCacheViewModel(@NonNull Application application) {

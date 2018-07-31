@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
+import com.artshell.arch.ui.ResourceObserver;
 import com.artshell.arch.utils.MainLiveDataStreams;
 import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.server.HttpManager;
@@ -15,12 +16,12 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * 常用请求(单接口数据,从服务器端获取)
+ * @see ResourceObserver
  * Created by artshell on 2018/3/16.
  */
+public class HttpResourceViewModel extends AndroidViewModel {
 
-public class HttpViewModel extends AndroidViewModel {
-
-    public HttpViewModel(@NonNull Application application) {
+    public HttpResourceViewModel(@NonNull Application application) {
         super(application);
     }
 

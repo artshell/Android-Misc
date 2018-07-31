@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 /**
  * @author artshell on 19/03/2018
  */
-
 public class Resource<T> {
     @NonNull public final String status;
     @Nullable public final T data;
@@ -48,7 +47,7 @@ public class Resource<T> {
     }
 
     /**
-     * 完成(例如：可以关闭dialog)
+     * 任务完成(例如：可以关闭dialog)
      * @param <T>
      * @return
      */

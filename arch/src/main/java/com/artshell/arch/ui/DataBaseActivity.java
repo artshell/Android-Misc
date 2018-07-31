@@ -20,8 +20,4 @@ public abstract class DataBaseActivity extends BaseActivity {
     protected <VM extends ViewModel> VM createViewModel(@NonNull String key, @NonNull Class<VM> target) {
         return ViewModelProviders.of(this).get(key, target);
     }
-
-    protected void dispatchError(Throwable thr) {
-
-    }
 }

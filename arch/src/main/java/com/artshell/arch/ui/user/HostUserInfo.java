@@ -2,8 +2,8 @@ package com.artshell.arch.ui.user;
 
 import com.artshell.arch.storage.server.model.UserResponse;
 import com.artshell.arch.ui.DataBaseActivity;
-import com.artshell.arch.ui.SimpleObserver;
-import com.artshell.arch.view_model.HttpViewModel;
+import com.artshell.arch.ui.ResourceObserver;
+import com.artshell.arch.view_model.HttpResourceViewModel;
 
 /**
  * 用户信息
@@ -24,7 +24,7 @@ public class HostUserInfo extends DataBaseActivity {
 
     @Override
     protected void loadData() {
-        HttpViewModel serverModel = createViewModel(HttpViewModel.class);
+        HttpResourceViewModel serverModel = createViewModel(HttpResourceViewModel.class);
 
         // 参数
         mPairs.clear();
@@ -32,11 +32,8 @@ public class HostUserInfo extends DataBaseActivity {
 
         // 直接从服务器端获取
         serverModel.fetchByParameter(UserResponse.class, "user/profile", mPairs)
-                .observe(this, new SimpleObserver<UserResponse>() {
-                    @Override
-                    public void onData(UserResponse data) {
-
-                    }
+                .observe(this, (ResourceObserver<UserResponse>) data -> {
+                    // ...
                 });
     }
 }
