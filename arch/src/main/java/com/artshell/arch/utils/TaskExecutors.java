@@ -33,7 +33,7 @@ public class TaskExecutors {
 
     private static class NetworkExecutor {
         private static final Executor NETWORK_EXECUTOR = new ThreadPoolExecutor(
-                1, 3, 60L, TimeUnit.SECONDS, new LinkedBlockingDeque<>(6));
+                1, 2, 60L, TimeUnit.SECONDS, new LinkedBlockingDeque<>(6));
     }
 
     private static class MainExecutor {

@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 
 import com.artshell.arch.common.EmptyDataException;
 import com.artshell.arch.common.FetchFailedException;
-import com.artshell.arch.common.NoMoreDataException;
 import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.server.model.HttpPagingResult;
 import com.artshell.arch.storage.server.model.Pageable;
+import com.artshell.arch.widget.rv.PageState.PullAction;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,25 +26,44 @@ import io.reactivex.schedulers.Schedulers;
  * @param <Value>    {@link PagedList}的结果类型
  * @param <Response> 服务器端返回的json字符串
  */
-public abstract class PageableDataSourceFactory<Value, Response extends HttpPagingResult<Value>> extends DataSource.Factory<Integer, Value> {
+public abstract class PageableDataSourceFactory<Value, Response extends HttpPagingResult<Value>>
+        extends DataSource.Factory<Integer, Value> {
 
-    /* 网络状态(这里并不用来传递获取成功的结果, 只传递正在加载/加载失败状态) */
-    private MutableLiveData<Resource<Void>> mNetworkState;
+    // 分页算法(与后端约定的配置信息)
+    private PageState mState;
+
+    // 加载第一页的网络状态(这里并不用来传递获取成功的结果, 只传递正在加载/加载失败状态)
+    private MutableLiveData<Resource<Void>> mInitialState;
+
+    // 加载下一页的网络状态(这里并不用来传递获取成功的结果, 只传递正在加载/加载失败状态)
+    private MutableLiveData<Resource<Void>> mNextPageState;
+
+    private MutableLiveData<PageableDataSource> mDataSource;
 
     private Executor retryExecutor;
     protected Scheduler mNetworkScheduler;
 
-    /* 持有一个重试引用 */
+    // 持有一个重试引用
     private Runnable retry;
 
-    public PageableDataSourceFactory(Executor workerExecutor) {
-        mNetworkState = new MutableLiveData<>();
+    public PageableDataSourceFactory(@NonNull PageState state, @NonNull Executor workerExecutor) {
+        mState = state;
+        mInitialState = new MutableLiveData<>();
+        mDataSource = new MutableLiveData<>();
         retryExecutor = workerExecutor;
         mNetworkScheduler = Schedulers.from(workerExecutor);
     }
 
-    public MutableLiveData<Resource<Void>> getNetworkState() {
-        return mNetworkState;
+    public MutableLiveData<Resource<Void>> getInitialState() {
+        return mInitialState;
+    }
+
+    public MutableLiveData<Resource<Void>> getNextPageState() {
+        return mNextPageState;
+    }
+
+    public MutableLiveData<PageableDataSource> getDataSource() {
+        return mDataSource;
     }
 
     /**
@@ -60,16 +79,13 @@ public abstract class PageableDataSourceFactory<Value, Response extends HttpPagi
 
     @Override
     public DataSource<Integer, Value> create() {
-        return new PageableDataSource();
+        PageableDataSource source = new PageableDataSource(mState);
+        mDataSource.postValue(source);
+        return source;
     }
 
-    private class PageableDataSource extends PageKeyedDataSource<Integer, Value> {
-
-        private PageState mState; /* 分页算法 */
-
-        private PageableDataSource() {
-            this(new PageState());
-        }
+    public class PageableDataSource extends PageKeyedDataSource<Integer, Value> {
+        private PageState mState; /* 分页算法(与后端约定的配置信息) */
 
         private PageableDataSource(PageState state) {
             mState = state;
@@ -82,26 +98,19 @@ public abstract class PageableDataSourceFactory<Value, Response extends HttpPagi
          */
         @SuppressLint("CheckResult")
         @Override
-        public final void loadInitial(@NonNull PageKeyedDataSource.LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, Value> callback) {
-            source(1)
-                    .doOnSubscribe(subscription -> mNetworkState.postValue(Resource.loading()))
+        public final void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, Value> callback) {
+            source(1, params.requestedLoadSize)
+                    .doOnSubscribe(subscription -> mInitialState.postValue(Resource.loading()))
                     .subscribe(
                             response -> {
-                                Pageable<Value> pageableData = response.getPageData();
-                                String total = pageableData.getTotal();
-                                List<Value> dataList = pageableData.getList() == null ? Collections.emptyList() : pageableData.getList();
-                                if ("".equals(total) || "0".equals(total) || dataList.isEmpty()) {
-                                    mNetworkState.postValue(Resource.error(new EmptyDataException("无数据")));
+                                List<Value> values = parseResponse(response, PullAction.PULL_DOWN);
+                                if (values.size() > 0) {
+                                    // 回传结果, 设置上一页/下一页的页码
+                                    callback.onResult(values, 1, mState.hasNext() ? mState.getCurrPage() + 1 : null /* 没有下一页 */);
                                 }
-                                // 计算分页状态
-                                mState.clear();
-                                mState.calculate(Integer.valueOf(total));
-
-                                // 回传结果, 设置上一页/下一页的页码
-                                callback.onResult(dataList, 1, mState.hasNext() ? mState.getCurrPage() + 1 : null /* 没有下一页 */);
                             }, throwable -> {
                                 retry = () -> loadInitial(params, callback);
-                                mNetworkState.postValue(Resource.error(throwable));
+                                mInitialState.postValue(Resource.error(throwable));
                             });
         }
 
@@ -118,31 +127,48 @@ public abstract class PageableDataSourceFactory<Value, Response extends HttpPagi
         @SuppressLint("CheckResult")
         @Override
         public final void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, Value> callback) {
-            if (params.key == null) {
-                mNetworkState.postValue(Resource.error(new NoMoreDataException("没有更多数据")));
-                return;
-            }
-            source(params.key)
-                    .doOnSubscribe(subscription -> mNetworkState.postValue(Resource.loading()))
+            source(params.key, params.requestedLoadSize)
+                    .doOnSubscribe(subscription -> mNextPageState.postValue(Resource.loading()))
                     .subscribe(
                             response -> {
-                                Pageable<Value> pageableData = response.getPageData();
-                                String total = pageableData.getTotal();
-                                List<Value> dataList = pageableData.getList() == null ? Collections.emptyList() : pageableData.getList();
-                                if ("".equals(total) || "0".equals(total) || dataList.isEmpty()) {
+                                List<Value> values = parseResponse(response, PullAction.PULL_DOWN);
+                                if (values.isEmpty()) {
                                     retry = () -> loadAfter(params, callback);
-                                    mNetworkState.postValue(Resource.error(new FetchFailedException("获取数据失败")));
-                                } else {
-                                    // 设置当前页
-                                    mState.setCurrPage(mState.getCurrPage() + 1);
-
-                                    // 回传结果, 设置下一页的页码
-                                    callback.onResult(dataList, mState.hasNext() ? mState.getCurrPage() + 1 : null /* 没有下一页 */);
+                                    return;
                                 }
+                                // 回传结果, 设置下一页的页码
+                                callback.onResult(values, mState.hasNext() ? mState.getCurrPage() + 1 : null /* 没有下一页 */);
                             }, throwable -> {
                                 retry = () -> loadAfter(params, callback);
-                                mNetworkState.postValue(Resource.error(throwable));
+                                mNextPageState.postValue(Resource.error(throwable));
                             });
+        }
+
+
+        /**
+         * 解析Response + 配置分页
+         */
+        private List<Value> parseResponse(Response res, @PullAction String action) {
+            Pageable<Value> pageableData = res.getPageData();
+            String total = pageableData.getTotal();
+            List<Value> dataList = pageableData.getList() == null ? Collections.emptyList() : pageableData.getList();
+            if ("".equals(total) || "0".equals(total) || dataList.isEmpty()) {
+                if (PullAction.PULL_DOWN.equals(action)) {
+                    mInitialState.postValue(Resource.error(new EmptyDataException("暂无数据")));
+                } else {
+                    mNextPageState.postValue(Resource.error(new FetchFailedException("获取下一页数据失败")));
+                }
+            } else {
+                if (PullAction.PULL_DOWN.equals(action)) {
+                    // 计算分页信息
+                    mState.clear();
+                    mState.calculate(Integer.valueOf(total));
+                } else {
+                    // 更改分页状态中的当前页
+                    mState.setCurrPage(mState.getCurrPage() + 1);
+                }
+            }
+            return dataList;
         }
     }
 
@@ -151,5 +177,5 @@ public abstract class PageableDataSourceFactory<Value, Response extends HttpPagi
      * @param nextPage 下一页
      * @return
      */
-    public abstract Flowable<Response> source(Integer nextPage);
+    public abstract Flowable<Response> source(Integer nextPage, int pageSize);
 }

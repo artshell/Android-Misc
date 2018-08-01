@@ -145,4 +145,6 @@ dependencies {
     implementation deps.misc.prefser
     implementation deps.misc.sqlbrite
 
+    implementation 'com.vise.xiaoyaoyou:xsnow:2.1.9'
+
 }
