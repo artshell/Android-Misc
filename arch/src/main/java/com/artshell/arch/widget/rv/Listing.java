@@ -1,4 +1,4 @@
-package com.artshell.arch.ui.paging;
+package com.artshell.arch.widget.rv;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.paging.PagedList;

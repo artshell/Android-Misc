@@ -60,7 +60,7 @@ def versions = [
         picasso           : '2.71828',
 
         // dagger
-        dagger            : '2.15',
+        dagger            : '2.16',
 
         // rabbits
         rabbits           : '1.0.0'

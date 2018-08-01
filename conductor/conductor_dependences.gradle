@@ -57,7 +57,7 @@ def versions = [
         picasso            : '2.71828',
 
         // dagger
-        dagger             : '2.15',
+        dagger             : '2.16',
 
         // conductor
         conductor          : '2.1.4',
