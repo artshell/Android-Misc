@@ -72,6 +72,7 @@ dependencies {
     implementation deps.rx.rxlifecycle_components
 
     implementation deps.nav.navigation
+    implementation deps.qmui.qmui
 
     implementation deps.router.rabbits
     annotationProcessor deps.router.compiler

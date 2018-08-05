@@ -1,4 +1,4 @@
-package com.artshell.arch.ui.paging;
+package com.artshell.arch.storage.server.paging;
 
 import android.arch.paging.LivePagedListBuilder;
 import android.arch.paging.PagedList;
@@ -8,7 +8,6 @@ import com.artshell.arch.storage.server.model.HttpPagingResult;
 import com.artshell.arch.utils.TaskExecutors;
 import com.artshell.arch.widget.rv.Listing;
 import com.artshell.arch.widget.rv.PageState;
-import com.artshell.arch.widget.rv.PageableDataSourceFactory;
 
 import java.util.Map;
 

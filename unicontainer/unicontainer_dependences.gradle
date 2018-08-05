@@ -27,7 +27,7 @@ def versions = [
         workmanager                : '1.0.0-alpha04',
 
         // rx
-        rxjava                     : '2.1.17',
+        rxjava                     : '2.2.0',
         rxandroid                  : '2.0.2',
         rxlifecycle                : '2.2.1',
         rxpermissions              : '0.9.5@aar',
@@ -60,7 +60,7 @@ def versions = [
         dagger                     : '2.16',
 
         // android navigation
-        and_navigation             : '1.8.5',
+        and_navigation             : '1.8.8',
 
         // rabbits
         rabbits                    : '1.0.0'
@@ -242,6 +242,10 @@ def nav = [
         navigation: "me.listenzz:navigation:${versions.and_navigation}"
 ]
 
+def qmui = [
+        qmui: "com.qmuiteam:qmui:1.1.5"
+]
+
 def router = [
         rabbits : "com.kyleduo.rabbits:rabbits:${versions.rabbits}",
         compiler: "com.kyleduo.rabbits:compiler:${versions.rabbits}"
@@ -276,6 +280,7 @@ ext.deps = [
         "picasso"  : picasso,
         "dagger2"  : dagger,
         "nav"      : nav,
+        "qmui"     : qmui,
         "router"   : router,
         "misc"     : misc,
 ]

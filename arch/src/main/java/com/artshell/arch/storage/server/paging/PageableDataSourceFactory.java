@@ -1,4 +1,4 @@
-package com.artshell.arch.widget.rv;
+package com.artshell.arch.storage.server.paging;
 
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.MutableLiveData;
@@ -12,6 +12,7 @@ import com.artshell.arch.common.FetchFailedException;
 import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.server.model.HttpPagingResult;
 import com.artshell.arch.storage.server.model.Pageable;
+import com.artshell.arch.widget.rv.PageState;
 import com.artshell.arch.widget.rv.PageState.PullAction;
 
 import java.util.Collections;
