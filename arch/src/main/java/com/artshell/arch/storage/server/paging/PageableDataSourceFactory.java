@@ -12,8 +12,7 @@ import com.artshell.arch.common.FetchFailedException;
 import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.server.model.HttpPagingResult;
 import com.artshell.arch.storage.server.model.Pageable;
-import com.artshell.arch.widget.rv.PageState;
-import com.artshell.arch.widget.rv.PageState.PullAction;
+import com.artshell.arch.storage.server.paging.PageState.PullAction;
 
 import java.util.Collections;
 import java.util.List;

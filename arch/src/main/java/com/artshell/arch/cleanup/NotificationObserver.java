@@ -1,4 +1,4 @@
-package com.artshell.arch.ui;
+package com.artshell.arch.cleanup;
 
 import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
@@ -26,7 +26,7 @@ public interface NotificationObserver<T> extends
         } else if (notify.isOnError()) {
             accept(notify.getError());
         } else if (notify.isOnComplete()) {
-            onComplete();
+            run();
         }
     }
 }

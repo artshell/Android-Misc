@@ -1,4 +1,4 @@
-package com.artshell.arch.widget.rv;
+package com.artshell.arch.storage.server.paging;
 
 import android.support.annotation.StringDef;
 

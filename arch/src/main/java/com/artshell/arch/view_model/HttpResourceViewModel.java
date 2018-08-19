@@ -5,7 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
-import com.artshell.arch.ui.ResourceObserver;
+import com.artshell.arch.cleanup.ResourceObserver;
 import com.artshell.arch.utils.MainLiveDataStreams;
 import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.server.HttpManager;

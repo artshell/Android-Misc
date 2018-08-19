@@ -1,4 +1,5 @@
-package com.artshell.arch.ui;
+package com.artshell.arch.cleanup;
+
 
 public interface NextConsumer<T> {
 

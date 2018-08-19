@@ -8,7 +8,7 @@ import com.artshell.arch.storage.Resource;
 import com.artshell.arch.storage.cache.HttpCacheManager;
 import com.artshell.arch.storage.cache.Mixture;
 import com.artshell.arch.storage.cache.Mixture2;
-import com.artshell.arch.ui.ResourceObserver;
+import com.artshell.arch.cleanup.ResourceObserver;
 import com.artshell.arch.utils.MainLiveDataStreams;
 
 import java.util.Map;

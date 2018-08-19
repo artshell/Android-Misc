@@ -7,11 +7,15 @@ import android.support.annotation.Nullable;
  * @author artshell on 19/03/2018
  */
 public class Resource<T> {
-    @NonNull public final String status;
-    @Nullable public final T data;
-    @Nullable public final Throwable thr;
+    @Status
+    @NonNull
+    public final String status;
+    @Nullable
+    public final T data;
+    @Nullable
+    public final Throwable thr;
 
-    private Resource(@NonNull String status,@Nullable T data,@Nullable Throwable thr) {
+    private Resource(@NonNull @Status String status, @Nullable T data, @Nullable Throwable thr) {
         this.status = status;
         this.data = data;
         this.thr = thr;

@@ -6,8 +6,6 @@ import android.arch.paging.PagedList;
 import com.artshell.arch.storage.server.HttpManager;
 import com.artshell.arch.storage.server.model.HttpPagingResult;
 import com.artshell.arch.utils.TaskExecutors;
-import com.artshell.arch.widget.rv.Listing;
-import com.artshell.arch.widget.rv.PageState;
 
 import java.util.Map;
 

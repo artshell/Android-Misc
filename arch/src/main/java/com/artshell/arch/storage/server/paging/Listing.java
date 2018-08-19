@@ -1,4 +1,4 @@
-package com.artshell.arch.widget.rv;
+package com.artshell.arch.storage.server.paging;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.paging.PagedList;
@@ -11,7 +11,7 @@ public class Listing<T> {
     public LiveData<Resource<Void>> initialState;
 
     /* represents the next page request status to show to the user */
-    private LiveData<Resource<Void>> nextPageState;
+    public LiveData<Resource<Void>> nextPageState;
 
     /* the LiveData of paged lists for the UI to observe */
     public LiveData<PagedList<T>> pagedList;

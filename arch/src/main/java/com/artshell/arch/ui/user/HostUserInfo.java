@@ -2,7 +2,7 @@ package com.artshell.arch.ui.user;
 
 import com.artshell.arch.storage.server.model.UserResponse;
 import com.artshell.arch.ui.DataBaseActivity;
-import com.artshell.arch.ui.ResourceObserver;
+import com.artshell.arch.cleanup.ResourceObserver;
 import com.artshell.arch.view_model.HttpResourceViewModel;
 
 /**

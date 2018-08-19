@@ -7,7 +7,7 @@ import android.arch.lifecycle.LiveDataReactiveStreams;
 import android.support.annotation.NonNull;
 
 import com.artshell.arch.storage.server.HttpManager;
-import com.artshell.arch.ui.NotificationObserver;
+import com.artshell.arch.cleanup.NotificationObserver;
 
 import java.util.Map;
 

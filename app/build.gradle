@@ -101,6 +101,8 @@ dependencies {
     implementation deps.misc.multitype
     implementation deps.misc.gson
     implementation deps.misc.stream
+
+    implementation 'com.vise.xiaoyaoyou:xsnow:2.1.9'
 }
 repositories {
     mavenCentral()
