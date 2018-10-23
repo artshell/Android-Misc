@@ -1,4 +1,4 @@
-package com.artshell.arch.storage.server.model;
+package com.artshell.arch.storage.server.paging;
 
 public class HttpPagingResult<T> {
     /**

@@ -10,8 +10,6 @@ import android.support.annotation.NonNull;
 import com.artshell.arch.common.EmptyDataException;
 import com.artshell.arch.common.FetchFailedException;
 import com.artshell.arch.storage.Resource;
-import com.artshell.arch.storage.server.model.HttpPagingResult;
-import com.artshell.arch.storage.server.model.Pageable;
 import com.artshell.arch.storage.server.paging.PageState.PullAction;
 
 import java.util.Collections;
@@ -23,7 +21,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * @param <Value>    {@link PagedList}的结果类型
+ * @param <Value>    {@link PagedList}类型
  * @param <Response> 服务器端返回的json字符串
  */
 public abstract class PageableDataSourceFactory<Value, Response extends HttpPagingResult<Value>>
@@ -40,7 +38,7 @@ public abstract class PageableDataSourceFactory<Value, Response extends HttpPagi
 
     private MutableLiveData<PageableDataSource> mDataSource;
 
-    private Executor retryExecutor;
+    private   Executor  retryExecutor;
     protected Scheduler mNetworkScheduler;
 
     // 持有一个重试引用
@@ -49,6 +47,7 @@ public abstract class PageableDataSourceFactory<Value, Response extends HttpPagi
     public PageableDataSourceFactory(@NonNull PageState state, @NonNull Executor workerExecutor) {
         mState = state;
         mInitialState = new MutableLiveData<>();
+        mNextPageState = new MutableLiveData<>();
         mDataSource = new MutableLiveData<>();
         retryExecutor = workerExecutor;
         mNetworkScheduler = Schedulers.from(workerExecutor);
@@ -131,12 +130,12 @@ public abstract class PageableDataSourceFactory<Value, Response extends HttpPagi
                     .doOnSubscribe(subscription -> mNextPageState.postValue(Resource.loading()))
                     .subscribe(
                             response -> {
-                                List<Value> values = parseResponse(response, PullAction.PULL_DOWN);
+                                List<Value> values = parseResponse(response, PullAction.PULL_UP);
                                 if (values.isEmpty()) {
                                     retry = () -> loadAfter(params, callback);
                                     return;
                                 }
-                                // 回传结果, 设置下一页的页码
+                                // 回传结果 + 设置下一页的页码
                                 callback.onResult(values, mState.hasNext() ? mState.getCurrPage() + 1 : null /* 没有下一页 */);
                             }, throwable -> {
                                 retry = () -> loadAfter(params, callback);

@@ -1,5 +1,7 @@
 package com.artshell.arch.storage.server.model;
 
+import com.artshell.arch.storage.server.paging.HttpPagingResult;
+
 public class HouseResponse extends HttpPagingResult<HouseResponse.HouseEntity> {
     public static class HouseEntity {
         private String id;

@@ -55,7 +55,6 @@ configurations.all {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso
@@ -103,7 +102,4 @@ dependencies {
     implementation deps.misc.stream
 
     implementation 'com.vise.xiaoyaoyou:xsnow:2.1.9'
-}
-repositories {
-    mavenCentral()
 }

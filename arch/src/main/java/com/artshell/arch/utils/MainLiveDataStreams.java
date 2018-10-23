@@ -74,8 +74,8 @@ public class MainLiveDataStreams {
                     post(Resource.loading());
                     s.request(Long.MAX_VALUE);
                 } else {
-                    post(Resource.cancel());
                     s.cancel();
+                    post(Resource.cancel());
                 }
             }
 
@@ -91,28 +91,23 @@ public class MainLiveDataStreams {
 
             @Override
             public void onComplete() {
-                post(Resource.complete());
                 UPDATER.lazySet(this, null);
+                post(Resource.complete());
             }
 
             void cancelSubscription() {
-                post(Resource.cancel());
                 Subscription s = UPDATER.get(this);
                 if (s != null) {
                     s.cancel();
                 }
+                post(Resource.cancel());
             }
 
             void post(final Resource<T> item) {
                 if (isMainThread()) {
                     mainData.setValue(item);
                 } else {
-                    handler.postAtFrontOfQueue(new Runnable() {
-                        @Override
-                        public void run() {
-                            mainData.setValue(item);
-                        }
-                    });
+                    handler.postAtFrontOfQueue(() -> mainData.setValue(item));
                 }
             }
 
