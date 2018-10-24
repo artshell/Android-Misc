@@ -14,7 +14,7 @@ import com.squareup.leakcanary.LeakCanary;
 
 public class AppContext extends Application {
     private static final Object lock = new Object();
-    private volatile static AppContext appContext;
+    private static volatile AppContext appContext;
 
     @Override
     public void onCreate() {
