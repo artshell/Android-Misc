@@ -33,7 +33,7 @@ public class PostsAdapter extends PagedListAdapter<RedditPost, RecyclerView.View
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        switch (getItemViewType(viewType)) {
+        switch (viewType) {
             case R.layout.reddit_post_item:
                 return RedditPostViewHolder.create(parent, glide);
             case R.layout.network_state_item:
