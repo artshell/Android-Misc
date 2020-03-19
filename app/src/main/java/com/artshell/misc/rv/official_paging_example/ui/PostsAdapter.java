@@ -102,12 +102,12 @@ public class PostsAdapter extends PagedListAdapter<RedditPost, RecyclerView.View
     public static class DiffCallback extends DiffUtil.ItemCallback<RedditPost> {
         @Override
         public boolean areItemsTheSame(RedditPost oldItem, RedditPost newItem) {
-            return oldItem == newItem;
+            return oldItem.name.equals(newItem.name);
         }
 
         @Override
         public boolean areContentsTheSame(RedditPost oldItem, RedditPost newItem) {
-            return oldItem.name == newItem.name || oldItem.name.equals(newItem.name);
+            return oldItem.equals(newItem);
         }
 
         @Override
