@@ -26,23 +26,23 @@ public interface RedditApi {
     Call<ListingResponse> getTopAfter(@Path("subreddit") String subreddit, @Query("after") String after, @Query("limit") int limit);
 
     class ListingResponse {
-        private ListingData mData;
+        private ListingData data;
 
         public ListingResponse(ListingData data) {
-            mData = data;
+            this.data = data;
         }
 
         public ListingData getData() {
-            return mData;
+            return data;
         }
 
         public void setData(ListingData data) {
-            mData = data;
+            this.data = data;
         }
     }
 
     class ListingData {
-        private List<RedditChildrenResponse> mChildren;
+        private List<RedditChildrenResponse> children;
 
         @Nullable
         private String before;
@@ -51,17 +51,17 @@ public interface RedditApi {
         private String after;
 
         public ListingData(List<RedditChildrenResponse> children, @Nullable String before, @Nullable String after) {
-            this.mChildren = children;
+            this.children = children;
             this.before = before;
             this.after = after;
         }
 
         public List<RedditChildrenResponse> getChildren() {
-            return mChildren;
+            return children;
         }
 
         public void setChildren(List<RedditChildrenResponse> children) {
-            mChildren = children;
+            this.children = children;
         }
 
         @Nullable
@@ -84,14 +84,14 @@ public interface RedditApi {
     }
 
     class RedditChildrenResponse {
-        private RedditPost mPost;
+        private RedditPost data;
 
         public RedditPost getPost() {
-            return mPost;
+            return data;
         }
 
-        public void setPost(RedditPost post) {
-            mPost = post;
+        public void setPost(RedditPost data) {
+            this.data = data;
         }
     }
 }
