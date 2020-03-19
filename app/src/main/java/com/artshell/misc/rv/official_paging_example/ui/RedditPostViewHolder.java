@@ -68,7 +68,7 @@ public class RedditPostViewHolder extends RecyclerView.ViewHolder implements Vie
     public void updateScore(RedditPost item) {
         mPost = item;
         if (mPost != null) {
-            score.setText(mPost.score);
+            score.setText(String.valueOf(mPost.score));
         }
     }
 
